@@ -5,27 +5,34 @@ import { colors } from '../../ui'
 function Logo ({ onClick }) {
   const { colorMode } = useColorMode()
   const allColors = {
-    text: {
+    workout: {
       normal: {
-        light: colors.white,
+        light: colors.gray400,
+        dark: colors.gray400
+      }
+    },
+    home: {
+      normal: {
+        light: colors.gray500,
         dark: colors.white
       }
     }
   }
   const resolveColor = name => allColors[name][state][colorMode]
   const state = 'normal'
-  const textColor = resolveColor('text')
+  const workoutColor = resolveColor('workout')
+  const homeColor = resolveColor('home')
   return (
     <Link
       onClick={onClick ? onClick : () => {}}
-      color={textColor}
+      color={homeColor}
       display="inline-flex"
       _hover={{
         textDecoration: 'none'
       }}
     >
       <Text
-        color={colors.gray300}
+        color={workoutColor}
         margin="0"
         fontSize="24px"
         fontWeight="400"

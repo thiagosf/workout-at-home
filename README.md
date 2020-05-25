@@ -28,5 +28,5 @@ yarn start
 - [x] MuscularGroup
 - [x] ExerciseCard
 - [x] Exercise
-- [ ] Header
+- [x] Header
 - [ ] MuscleGroupBody

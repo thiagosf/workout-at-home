@@ -17,6 +17,34 @@ import { VideoPlayer } from '../VideoPlayer'
 import { AbsoluteBox } from '../Base'
 import { MuscleGroupBody } from '../MuscleGroup'
 
+const ExerciseVideo = ({ item }) => {
+  const [playing, setPlaying] = useState(false)
+  return (
+    <Box>
+      <AbsoluteBox
+        top="0"
+        left="0"
+        bottom="40px"
+        pointerEvents={playing ? 'none' : 'initial'}
+        width="40%"
+      />
+      <AbsoluteBox
+        top="0"
+        right="0"
+        bottom="40px"
+        pointerEvents={playing ? 'none' : 'initial'}
+        width="40%"
+      />
+      <VideoPlayer
+        url={item.url}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnd={() => setPlaying(false)}
+      />
+    </Box>
+  )
+}
+
 const MediaTypeRadio = React.forwardRef((props, ref) => {
   const { colorMode } = useColorMode()
   const { isChecked, isDisabled, value, ...rest } = props
@@ -128,19 +156,7 @@ function Exercise ({
           display="block"
           position="relative"
         >
-          <AbsoluteBox
-            top="0"
-            left="0"
-            bottom="0"
-            width="40%"
-          />
-          <AbsoluteBox
-            top="0"
-            right="0"
-            bottom="0"
-            width="40%"
-          />
-          <VideoPlayer url={item.url} />
+          <ExerciseVideo item={item} />
         </Box>
       )
     })
