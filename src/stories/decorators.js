@@ -20,7 +20,7 @@ export const withColorMode = storyFn => {
 export const withLight = storyFn => {
   return (
     <Box
-      p="10px"
+      padding="10px"
       background={colors.gray200}
       display="block"
       width={["100%", "50%"]}
@@ -34,7 +34,7 @@ export const withLight = storyFn => {
 export const withDark = storyFn => {
   return (
     <Box
-      p="10px"
+      padding="10px"
       background={colors.gray900}
       display="block"
       width={["100%", "50%"]}

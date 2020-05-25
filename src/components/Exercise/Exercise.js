@@ -98,6 +98,7 @@ function Exercise ({
   exercise,
   added,
   onSelect,
+  insideCarousel = false,
   ...props
 }) {
   const { colorMode } = useColorMode()
@@ -131,36 +132,35 @@ function Exercise ({
 
   const [mediaType, setMediaType] = useState('image')
 
-  const media = mediaType === 'image'
-    ? exercise.images.map((item, index) => {
-      return (
-        <Box key={`image-${index}`} display="block">
-          <Image
-            width="100%"
-            data-src={item.url}
-            className="swiper-lazy"
-            alt=""
-          />
-          <Skeleton
-            className="preloader-carousel"
-            minHeight="100px"
-            colorStart={colors.gray200}
-            colorEnd={colors.gray800}
-          />
-        </Box>
-      )
-    })
-    : exercise.videos.map((item, index) => {
-      return (
-        <Box
-          key={`video-${index}`}
-          display="block"
-          position="relative"
-        >
-          <ExerciseVideo item={item} />
-        </Box>
-      )
-    })
+  const images = exercise.images.map((item, index) => {
+    return (
+      <Box key={`image-${index}`} display="block">
+        <Image
+          width="100%"
+          data-src={item.url}
+          className="swiper-lazy"
+          alt=""
+        />
+        <Skeleton
+          className="preloader-carousel"
+          minHeight="100px"
+          colorStart={colors.gray200}
+          colorEnd={colors.gray800}
+        />
+      </Box>
+    )
+  })
+  const videos = exercise.videos.map((item, index) => {
+    return (
+      <Box
+        key={`video-${index}`}
+        display="block"
+        position="relative"
+      >
+        <ExerciseVideo item={item} />
+      </Box>
+    )
+  })
   const buttonText = added ? 'Remove' : 'Add'
 
   return (
@@ -173,14 +173,28 @@ function Exercise ({
         requirements={exercise.requirements}
       />
       <Carousel
-        key={`${mediaType}-carousel`}
+        key='images'
+        display={mediaType === 'image' ? 'block' : 'none'}
+        nested={insideCarousel}
         marginTop="20px"
         marginLeft="-25px"
         marginRight="-25px"
         config={{ autoHeight: true }}
-        count={media.length}
+        count={images.length}
       >
-        {media}
+        {images}
+      </Carousel>
+      <Carousel
+        key='videos'
+        display={mediaType === 'video' ? 'block' : 'none'}
+        nested={insideCarousel}
+        marginTop="20px"
+        marginLeft="-25px"
+        marginRight="-25px"
+        config={{ autoHeight: true }}
+        count={videos.length}
+      >
+        {videos}
       </Carousel>
       <Box>
         <RadioButtonGroup

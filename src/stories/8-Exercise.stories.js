@@ -12,6 +12,7 @@ export default {
 
 export const Default = () => {
   const exercise = {
+    id: 1,
     name: 'Ab Roller',
     likes: 2,
     level: 2,

@@ -30,4 +30,5 @@ yarn start
 - [x] Exercise
 - [x] Header
 - [x] TabBar
+- [x] ExerciseCarousel
 - [ ] MuscleGroupBody
