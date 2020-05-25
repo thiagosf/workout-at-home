@@ -14,7 +14,8 @@ function ExerciseHeader ({
   level,
   likes,
   muscleGroups,
-  requirements
+  requirements,
+  ...props
 }) {
   const { colorMode } = useColorMode()
   const allColors = {
@@ -93,7 +94,7 @@ function ExerciseHeader ({
     )
   })
   return (
-    <Flex>
+    <Flex {...props}>
       <Box
         flexGrow="1"
         marginRight="20px"

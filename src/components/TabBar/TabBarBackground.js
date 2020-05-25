@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
 
-function TabBarBackground ({ children }) {
+function TabBarBackground ({ children, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     background: {
@@ -21,10 +21,11 @@ function TabBarBackground ({ children }) {
   return (
     <Box
       background={background}
-      padding="30px 10px 10px 10px"
+      padding="15px 10px 10px 10px"
       style={{
-        clipPath: "ellipse(70% 85px at 50% 85px)"
+        clipPath: "ellipse(100% 85px at 50% 85px)"
       }}
+      {...props}
     >
       {children}
     </Box>

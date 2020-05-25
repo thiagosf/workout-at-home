@@ -29,4 +29,5 @@ yarn start
 - [x] ExerciseCard
 - [x] Exercise
 - [x] Header
+- [x] TabBar
 - [ ] MuscleGroupBody

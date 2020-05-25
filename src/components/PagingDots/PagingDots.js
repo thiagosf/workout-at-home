@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
 
-function PagingDots ({ pages, currentPage }) {
+function PagingDots ({ pages, currentPage, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     background: {
@@ -84,6 +84,7 @@ function PagingDots ({ pages, currentPage }) {
       padding="5px"
       justifyContent="center"
       alignItems="center"
+      {...props}
     >
       {dots}
     </Flex>

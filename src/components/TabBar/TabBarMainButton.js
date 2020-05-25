@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/core'
 import { colors, transitions } from '../../ui'
 
-function TabBarMainButton ({ children, icon, onClick }) {
+function TabBarMainButton ({ children, icon, onClick, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     background: {
@@ -44,6 +44,7 @@ function TabBarMainButton ({ children, icon, onClick }) {
       _active={{
         background: backgroundActive
       }}
+      {...props}
     >
       <Text
         as="span"

@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/core'
 import { Carousel } from '../Carousel'
 import MuscleGroupCount from './MuscleGroupCount'
 
-function MuscleGroup ({ onSelect, muscleGroups }) {
+function MuscleGroup ({ onSelect, muscleGroups, ...props }) {
   const items = muscleGroups.map((item, index) => {
     return (
       <Box
@@ -27,6 +27,7 @@ function MuscleGroup ({ onSelect, muscleGroups }) {
         slidesPerView: 'auto',
         spaceBetween: 10
       }}
+      {...props}
     >
       {items}
     </Carousel>

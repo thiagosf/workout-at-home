@@ -97,7 +97,8 @@ const MediaTypeRadio = React.forwardRef((props, ref) => {
 function Exercise ({
   exercise,
   added,
-  onSelect
+  onSelect,
+  ...props
 }) {
   const { colorMode } = useColorMode()
   const allColors = {
@@ -163,7 +164,7 @@ function Exercise ({
   const buttonText = added ? 'Remove' : 'Add'
 
   return (
-    <ExerciseCard position="relative">
+    <ExerciseCard position="relative" {...props}>
       <ExerciseHeader
         name={exercise.name}
         level={exercise.level}

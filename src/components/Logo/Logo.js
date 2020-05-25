@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, Link, useColorMode } from '@chakra-ui/core'
 import { colors } from '../../ui'
 
-function Logo ({ onClick }) {
+function Logo ({ onClick, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     workout: {
@@ -30,6 +30,7 @@ function Logo ({ onClick }) {
       _hover={{
         textDecoration: 'none'
       }}
+      {...props}
     >
       <Text
         color={workoutColor}

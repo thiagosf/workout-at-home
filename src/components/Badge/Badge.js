@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/core'
 import { transitions } from '../../ui'
 
-function Badge ({ children, background, textColor }) {
+function Badge ({ children, background, textColor, ...props }) {
   return (
     <ChrakraBadge
       transition={transitions.common}
@@ -16,6 +16,7 @@ function Badge ({ children, background, textColor }) {
       rounded="full"
       lineHeight="28px"
       minWidth="28px"
+      {...props}
     >
       <Text
         transition={transitions.common}

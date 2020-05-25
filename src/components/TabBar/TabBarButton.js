@@ -9,7 +9,7 @@ import {
 import { colors, transitions } from '../../ui'
 import { Badge } from '../Badge'
 
-function TabBarButton ({ children, icon, onClick, counter }) {
+function TabBarButton ({ children, icon, onClick, counter, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     backgroundActive: {
@@ -28,16 +28,17 @@ function TabBarButton ({ children, icon, onClick, counter }) {
       as="button"
       border="0"
       rounded="3px"
+      padding="5px"
       transition={transitions.common}
       background={colors.transparent}
       outline="0"
       _active={{
         background: backgroundActive
       }}
-
+      {...props}
     >
       <Box
-        padding="5px"
+        padding="0px 5px 5px 5px"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -56,6 +57,7 @@ function TabBarButton ({ children, icon, onClick, counter }) {
       <Text
         margin="0"
         fontSize="16px"
+        lineHeight="1"
         color={colors.white}
         textAlign="center"
       >{children}</Text>

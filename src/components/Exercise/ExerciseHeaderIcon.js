@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
 
-function ExerciseHeaderIcon ({ icon, children }) {
+function ExerciseHeaderIcon ({ icon, children, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     text: {
@@ -38,6 +38,7 @@ function ExerciseHeaderIcon ({ icon, children }) {
   return (
     <Box
       textAlign="center"
+      {...props}
     >
       <Icon
         name={icon}

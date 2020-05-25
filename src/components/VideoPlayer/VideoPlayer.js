@@ -5,7 +5,8 @@ function VideoPlayer ({
   url,
   onPlay,
   onPause,
-  onEnd
+  onEnd,
+  ...props
 }) {
   const videoId = url.split('?v=').pop().trim()
   return (
@@ -14,6 +15,7 @@ function VideoPlayer ({
       onPlay={onPlay}
       onPause={onPause}
       onEnd={onEnd}
+      {...props}
     />
   )
 }

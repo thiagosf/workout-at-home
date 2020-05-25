@@ -8,7 +8,7 @@ import {
 import { Badge } from '../Badge'
 import { colors, transitions } from '../../ui'
 
-function MuscleGroupCount ({ active, name, count, onClick }) {
+function MuscleGroupCount ({ active, name, count, onClick, ...props }) {
   const { colorMode } = useColorMode()
   const allColors = {
     text: {
@@ -87,6 +87,7 @@ function MuscleGroupCount ({ active, name, count, onClick }) {
       _active={{
         background: backgroundColorActive
       }}
+      {...props}
     >
       <Box
         textAlign="center"
