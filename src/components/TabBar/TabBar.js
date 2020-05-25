@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/core'
+import { Flex } from '@chakra-ui/core'
 import TabBarBackground from './TabBarBackground'
 import TabBarButton from './TabBarButton'
 import TabBarMainButton from './TabBarMainButton'
