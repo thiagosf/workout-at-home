@@ -31,4 +31,12 @@ yarn start
 - [x] Header
 - [x] TabBar
 - [x] ExerciseCarousel
+- [x] ExerciseFilters
+- [ ] ExerciseMiniControls
+- [ ] ExerciseMiniNext
+- [ ] EmptyList
+- [ ] RepetitionCount
+- [x] Timer
+- [ ] Wait
+- [ ] Finish
 - [ ] MuscleGroupBody

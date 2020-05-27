@@ -45,6 +45,27 @@ const ExerciseVideo = ({ item }) => {
   )
 }
 
+const ExerciseMediaCarousel = props => {
+  return (
+    <Carousel
+      key={props.name}
+      nested={props.insideCarousel}
+      display={props.display}
+      marginTop="20px"
+      marginLeft="-25px"
+      marginRight="-25px"
+      config={{
+        autoHeight: true,
+        observer: true,
+        observeParents: true
+      }}
+      count={props.items.length}
+    >
+      {props.items}
+    </Carousel>
+  )
+}
+
 const MediaTypeRadio = React.forwardRef((props, ref) => {
   const { colorMode } = useColorMode()
   const { isChecked, isDisabled, value, ...rest } = props
@@ -172,30 +193,18 @@ function Exercise ({
         muscleGroups={exercise.muscleGroups}
         requirements={exercise.requirements}
       />
-      <Carousel
-        key='images'
+      <ExerciseMediaCarousel
+        name='images'
+        nested={insideCarousel}
+        items={images}
         display={mediaType === 'image' ? 'block' : 'none'}
+      />
+      <ExerciseMediaCarousel
+        name='videos'
         nested={insideCarousel}
-        marginTop="20px"
-        marginLeft="-25px"
-        marginRight="-25px"
-        config={{ autoHeight: true }}
-        count={images.length}
-      >
-        {images}
-      </Carousel>
-      <Carousel
-        key='videos'
+        items={videos}
         display={mediaType === 'video' ? 'block' : 'none'}
-        nested={insideCarousel}
-        marginTop="20px"
-        marginLeft="-25px"
-        marginRight="-25px"
-        config={{ autoHeight: true }}
-        count={videos.length}
-      >
-        {videos}
-      </Carousel>
+      />
       <Box>
         <RadioButtonGroup
           defaultValue="image"
