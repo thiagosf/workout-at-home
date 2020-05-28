@@ -14,7 +14,13 @@ function ExerciseFilters ({ equipaments, onChange }) {
     text: {
       normal: {
         light: colors.gray800,
-        dark: colors.white
+        dark: colors.gray300
+      }
+    },
+    background: {
+      normal: {
+        light: colors.white,
+        dark: colors.gray900
       }
     }
   }
@@ -22,6 +28,7 @@ function ExerciseFilters ({ equipaments, onChange }) {
   const resolveColor = name => allColors[name][state][colorMode]
   const state = 'normal'
   const textColor = resolveColor('text')
+  const backgroundColor = resolveColor('background')
 
   const [checkedItems, setCheckedItems] = useState([])
   const totalEquipaments = equipaments.length
@@ -58,11 +65,15 @@ function ExerciseFilters ({ equipaments, onChange }) {
   })
 
   return (
-    <Box color={textColor}>
+    <Box
+      color={textColor}
+      background={backgroundColor}
+      padding="20px"
+    >
       <Text
         fontSize="sm"
-        margin="0 0 20px 0"
-      >Filter requirements:</Text>
+        margin="0 0 10px 0"
+      >Filter equipaments:</Text>
       <Flex
         flexDirection="column"
       >

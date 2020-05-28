@@ -35,7 +35,7 @@ yarn start
 - [ ] ExerciseMiniControls
 - [ ] ExerciseMiniNext
 - [ ] EmptyList
-- [ ] RepetitionCount
+- [x] RepetitionCount
 - [x] Timer
 - [ ] Wait
 - [ ] Finish

@@ -67,26 +67,26 @@ function Timer ({
     >
       <Icon
         color={iconColor}
-        size="24px"
+        size="26px"
         name="timer"
         marginRight="5px"
       />
       <Flex
         alignItems="center"
-        marginTop="1px"
+        marginTop="2px"
       >
         <Text
           as="span"
           lineHeight="1"
           fontWeight="600"
-          fontSize="20px"
+          fontSize="26px"
           color={mainColor}
         >{mainTimer}</Text>
         <Text
           as="span"
           lineHeight="1"
-          fontSize="14px"
-          marginLeft="2px"
+          fontSize="16px"
+          marginLeft="3px"
           color={millisecondsColor}
         >.{millisecondsTimer}</Text>
       </Flex>
