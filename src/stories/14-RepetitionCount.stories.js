@@ -17,7 +17,7 @@ const countTypeOptions = {
 export const Default = () => {
   return (
     <RepetitionCount
-      count={number('count (0 == max)', 0)}
+      count={number('count (0 == max)', 15)}
       countType={radios('count type', countTypeOptions, 'reps')}
       isStarted={boolean('is started', false)}
     />

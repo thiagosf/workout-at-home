@@ -15,6 +15,13 @@ function ExerciseHeader ({
   likes,
   muscleGroups,
   requirements,
+  visible = {
+    likes: true,
+    level: true,
+    name: true,
+    muscleGroups: true,
+    requirements: true
+  },
   ...props
 }) {
   const { colorMode } = useColorMode()
@@ -99,34 +106,42 @@ function ExerciseHeader ({
         flexGrow="1"
         marginRight="20px"
       >
-        <Text
-          fontSize="20px"
-          margin="0"
-          fontWeight="600"
-          lineHeight="1.2"
-          color={nameColor}
-        >{name}</Text>
-        <Flex
-          margin="0 0 10px 0"
-          flexWrap="wrap"
-        >
-          {muscleGroupsItems}
-        </Flex>
-        <Text
-          margin="0"
-          fontSize="14px"
-          color={requirementColor}
-        >
-          Requires: <strong>{requirementsString}</strong>
-        </Text>
+        {visible.name &&
+          <Text
+            fontSize="20px"
+            margin="0"
+            fontWeight="600"
+            lineHeight="1.2"
+            color={nameColor}
+          >{name}</Text>
+        }
+        {visible.muscleGroups &&
+          <Flex
+            flexWrap="wrap"
+          >
+            {muscleGroupsItems}
+          </Flex>
+        }
+        {visible.requirements &&
+          <Text
+            margin="10px 0 0 0"
+            fontSize="14px"
+            color={requirementColor}
+          >
+            Requires: <strong>{requirementsString}</strong>
+          </Text>
+
+        }
       </Box>
       <Flex>
-        <Box>
-          <ExerciseHeaderIcon
-            icon="level"
-          >{level}</ExerciseHeaderIcon>
-        </Box>
-        {showLikes &&
+        {visible.level &&
+          <Box>
+            <ExerciseHeaderIcon
+              icon="level"
+            >{level}</ExerciseHeaderIcon>
+          </Box>
+        }
+        {showLikes && visible.likes &&
           <Box marginLeft="10px">
             <ExerciseHeaderIcon
               icon="heart"
