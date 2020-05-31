@@ -39,7 +39,7 @@ yarn start
 - [x] RepetitionCount
 - [x] Timer
 - [x] WaitBeforeNextExercise
-- [ ] Finish
+- [x] Finish
 - [ ] MuscleGroupBody
 - [x] NumberControl
 - [x] RestBetweenExercises
