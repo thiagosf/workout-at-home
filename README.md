@@ -34,7 +34,7 @@ yarn start
 - [x] ExerciseFilters
 - [x] ExerciseMiniControls
 - [x] ExerciseMiniList
-- [ ] ExerciseMiniNext
+- [x] ExerciseMiniNext
 - [x] EmptyList
 - [x] RepetitionCount
 - [x] Timer
