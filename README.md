@@ -40,6 +40,6 @@ yarn start
 - [x] Timer
 - [x] WaitBeforeNextExercise
 - [x] Finish
-- [ ] MuscleGroupBody
+- [x] MuscleGroupBody
 - [x] NumberControl
 - [x] RestBetweenExercises
