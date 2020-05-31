@@ -38,6 +38,12 @@ function NumberControl ({
         light: colors.red200,
         dark: colors.red800
       }
+    },
+    textBackground: {
+      normal: {
+        light: colors.gray200,
+        dark: colors.gray900
+      }
     }
   }
 
@@ -46,6 +52,7 @@ function NumberControl ({
   const blusBackgroundColor = resolveColor('backgroundPlus', 'normal')
   const minusColor = resolveColor('minus', 'normal')
   const minusBackgroundColor = resolveColor('backgroundMinus', 'normal')
+  const textBackgroundColor = resolveColor('textBackground', 'normal')
   const [value, setValue] = useState(initialValue)
 
   const increment = () => {
@@ -86,6 +93,12 @@ function NumberControl ({
         margin="0 5px"
         fontSize="18px"
         fontWeight="600"
+        background={textBackgroundColor}
+        padding="5px 5px"
+        minWidth="35px"
+        rounded="2px"
+        lineHeight="1"
+        textAlign="center"
       >{value}</Text>
       <Button
         size="sm"

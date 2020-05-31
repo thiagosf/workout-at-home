@@ -116,6 +116,7 @@ function ExerciseMiniControls ({
             margin="0 0 10px 0"
           >
             <RadioButtonGroup
+              spacing="5px"
               whiteSpace="nowrap"
               defaultValue="reps"
               onChange={value => {

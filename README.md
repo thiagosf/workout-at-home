@@ -35,10 +35,10 @@ yarn start
 - [x] ExerciseMiniControls
 - [x] ExerciseMiniList
 - [x] ExerciseMiniNext
-- [ ] EmptyList
+- [x] EmptyList
 - [x] RepetitionCount
 - [x] Timer
 - [ ] Wait
 - [ ] Finish
 - [ ] MuscleGroupBody
-- [ ] NumberControl
+- [x] NumberControl

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import {
   Flex,
   Box,
-  Icon
+  Icon,
+  useColorMode
 } from '@chakra-ui/core'
 import {
   sortableContainer,
@@ -11,15 +12,16 @@ import {
 } from 'react-sortable-hoc'
 import arrayMove from 'array-move'
 import ExerciseMiniControls from './ExerciseMiniControls'
+import { colors } from '../../ui'
 
-const DragHandle = sortableHandle(() =>
+const DragHandle = sortableHandle(({ color }) =>
   <Flex
     margin="0 0 0 -25px"
     padding="0 15px 0 10px"
     alignSelf="stretch"
     alignItems="center"
   >
-    <Icon size="26px" name="sort" fill="currentColor" />
+    <Icon size="20px" name="drag-handle" color={color} />
   </Flex>
 )
 
@@ -73,6 +75,19 @@ function ExerciseMiniList ({
     )
   }
 
+  const { colorMode } = useColorMode()
+  const allColors = {
+    dragHandle: {
+      normal: {
+        light: colors.gray300,
+        dark: colors.gray600
+      }
+    }
+  }
+
+  const resolveColor = (name, state) => allColors[name][state][colorMode]
+  const dragHandleColor = resolveColor('dragHandle', 'normal')
+
   const exercisesMiniControls = model.map((item, index) => {
     return (
       <SortableItem
@@ -83,7 +98,7 @@ function ExerciseMiniList ({
           margin="10px 0"
           onChange={handleChange}
           exercise={item.exercise}
-          dragHandle={<DragHandle />}
+          dragHandle={<DragHandle color={dragHandleColor} />}
         />
       </SortableItem>
     )
