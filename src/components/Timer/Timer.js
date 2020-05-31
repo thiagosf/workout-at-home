@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Flex,
   Text,
@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
 import { timerFormatter } from '../../utils/date'
+import { useInterval } from '../../hooks'
 
 function Timer ({
   initialSeconds = 0,
@@ -50,16 +51,11 @@ function Timer ({
     setPrevInitialSeconds(initialSeconds)
   }
 
-  useEffect(() => {
-    const timerInterval = setInterval(() => {
-      if (isStarted) {
-        setTimer(timer + 1)
-      }
-    }, 10)
-    return () => {
-      clearInterval(timerInterval)
+  useInterval(() => {
+    if (isStarted) {
+      setTimer(timer + 1)
     }
-  }, [isStarted, timer, setTimer])
+  }, 10)
 
   return (
     <Flex

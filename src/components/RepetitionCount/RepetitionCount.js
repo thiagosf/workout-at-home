@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Flex,
   Text,
   useColorMode
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
+import { useInterval } from '../../hooks'
 
 function RepetitionCount ({
   count,
@@ -58,16 +59,11 @@ function RepetitionCount ({
     ? 'reps'
     : 'secs'
 
-  useEffect(() => {
-    const timerInterval = setInterval(() => {
-      if (isStarted && countType === 'secs') {
-        setTimer(timer + 1)
-      }
-    }, 1000)
-    return () => {
-      clearInterval(timerInterval)
+  useInterval(() => {
+    if (isStarted) {
+      setTimer(timer + 1)
     }
-  }, [countType, isStarted, timer, setTimer])
+  }, 1000)
 
   return (
     <Flex
