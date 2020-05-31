@@ -42,3 +42,4 @@ yarn start
 - [ ] Finish
 - [ ] MuscleGroupBody
 - [x] NumberControl
+- [x] RestBetweenExercises
