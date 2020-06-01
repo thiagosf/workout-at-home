@@ -16,9 +16,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-id-swiper": "^3.0.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-sortable-hoc": "^1.11.0",
     "react-youtube": "^7.11.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "swiper": "^5.4.1"
   },
   "scripts": {

@@ -43,3 +43,7 @@ yarn start
 - [x] MuscleGroupBody
 - [x] NumberControl
 - [x] RestBetweenExercises
+
+## Store
+
+- [ ] exercises

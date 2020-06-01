@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   ThemeProvider,
   ColorModeProvider,
@@ -6,17 +6,11 @@ import {
 } from '@chakra-ui/core'
 import { base } from '../../ui/themes'
 
-class Base extends Component {
-  render () {
-    return (
-      <ThemeProvider theme={base}>
-        <CSSReset />
-        <ColorModeProvider>
-          {this.props.children}
-        </ColorModeProvider>
-      </ThemeProvider>
-    )
-  }
+export default function Base({ children }) {
+  return (
+    <ThemeProvider theme={base}>
+      <CSSReset />
+      <ColorModeProvider>{children}</ColorModeProvider>
+    </ThemeProvider>
+  )
 }
-
-export default Base

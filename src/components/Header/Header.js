@@ -3,7 +3,11 @@ import { Flex, Box } from '@chakra-ui/core'
 import { Logo } from '../Logo'
 import { ColorModeSwitch } from '../ColorModeSwitch'
 
-function Header ({ ...props }) {
+function Header ({
+  colorMode,
+  onColorModeSwitch,
+  ...props
+}) {
   return (
     <Flex
       alignItems="center"
@@ -12,7 +16,10 @@ function Header ({ ...props }) {
       <Box flexGrow="1">
         <Logo />
       </Box>
-      <ColorModeSwitch />
+      <ColorModeSwitch
+        isChecked={colorMode === 'dark'}
+        onChange={onColorModeSwitch}
+      />
     </Flex>
   )
 }
