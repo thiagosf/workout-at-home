@@ -10,12 +10,13 @@ function MuscleGroup ({ onSelect, muscleGroups, ...props }) {
         key={index}
         display="inline-block"
         width="auto"
+        padding="0 0 0 10px"
       >
         <MuscleGroupCount
           active={item.active}
           name={item.name}
           count={item.count}
-          onClick={onSelect}
+          onClick={() => onSelect(item)}
         />
       </Box>
     )
@@ -24,8 +25,7 @@ function MuscleGroup ({ onSelect, muscleGroups, ...props }) {
   return (
     <Carousel
       config={{
-        slidesPerView: 'auto',
-        spaceBetween: 10
+        slidesPerView: 'auto'
       }}
       {...props}
     >

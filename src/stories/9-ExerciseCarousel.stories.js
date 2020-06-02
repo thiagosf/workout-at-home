@@ -15,7 +15,7 @@ export const Default = () => {
     name: 'Ab Roller',
     likes: 2,
     level: 2,
-    muscleGroups: [{
+    muscle_groups: [{
       name: 'Abs',
       primary: true
     }, {
@@ -56,7 +56,7 @@ export const Default = () => {
     name: 'Push up',
     likes: 9,
     level: 4,
-    muscleGroups: [{
+    muscle_groups: [{
       name: 'Triceps',
       primary: true
     }, {

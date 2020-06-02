@@ -1,0 +1,108 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Ab Roller",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 2,
+          "name": "Biceps",
+          "primary": false
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "Ab Roller"
+        }
+      ],
+      "level": 3,
+      "likes": 3000,
+      "images": [
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        },
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        },
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Abs lay",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": 3000,
+      "images": [
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        },
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        },
+        {
+          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    }
+  ]
+}

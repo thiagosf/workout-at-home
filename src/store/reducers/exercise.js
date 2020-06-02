@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
       break
 
     case 'SET_EXERCISES':
-      nextState.list = action.data.data
+      nextState.list = action.data
       break
 
     default:

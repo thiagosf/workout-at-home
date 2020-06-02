@@ -35,7 +35,7 @@ export default function Layout({ children }) {
           onColorModeSwitch={toggleColorMode}
         />
       </Box>
-      <Box padding="10px">
+      <Box>
         {children}
       </Box>
     </Box>

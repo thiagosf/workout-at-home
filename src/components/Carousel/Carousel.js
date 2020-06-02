@@ -23,7 +23,9 @@ function Carousel ({
       slideChange: function () {
         setPage(this.snapIndex + 1)
       }
-    }
+    },
+    observer: true,
+    observeParents: true
   }
   return (
     <Box {...props}>

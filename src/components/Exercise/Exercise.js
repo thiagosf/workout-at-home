@@ -55,9 +55,7 @@ const ExerciseMediaCarousel = props => {
       marginLeft="-25px"
       marginRight="-25px"
       config={{
-        autoHeight: true,
-        observer: true,
-        observeParents: true
+        autoHeight: true
       }}
       count={props.items.length}
     >
@@ -190,7 +188,7 @@ function Exercise ({
         name={exercise.name}
         level={exercise.level}
         likes={exercise.likes}
-        muscleGroups={exercise.muscleGroups}
+        muscleGroups={exercise.muscle_groups}
         requirements={exercise.requirements}
       />
       <ExerciseMediaCarousel
@@ -238,7 +236,7 @@ function Exercise ({
       </Flex>
       <AbsoluteBox bottom="20px" right="25px">
         <MuscleGroupBody
-          muscleGroups={exercise.muscleGroups}
+          muscleGroups={exercise.muscle_groups}
         />
       </AbsoluteBox>
     </ExerciseCard>

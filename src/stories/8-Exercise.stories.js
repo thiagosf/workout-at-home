@@ -16,7 +16,7 @@ export const Default = () => {
     name: 'Ab Roller',
     likes: 2,
     level: 2,
-    muscleGroups: [{
+    muscle_groups: [{
       name: 'Abs',
       primary: true
     }, {

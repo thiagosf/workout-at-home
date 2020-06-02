@@ -1,4 +1,4 @@
-export const timerFormatter = milliseconds => {
+const timerFormatter = milliseconds => {
   const timePast = {
     hours: Math.floor((milliseconds / (1000 * 60 * 60)) % 24),
     minutes: Math.floor((milliseconds / 1000 / 60) % 60),
@@ -15,3 +15,5 @@ export const timerFormatter = milliseconds => {
   const millisecondsFormatted = addPad(timePast.milliseconds)
   return [minutesSeconds, millisecondsFormatted]
 }
+
+export default { timerFormatter }

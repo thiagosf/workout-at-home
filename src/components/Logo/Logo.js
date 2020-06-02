@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, Link, useColorMode } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, transitions } from '../../ui'
 
 function Logo ({ onClick, ...props }) {
   const { colorMode } = useColorMode()
@@ -24,6 +24,7 @@ function Logo ({ onClick, ...props }) {
   const homeColor = resolveColor('home')
   return (
     <Link
+      transition={transitions.common}
       onClick={onClick ? onClick : () => {}}
       color={homeColor}
       display="inline-flex"
@@ -33,6 +34,7 @@ function Logo ({ onClick, ...props }) {
       {...props}
     >
       <Text
+        transition={transitions.common}
         color={workoutColor}
         margin="0"
         fontSize="24px"
