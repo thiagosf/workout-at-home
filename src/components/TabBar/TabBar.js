@@ -8,7 +8,8 @@ function TabBar ({
   leftButton,
   rightButton,
   mainButton,
-  onClick,
+  onClickLeft,
+  onClickRight,
   onClickMainButton,
   ...props
 }) {
@@ -30,7 +31,7 @@ function TabBar ({
             <TabBarButton
               counter={leftButton.counter}
               icon={leftButton.icon}
-              onClick={onClick}
+              onClick={onClickLeft}
             >{leftButton.label}</TabBarButton>
           }
         </Flex>
@@ -48,7 +49,7 @@ function TabBar ({
             <TabBarButton
               counter={rightButton.counter}
               icon={rightButton.icon}
-              onClick={onClick}
+              onClick={onClickRight}
             >{rightButton.label}</TabBarButton>
           }
         </Flex>

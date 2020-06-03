@@ -18,6 +18,26 @@
           "id": 3,
           "name": "Shoulders",
           "primary": false
+        },
+        {
+          "id": 4,
+          "name": "Legs",
+          "primary": false
+        },
+        {
+          "id": 5,
+          "name": "Arms",
+          "primary": false
+        },
+        {
+          "id": 6,
+          "name": "Chest",
+          "primary": false
+        },
+        {
+          "id": 7,
+          "name": "Back",
+          "primary": false
         }
       ],
       "requirements": [
@@ -30,7 +50,7 @@
       "likes": 3000,
       "images": [
         {
-          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "url": "http://via.placeholder.com/640x100",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         },
         {
@@ -77,7 +97,7 @@
       "likes": 3000,
       "images": [
         {
-          "url": "https://workoutlabs.com/train/svg.php?id=30970",
+          "url": "http://via.placeholder.com/640x50",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         },
         {

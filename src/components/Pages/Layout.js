@@ -1,9 +1,9 @@
-import React from 'react'
-import { Box, useColorMode } from '@chakra-ui/core'
+import React, { useEffect } from 'react'
+import { Flex, Box, useColorMode } from '@chakra-ui/core'
 import { Header } from '../Header'
 import { colors } from '../../ui'
 
-export default function Layout({ children }) {
+export default function Layout({ children, footer }) {
   const { colorMode, toggleColorMode } = useColorMode()
   const allColors = {
     color: {
@@ -23,11 +23,17 @@ export default function Layout({ children }) {
   const color = resolveColor('color', 'normal')
   const backgroundColor = resolveColor('background', 'normal')
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+  }, [])
+
   return (
-    <Box
+    <Flex
       color={color}
       background={backgroundColor}
-      minHeight="100vh"
+      height="100vh"
+      flexDirection="column"
+      justifyContent="space-between"
     >
       <Box padding="10px">
         <Header
@@ -35,9 +41,16 @@ export default function Layout({ children }) {
           onColorModeSwitch={toggleColorMode}
         />
       </Box>
-      <Box>
+      <Flex
+        flexGrow="1"
+        overflow="auto"
+        flexDirection="column"
+      >
         {children}
+      </Flex>
+      <Box>
+        {footer}
       </Box>
-    </Box>
+    </Flex>
   )
 }
