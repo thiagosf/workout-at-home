@@ -9,11 +9,10 @@ import { base } from '../../ui/themes'
 
 const styles = css`
   .swiper-wrapper {
-    min-height: 100%;
   }
   .swiper-slide {
-    height: 100%;
-    background: red;
+    height: 100% !important;
+    justify-content: center;
   }
 `
 

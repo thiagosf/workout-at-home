@@ -20,7 +20,10 @@ import { MuscleGroupBody } from '../MuscleGroup'
 const ExerciseVideo = ({ item }) => {
   const [playing, setPlaying] = useState(false)
   return (
-    <Box>
+    <Flex
+      flexDirection="column"
+      flexGrow="1"
+    >
       <AbsoluteBox
         top="0"
         left="0"
@@ -36,30 +39,38 @@ const ExerciseVideo = ({ item }) => {
         width="40%"
       />
       <VideoPlayer
+        opts={{
+          height: '100%',
+          width: '100%'
+        }}
         url={item.url}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onEnd={() => setPlaying(false)}
       />
-    </Box>
+    </Flex>
   )
 }
 
-const ExerciseMediaCarousel = props => {
+const ExerciseMediaCarousel = ({
+  name,
+  insideCarousel,
+  display,
+  items,
+  ...props
+}) => {
   return (
     <Carousel
-      key={props.name}
-      nested={props.insideCarousel}
-      display={props.display}
+      key={name}
+      nested={insideCarousel}
+      display={display}
       marginTop="20px"
       marginLeft="-25px"
       marginRight="-25px"
-      config={{
-        autoHeight: true
-      }}
-      count={props.items.length}
+      count={items.length}
+      {...props}
     >
-      {props.items}
+      {items}
     </Carousel>
   )
 }
@@ -153,7 +164,11 @@ function Exercise ({
 
   const images = exercise.images.map((item, index) => {
     return (
-      <Box key={`image-${index}`} display="block">
+      <Flex
+        key={`image-${index}`}
+        flexDirection="column"
+        flexGrow="1"
+      >
         <Image
           width="100%"
           data-src={item.url}
@@ -166,57 +181,70 @@ function Exercise ({
           colorStart={colors.gray200}
           colorEnd={colors.gray800}
         />
-      </Box>
+      </Flex>
     )
   })
   const videos = exercise.videos.map((item, index) => {
     return (
-      <Box
+      <Flex
         key={`video-${index}`}
-        display="block"
         position="relative"
+        flexDirection="column"
+        flexGrow="1"
       >
         <ExerciseVideo item={item} />
-      </Box>
+      </Flex>
     )
   })
   const buttonText = added ? 'Remove' : 'Add'
 
   return (
     <ExerciseCard position="relative" {...props}>
-      <ExerciseHeader
-        name={exercise.name}
-        level={exercise.level}
-        likes={exercise.likes}
-        muscleGroups={exercise.muscle_groups}
-        requirements={exercise.requirements}
-      />
-      <ExerciseMediaCarousel
-        name='images'
-        nested={insideCarousel}
-        items={images}
-        display={mediaType === 'image' ? 'block' : 'none'}
-      />
-      <ExerciseMediaCarousel
-        name='videos'
-        nested={insideCarousel}
-        items={videos}
-        display={mediaType === 'video' ? 'block' : 'none'}
-      />
-      <Box>
-        <RadioButtonGroup
-          defaultValue="image"
-          onChange={val => setMediaType(val)}
-          isInline
+      <Flex
+        flexDirection="column"
+        flexGrow="1"
+      >
+        <Flex
+          flexDirection="column"
+          flexGrow="1"
         >
-          <MediaTypeRadio value="image">
-            <Icon name="image" size="24px" />
-          </MediaTypeRadio>
-          <MediaTypeRadio value="video">
-            <Icon name="video" size="24px" />
-          </MediaTypeRadio>
-        </RadioButtonGroup>
-      </Box>
+          <ExerciseHeader
+            name={exercise.name}
+            level={exercise.level}
+            likes={exercise.likes}
+            muscleGroups={exercise.muscle_groups}
+            requirements={exercise.requirements}
+          />
+          <ExerciseMediaCarousel
+            name='images'
+            nested={insideCarousel}
+            items={images}
+            display={mediaType === 'image' ? 'flex' : 'none'}
+            flexGrow="1"
+          />
+          <ExerciseMediaCarousel
+            name='videos'
+            nested={insideCarousel}
+            items={videos}
+            display={mediaType === 'video' ? 'flex' : 'none'}
+            flexGrow="1"
+          />
+          <Box>
+            <RadioButtonGroup
+              defaultValue="image"
+              onChange={val => setMediaType(val)}
+              isInline
+            >
+              <MediaTypeRadio value="image">
+                <Icon name="image" size="24px" />
+              </MediaTypeRadio>
+              <MediaTypeRadio value="video">
+                <Icon name="video" size="24px" />
+              </MediaTypeRadio>
+            </RadioButtonGroup>
+          </Box>
+        </Flex>
+      </Flex>
       <Flex
         justifyContent="center"
         marginTop="20px"

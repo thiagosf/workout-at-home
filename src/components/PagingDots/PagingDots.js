@@ -5,7 +5,7 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { colors } from '../../ui'
 
 function PagingDots ({ pages, currentPage, ...props }) {
   const { colorMode } = useColorMode()
@@ -66,7 +66,7 @@ function PagingDots ({ pages, currentPage, ...props }) {
     const dotPadding = isCurrent ? '0px 8px' : null
     return (
       <Box
-        transition={transitions.common}
+        transition='background 300ms ease-out'
         key={number}
         background={background}
         width={dotWidth}

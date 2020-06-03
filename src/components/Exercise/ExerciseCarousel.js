@@ -15,11 +15,11 @@ function ExerciseCarousel ({
     const added = selecteds.includes(+exercise.id)
     return (
       <Box
-        height="100%"
         padding="5px 10px"
         key={exercise.id}
       >
         <Exercise
+          height="100%"
           exercise={exercise}
           added={added}
           onSelect={() => onSelect(exercise)}
@@ -37,7 +37,6 @@ function ExerciseCarousel ({
         height="100%"
         paddingBottom="20px"
         count={exercises.length}
-        config={{ autoHeight: true }}
       >{exercisesCards}</Carousel>
     </Box>
   )

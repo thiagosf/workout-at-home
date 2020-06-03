@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Box,
+  Flex,
   useColorMode
 } from '@chakra-ui/core'
 import { colors, transitions } from '../../ui'
@@ -28,14 +28,16 @@ function ExerciseCard ({ children, ...props }) {
   const shadow = resolveColor('shadow')
 
   return (
-    <Box
+    <Flex
       transition={transitions.common}
       background={background}
       padding="20px 25px"
       borderRadius="20px"
       shadow={shadow}
+      flexDirection="column"
+      justifyContent="space-between"
       {...props}
-    >{children}</Box>
+    >{children}</Flex>
   )
 }
 
