@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import {
   Flex,
   Box,
-  Image,
-  Skeleton,
   RadioButtonGroup,
   Button,
   Icon,
@@ -19,34 +17,47 @@ import { MuscleGroupBody } from '../MuscleGroup'
 
 const ExerciseVideo = ({ item }) => {
   const [playing, setPlaying] = useState(false)
+  const [videoRef, setVideoRef] = useState(null)
+
   return (
     <Flex
       flexDirection="column"
       flexGrow="1"
+      position="relative"
+      height="100%"
     >
       <AbsoluteBox
+        zIndex="2"
         top="0"
         left="0"
-        bottom="40px"
-        pointerEvents={playing ? 'none' : 'initial'}
-        width="40%"
-      />
-      <AbsoluteBox
-        top="0"
         right="0"
-        bottom="40px"
+        bottom="0"
         pointerEvents={playing ? 'none' : 'initial'}
-        width="40%"
+        width="100%"
+        onClick={() => {
+          console.log('here...', videoRef)
+          videoRef.playVideo()
+        }}
       />
       <VideoPlayer
         opts={{
           height: '100%',
-          width: '100%'
+          width: '100%',
+          controls: 0,
+          autoplay: 0,
+          rel: 0,
+          modestbranding: 1
         }}
         url={item.url}
+        className="youtube-absolute"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onEnd={() => setPlaying(false)}
+        onReady={(event) => {
+          if (!videoRef) {
+            setVideoRef(event.target)
+          }
+        }}
       />
     </Flex>
   )
@@ -163,25 +174,40 @@ function Exercise ({
   const [mediaType, setMediaType] = useState('image')
 
   const images = exercise.images.map((item, index) => {
+    /*<Flex
+      key={`image-${index}`}
+      flexDirection="column"
+      flexGrow="1"
+      backgroundImage={`url(${item.url})`}
+      backgroundRepeat="no-repeat"
+      backgroundSize="contain"
+      height="100%"
+    >
+      <Image
+        width="100%"
+        data-src={item.url}
+        className="swiper-lazy"
+        alt=""
+      />
+      <Skeleton
+        className="preloader-carousel"
+        minHeight="100px"
+        colorStart={colors.gray200}
+        colorEnd={colors.gray800}
+      />
+    </Flex>*/
     return (
-      <Flex
+      <Box
         key={`image-${index}`}
-        flexDirection="column"
+        data-background={item.url}
+        className="swiper-lazy"
         flexGrow="1"
-      >
-        <Image
-          width="100%"
-          data-src={item.url}
-          className="swiper-lazy"
-          alt=""
-        />
-        <Skeleton
-          className="preloader-carousel"
-          minHeight="100px"
-          colorStart={colors.gray200}
-          colorEnd={colors.gray800}
-        />
-      </Flex>
+        backgroundSize="contain"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="center center"
+        width="100px"
+        height="100px"
+      />
     )
   })
   const videos = exercise.videos.map((item, index) => {
@@ -191,6 +217,13 @@ function Exercise ({
         position="relative"
         flexDirection="column"
         flexGrow="1"
+        data-background={item.thumb_url}
+        className="swiper-lazy"
+        backgroundSize="contain"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="center center"
+        width="100px"
+        height="100px"
       >
         <ExerciseVideo item={item} />
       </Flex>

@@ -14,6 +14,14 @@ const styles = css`
     height: 100% !important;
     justify-content: center;
   }
+  .youtube-absolute {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
 `
 
 export default function Base({ children }) {

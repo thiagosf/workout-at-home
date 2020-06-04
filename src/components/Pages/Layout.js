@@ -43,7 +43,7 @@ export default function Layout({ children, footer }) {
       </Box>
       <Flex
         flexGrow="1"
-        overflow="auto"
+        overflow="none"
         flexDirection="column"
       >
         {children}

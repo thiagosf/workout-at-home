@@ -50,7 +50,7 @@
       "likes": 3000,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x100",
+          "url": "http://via.placeholder.com/640x640",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         },
         {
@@ -58,21 +58,24 @@
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         },
         {
-          "url": "http://via.placeholder.com/640x100",
+          "url": "http://via.placeholder.com/640x150",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         }
       ],
       "videos": [
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         },
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         },
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         }
       ]
@@ -112,14 +115,17 @@
       "videos": [
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         },
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         },
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
         }
       ]
