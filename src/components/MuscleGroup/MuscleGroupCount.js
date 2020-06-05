@@ -74,7 +74,7 @@ function MuscleGroupCount ({ active, name, count, onClick, ...props }) {
   return (
     <PseudoBox
       as="button"
-      padding="5px 15px "
+      padding="5px 10px "
       onClick={onClick}
       transition={transitions.common}
       borderRadius="5px"
@@ -95,9 +95,9 @@ function MuscleGroupCount ({ active, name, count, onClick, ...props }) {
       >
         <Text
           transition={transitions.common}
-          fontSize="20px"
-          margin="0 0 5px 0"
+          fontSize="16px"
           fontWeight="600"
+          margin="0 0 2px 0"
           color={textColor}
         >{name}</Text>
         <Badge

@@ -22,7 +22,7 @@ function Badge ({ children, background, textColor, ...props }) {
         transition={transitions.common}
         fontSize="14px"
         margin="0"
-        fontWeight="400"
+        fontWeight="600"
         color={textColor}
       >{children}</Text>
     </ChrakraBadge>

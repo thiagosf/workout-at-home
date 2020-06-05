@@ -18,6 +18,11 @@ function Carousel ({
     },
     preloadImages: false,
     on: {
+      observerUpdate: function (e) {
+        const resize = () => this.resize.resizeHandler()
+        setTimeout(resize, 50)
+        setTimeout(resize, 100)
+      },
       slideChange: function () {
         setPage(this.snapIndex + 1)
       }

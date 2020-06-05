@@ -31,7 +31,7 @@ function ExerciseCard ({ children, ...props }) {
     <Flex
       transition={transitions.common}
       background={background}
-      padding="20px 25px"
+      padding="15px"
       borderRadius="20px"
       shadow={shadow}
       flexDirection="column"

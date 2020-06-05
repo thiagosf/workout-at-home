@@ -6,7 +6,7 @@ import {
   useColorMode
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
-import { timerFormatter } from '../../utils/date'
+import { date } from '../../utils'
 import { useInterval } from '../../hooks'
 
 function Timer ({
@@ -44,7 +44,7 @@ function Timer ({
   const [prevInitialSeconds, setPrevInitialSeconds] = useState(0)
   const [timer, setTimer] = useState(initialSeconds * 100)
   const milliseconds = timer * 10
-  const [mainTimer, millisecondsTimer] = timerFormatter(milliseconds)
+  const [mainTimer, millisecondsTimer] = date.timerFormatter(milliseconds)
 
   if (prevInitialSeconds !== initialSeconds) {
     setTimer(initialSeconds * 100)

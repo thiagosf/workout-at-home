@@ -26,7 +26,7 @@ function TabBar ({
         alignItems="flex-end"
         padding="5px"
       >
-        <Flex minWidth="100px">
+        <Flex minWidth="50px">
           {leftButton &&
             <TabBarButton
               counter={leftButton.counter}
@@ -42,7 +42,7 @@ function TabBar ({
           icon={mainButton.icon}
         >{mainButton.label}</TabBarMainButton>
         <Flex
-          minWidth="100px"
+          minWidth="50px"
           justifyContent="flex-end"
         >
           {rightButton &&

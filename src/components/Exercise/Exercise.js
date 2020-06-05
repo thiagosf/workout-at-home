@@ -75,6 +75,7 @@ const ExerciseMediaCarousel = ({
       key={name}
       nested={insideCarousel}
       display={display}
+      minHeight="100px"
       marginTop="20px"
       marginLeft="-25px"
       marginRight="-25px"
@@ -174,28 +175,6 @@ function Exercise ({
   const [mediaType, setMediaType] = useState('image')
 
   const images = exercise.images.map((item, index) => {
-    /*<Flex
-      key={`image-${index}`}
-      flexDirection="column"
-      flexGrow="1"
-      backgroundImage={`url(${item.url})`}
-      backgroundRepeat="no-repeat"
-      backgroundSize="contain"
-      height="100%"
-    >
-      <Image
-        width="100%"
-        data-src={item.url}
-        className="swiper-lazy"
-        alt=""
-      />
-      <Skeleton
-        className="preloader-carousel"
-        minHeight="100px"
-        colorStart={colors.gray200}
-        colorEnd={colors.gray800}
-      />
-    </Flex>*/
     return (
       <Box
         key={`image-${index}`}

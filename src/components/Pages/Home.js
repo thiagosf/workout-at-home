@@ -87,8 +87,7 @@ const Home = function ({
         <MuscleGroup
           onSelect={onSelectMuscleGroup}
           muscleGroups={muscleGroups}
-          padding="10px 0"
-          marginBottom="10px"
+          margin="0 0 10px 0"
         />
         <Flex
           flexGrow="1"
