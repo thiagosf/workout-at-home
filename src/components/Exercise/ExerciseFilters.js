@@ -8,7 +8,12 @@ import {
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
 
-function ExerciseFilters ({ equipaments, onChange }) {
+function ExerciseFilters ({
+  equipaments,
+  onChange,
+  selecteds = [],
+  ...props
+}) {
   const { colorMode } = useColorMode()
   const allColors = {
     text: {
@@ -30,7 +35,7 @@ function ExerciseFilters ({ equipaments, onChange }) {
   const textColor = resolveColor('text')
   const backgroundColor = resolveColor('background')
 
-  const [checkedItems, setCheckedItems] = useState([])
+  const [checkedItems, setCheckedItems] = useState(selecteds)
   const totalEquipaments = equipaments.length
   const checks = equipaments.map((equipament, index) => {
     const isLast = (index + 1) === totalEquipaments
@@ -43,7 +48,8 @@ function ExerciseFilters ({ equipaments, onChange }) {
         size="lg"
         onChange={e => {
           let items = new Set([...checkedItems])
-          if (e.target.value !== 'All') {
+          if (e.target.value.toLowerCase() !== 'all') {
+            items.delete('all')
             if (items.has(e.target.value)) {
               items.delete(e.target.value)
             } else {
@@ -69,6 +75,7 @@ function ExerciseFilters ({ equipaments, onChange }) {
       color={textColor}
       background={backgroundColor}
       padding="20px"
+      {...props}
     >
       <Text
         fontSize="sm"

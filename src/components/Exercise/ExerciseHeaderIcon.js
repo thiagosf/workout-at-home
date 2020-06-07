@@ -43,12 +43,12 @@ function ExerciseHeaderIcon ({ icon, children, ...props }) {
       <Icon
         name={icon}
         color={iconColor}
-        size="30px"
-        marginBottom="5px"
+        size="26px"
+        marginBottom="3px"
       />
       <Text
-        fontWeight="700"
-        fontSize="20px"
+        fontWeight="600"
+        fontSize="16px"
         margin="0"
         color={textColor}
       >{children}</Text>

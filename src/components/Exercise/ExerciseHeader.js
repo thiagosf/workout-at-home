@@ -111,7 +111,7 @@ function ExerciseHeader ({
             fontSize="20px"
             margin="0"
             fontWeight="600"
-            lineHeight="1.2"
+            lineHeight="1"
             color={nameColor}
           >{name}</Text>
         }
@@ -124,7 +124,7 @@ function ExerciseHeader ({
         }
         {visible.requirements &&
           <Text
-            margin="10px 0 0 0"
+            margin="5px 0 0 0"
             fontSize="14px"
             color={requirementColor}
           >

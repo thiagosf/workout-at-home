@@ -1,7 +1,7 @@
 import React from 'react'
 import { withKnobs, text } from '@storybook/addon-knobs'
 import { withColorMode } from './decorators'
-import { MuscleGroupBody } from '../components/Exercise'
+import { MuscleGroupBody } from '../components/MuscleGroup'
 
 export default {
   title: 'MuscleGroupBody',

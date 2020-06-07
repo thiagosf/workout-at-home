@@ -67,6 +67,7 @@ const ExerciseMediaCarousel = ({
   name,
   insideCarousel,
   display,
+  rounded,
   items,
   ...props
 }) => {
@@ -77,8 +78,8 @@ const ExerciseMediaCarousel = ({
       display={display}
       minHeight="100px"
       marginTop="20px"
-      marginLeft="-25px"
-      marginRight="-25px"
+      marginLeft="-15px"
+      marginRight="-15px"
       count={items.length}
       {...props}
     >
@@ -89,7 +90,7 @@ const ExerciseMediaCarousel = ({
 
 const MediaTypeRadio = React.forwardRef((props, ref) => {
   const { colorMode } = useColorMode()
-  const { isChecked, isDisabled, value, ...rest } = props
+  const { isChecked, isDisabled, rounded, value, ...rest } = props
   const allColors = {
     color: {
       normal: {
@@ -125,6 +126,8 @@ const MediaTypeRadio = React.forwardRef((props, ref) => {
       aria-checked={isChecked}
       role="radio"
       isDisabled={isDisabled}
+      padding="0"
+      rounded={rounded}
       _hover={{
         background: background
       }}
@@ -241,26 +244,28 @@ function Exercise ({
             display={mediaType === 'video' ? 'flex' : 'none'}
             flexGrow="1"
           />
-          <Box>
-            <RadioButtonGroup
-              defaultValue="image"
-              onChange={val => setMediaType(val)}
-              isInline
-            >
-              <MediaTypeRadio value="image">
-                <Icon name="image" size="24px" />
-              </MediaTypeRadio>
-              <MediaTypeRadio value="video">
-                <Icon name="video" size="24px" />
-              </MediaTypeRadio>
-            </RadioButtonGroup>
-          </Box>
         </Flex>
       </Flex>
       <Flex
-        justifyContent="center"
-        marginTop="20px"
+        justifyContent="space-between"
+        alignItems="center"
+        marginTop="10px"
       >
+        <Box width="30%">
+          <RadioButtonGroup
+            defaultValue="image"
+            onChange={val => setMediaType(val)}
+            spacing="0"
+            isInline
+          >
+            <MediaTypeRadio value="image" rounded="3px 0 0 3px">
+              <Icon name="image" size="24px" />
+            </MediaTypeRadio>
+            <MediaTypeRadio value="video" rounded="0 3px 3px 0">
+              <Icon name="video" size="24px" />
+            </MediaTypeRadio>
+          </RadioButtonGroup>
+        </Box>
         <Button
           size="lg"
           background={buttonBackground}
@@ -273,14 +278,14 @@ function Exercise ({
           }}
           onClick={onSelect}
         >{buttonText}</Button>
+        <Flex width="30%" justifyContent="flex-end">
+          <MuscleGroupBody
+            width="70%"
+            muscleGroups={exercise.muscle_groups}
+          />
+        </Flex>
       </Flex>
-      <AbsoluteBox bottom="20px" right="25px">
-        <MuscleGroupBody
-          muscleGroups={exercise.muscle_groups}
-        />
-      </AbsoluteBox>
     </ExerciseCard>
-
   )
 }
 

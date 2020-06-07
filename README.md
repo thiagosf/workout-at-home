@@ -44,6 +44,15 @@ yarn start
 - [x] NumberControl
 - [x] RestBetweenExercises
 
+## Pages
+
+- [x] Home
+- [ ] Exercices list
+- [ ] Workout
+- [ ] Wait before next
+- [ ] Finish
+- [ ] Not found
+
 ## Store
 
 - [ ] exercises

@@ -2,77 +2,39 @@
   "data": [
     {
       "id": 1,
-      "name": "Ab Roller",
+      "name": "Push up",
       "muscle_groups": [
         {
           "id": 1,
-          "name": "Abs",
+          "name": "Triceps",
           "primary": true
         },
         {
           "id": 2,
-          "name": "Biceps",
+          "name": "Chest",
           "primary": false
         },
         {
           "id": 3,
           "name": "Shoulders",
           "primary": false
-        },
-        {
-          "id": 4,
-          "name": "Legs",
-          "primary": false
-        },
-        {
-          "id": 5,
-          "name": "Arms",
-          "primary": false
-        },
-        {
-          "id": 6,
-          "name": "Chest",
-          "primary": false
-        },
-        {
-          "id": 7,
-          "name": "Back",
-          "primary": false
         }
       ],
       "requirements": [
         {
           "id": 1,
-          "name": "Ab Roller"
+          "name": "No equipament"
         }
       ],
       "level": 3,
-      "likes": 3000,
+      "likes": null,
       "images": [
         {
           "url": "http://via.placeholder.com/640x640",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
-        },
-        {
-          "url": "http://via.placeholder.com/640x100",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
-        },
-        {
-          "url": "http://via.placeholder.com/640x150",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         }
       ],
       "videos": [
-        {
-          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
-          "thumb_url": "http://via.placeholder.com/640x150",
-          "credits": "https://www.youtube.com"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
-          "thumb_url": "http://via.placeholder.com/640x150",
-          "credits": "https://www.youtube.com"
-        },
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
           "thumb_url": "http://via.placeholder.com/640x150",
@@ -82,11 +44,305 @@
     },
     {
       "id": 2,
-      "name": "Abs lay",
+      "name": "Push up reversed",
       "muscle_groups": [
         {
           "id": 1,
+          "name": "Triceps",
+          "primary": true
+        },
+        {
+          "id": 2,
+          "name": "Chest",
+          "primary": false
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        },
+        {
+          "id": 4,
+          "name": "Back",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "One-arm overhead press",
+      "muscle_groups": [
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": true
+        },
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 2,
+          "name": "Dumbbell"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bench dips",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        },
+        {
+          "id": 2,
+          "name": "Chest",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 3,
+          "name": "Bench"
+        }
+      ],
+      "level": 4,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Diamond push up",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        },
+        {
+          "id": 2,
+          "name": "Chest",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Wide grip push up",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        },
+        {
+          "id": 2,
+          "name": "Chest",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Overhead press",
+      "muscle_groups": [
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": true
+        },
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "Barbell"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Ab wheel",
+      "muscle_groups": [
+        {
+          "id": 6,
           "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 1,
+          "name": "Triceps",
+          "primary": true
+        },
+        {
+          "id": 2,
+          "name": "Chest",
+          "primary": false
+        },
+        {
+          "id": 4,
+          "name": "Back",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "Ab wheel"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Wall triceps",
+      "muscle_groups": [
+        {
+          "id": 1,
+          "name": "Triceps",
           "primary": true
         }
       ],
@@ -97,18 +353,10 @@
         }
       ],
       "level": 3,
-      "likes": 3000,
+      "likes": null,
       "images": [
         {
           "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
-        },
-        {
-          "url": "http://via.placeholder.com/640x100",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
-        },
-        {
-          "url": "http://via.placeholder.com/640x100",
           "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
         }
       ],
@@ -117,12 +365,379 @@
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
           "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Flutter kicks",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
         },
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
           "thumb_url": "http://via.placeholder.com/640x150",
           "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Leg scissors",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Bicycle crunch",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Crunch",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 1,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Leg raises",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Jump squat",
+      "muscle_groups": [
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Lunges",
+      "muscle_groups": [
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": true
         },
+        {
+          "id": 8,
+          "name": "Gluteos",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Side lunge",
+      "muscle_groups": [
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": true
+        },
+        {
+          "id": 8,
+          "name": "Gluteos",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Wall sit",
+      "muscle_groups": [
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Calf raise",
+      "muscle_groups": [
+        {
+          "id": 10,
+          "name": "Calves",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 1,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
+          "thumb_url": "http://via.placeholder.com/640x150",
+          "credits": "https://www.youtube.com"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Hip thrust",
+      "muscle_groups": [
+        {
+          "id": 7,
+          "name": "Front leg",
+          "primary": true
+        },
+        {
+          "id": 8,
+          "name": "Gluteos",
+          "primary": true
+        },
+        {
+          "id": 9,
+          "name": "Back leg",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://via.placeholder.com/640x50",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+        }
+      ],
+      "videos": [
         {
           "url": "https://www.youtube.com/watch?v=ettaeKZHAwA",
           "thumb_url": "http://via.placeholder.com/640x150",
