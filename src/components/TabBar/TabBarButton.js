@@ -22,6 +22,9 @@ function TabBarButton ({ children, icon, onClick, counter, ...props }) {
   const resolveColor = name => allColors[name][state][colorMode]
   const state = 'normal'
   const backgroundActive = resolveColor('backgroundActive')
+  const iconSize = counter === undefined
+    ? '26px'
+    : '16px'
   return (
     <PseudoBox
       onClick={onClick}
@@ -46,13 +49,15 @@ function TabBarButton ({ children, icon, onClick, counter, ...props }) {
         <Icon
           name={icon}
           color={colors.white}
-          size="16px"
+          size={iconSize}
           marginRight="5px"
         />
-        <Badge
-          background={colors.green500}
-          textColor={colors.white}
-        >{counter}</Badge>
+        {counter !== undefined &&
+          <Badge
+            background={colors.green500}
+            textColor={colors.white}
+          >{counter}</Badge>
+        }
       </Box>
       <Text
         margin="0"

@@ -2,14 +2,14 @@ import React from 'react'
 import {
   ThemeProvider,
   ColorModeProvider,
-  CSSReset
+  CSSReset,
+  Box
 } from '@chakra-ui/core'
 import { Global, css } from '@emotion/core'
+import { colors } from '../../ui'
 import { base } from '../../ui/themes'
 
 const styles = css`
-  .swiper-wrapper {
-  }
   .swiper-slide {
     height: 100% !important;
     justify-content: center;
@@ -22,6 +22,23 @@ const styles = css`
     left: 0;
     bottom: 0;
   }
+  .advice-landscape {
+    display: none;
+  }
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    .all-content {
+      display: none;
+    }
+    .advice-landscape {
+      display: flex;
+      background: ${colors.red500};
+      color: ${colors.white};
+      justify-content: center;
+      align-items: center;
+      font-size: 4vw;
+      height: 100vh;
+    }
+  }
 `
 
 export default function Base({ children }) {
@@ -29,7 +46,12 @@ export default function Base({ children }) {
     <ThemeProvider theme={base}>
       <Global styles={styles} />
       <CSSReset />
-      <ColorModeProvider>{children}</ColorModeProvider>
+      <Box className="all-content">
+        <ColorModeProvider>{children}</ColorModeProvider>
+      </Box>
+      <Box
+        className="advice-landscape"
+      >Please, rotate your device!</Box>
     </ThemeProvider>
   )
 }

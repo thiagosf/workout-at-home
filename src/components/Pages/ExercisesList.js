@@ -1,14 +1,49 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Layout from './Layout'
+import { showFooter } from '../../store/actions/base'
+import { removeExercise } from '../../store/actions/exercise'
 
-export default function ExercisesList () {
+function ExercisesList ({
+  exercise,
+  removeExercise,
+  showFooter
+}) {
+  const leftButton = {
+    label: 'Clear list',
+    icon: 'broom'
+  }
+  const mainButton = {
+    label: 'Start!',
+    icon: 'ray'
+  }
+  const goToEditList = () => console.log('goToEditList')
+
+  React.useEffect(() => {
+    showFooter(true)
+  }, [showFooter])
+
   return (
-    <Layout>
+    <Layout
+      leftButton={leftButton}
+      mainButton={mainButton}
+      onClickLeft={goToEditList}
+      onClickMainButton={goToEditList}
+    >
       <h2>Exercises list</h2>
       <Link to="/">Home</Link>
-      <br/>
-      <Link to="/not-found">Not found</Link>
     </Layout>
   )
 }
+
+const mapStateToProps = ({ exercise }) => ({ exercise })
+const mapDispatchToProps = {
+  removeExercise,
+  showFooter
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ExercisesList)

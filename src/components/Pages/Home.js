@@ -12,10 +12,11 @@ import {
   useColorMode
 } from '@chakra-ui/core'
 import { motion, useAnimation } from 'framer-motion'
+import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { MuscleGroup } from '../MuscleGroup'
 import { ExerciseCarousel, ExerciseFilters } from '../Exercise'
-import { TabBar } from '../TabBar'
+import { showFooter } from '../../store/actions/base'
 import {
   loadExercises,
   filterMuscleGroup,
@@ -32,7 +33,18 @@ const carouselContainer = {
     opacity: 1,
     scale: 1,
     transition: {
-      delay: 0.2,
+      delay: 0.3,
+      ease: 'easeOut'
+    }
+  }
+}
+
+const muscleGroupContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
       ease: 'easeOut'
     }
   }
@@ -46,11 +58,13 @@ const Home = function ({
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
-  removeExercise
+  removeExercise,
+  showFooter
 }) {
   const onSelectMuscleGroup = async item => {
     await carouselControls.start('hidden')
     filterMuscleGroup(+item.id)
+    filterEquipaments([])
     carouselControls.start('visible')
   }
 
@@ -67,6 +81,8 @@ const Home = function ({
   const btnRef = React.useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const carouselControls = useAnimation()
+  const muscleGroupControls = useAnimation()
+  const history = useHistory()
 
   const {
     list,
@@ -111,23 +127,20 @@ const Home = function ({
     label: 'Start!',
     icon: 'ray'
   }
-  const goToEditList = () => console.log('goToEditList')
+  const goToEditList = async () => {
+    await Promise.all([
+      carouselControls.start('hidden'),
+      showFooter(false),
+      muscleGroupControls.start('hidden')
+    ])
+    history.push('/exercises-list')
+  }
   const onFilterEquipament = async values => {
     await carouselControls.start('hidden')
     filterEquipaments(values)
     carouselControls.start('visible')
   }
   const openFilters = () => onOpen()
-  const footer = (
-    <TabBar
-      leftButton={leftButton}
-      rightButton={rightButton}
-      mainButton={mainButton}
-      onClickLeft={goToEditList}
-      onClickRight={openFilters}
-      onClickMainButton={goToEditList}
-    />
-  )
 
   const allColors = {
     drawer: {
@@ -172,8 +185,15 @@ const Home = function ({
   useEffect(() => {
     loadExercises().then(items => {
       carouselControls.start('visible')
+      muscleGroupControls.start('visible')
+      showFooter(true)
     })
-  }, [loadExercises, carouselControls])
+  }, [
+    loadExercises,
+    carouselControls,
+    muscleGroupControls,
+    showFooter
+  ])
 
   useEffect(() => {
     if (!selectedMuscleGroup && muscleGroups.length > 0) {
@@ -183,7 +203,12 @@ const Home = function ({
 
   return (
     <Layout
-      footer={footer}
+      leftButton={leftButton}
+      rightButton={rightButton}
+      mainButton={mainButton}
+      onClickLeft={goToEditList}
+      onClickRight={openFilters}
+      onClickMainButton={goToEditList}
     >
       <Flex
         flexGrow="1"
@@ -191,11 +216,17 @@ const Home = function ({
         flexDirection="column"
         justifyContent="space-between"
       >
-        <MuscleGroup
-          onSelect={onSelectMuscleGroup}
-          muscleGroups={muscleGroups}
-          margin="0 0 10px 0"
-        />
+        <MotionBox
+          variants={muscleGroupContainer}
+          initial="hidden"
+          animate={muscleGroupControls}
+        >
+          <MuscleGroup
+            onSelect={onSelectMuscleGroup}
+            muscleGroups={muscleGroups}
+            margin="0 0 10px 0"
+          />
+        </MotionBox>
         <Flex
           flexGrow="1"
           flexDirection="column"
@@ -265,7 +296,8 @@ const mapDispatchToProps = {
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
-  removeExercise
+  removeExercise,
+  showFooter
 }
 
 export default connect(
