@@ -19,3 +19,27 @@ export function loadExercises () {
     })
   }
 }
+
+export function filterMuscleGroup (data) {
+  return async dispatch => {
+    dispatch({ type: 'FILTER_MUSCLE_GROUP', data })
+  }
+}
+
+export function filterEquipaments (data) {
+  return async dispatch => {
+    dispatch({ type: 'FILTER_EQUIPAMENTS', data })
+  }
+}
+
+export function addExercise (data) {
+  return async dispatch => {
+    dispatch({ type: 'ADD_EXERCISE', data })
+  }
+}
+
+export function removeExercise (data) {
+  return async dispatch => {
+    dispatch({ type: 'REMOVE_EXERCISE', data })
+  }
+}

@@ -57,10 +57,13 @@ function ExerciseFilters ({
             }
           } else {
             if (e.target.checked) {
-              items = equipaments.map(i => i.value)
+              items = new Set(equipaments.map(i => i.value))
             } else {
-              items = []
+              items = new Set([])
             }
+          }
+          if (items.size === (equipaments.length - 1)) {
+            items.add('all')
           }
           items = [...items]
           setCheckedItems(items)

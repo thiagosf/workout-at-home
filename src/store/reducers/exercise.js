@@ -1,7 +1,10 @@
 const initialState = {
   data: null,
   list: [],
-  loading: false
+  loading: false,
+  selectedMuscleGroup: null,
+  selectedEquipaments: [],
+  selectedExercises: []
 }
 
 const identifier = 'exercise'
@@ -25,6 +28,28 @@ export default (state = initialState, action) => {
     case 'SET_EXERCISES':
       nextState.list = action.data
       break
+
+    case 'FILTER_MUSCLE_GROUP':
+      nextState.selectedMuscleGroup = action.data
+      break
+
+    case 'FILTER_EQUIPAMENTS':
+      nextState.selectedEquipaments = action.data
+      break
+
+    case 'ADD_EXERCISE': {
+      const selectedExercises = new Set(nextState.selectedExercises)
+      selectedExercises.add(action.data)
+      nextState.selectedExercises = [...selectedExercises]
+      break
+    }
+
+    case 'REMOVE_EXERCISE': {
+      const selectedExercises = new Set(nextState.selectedExercises)
+      selectedExercises.delete(action.data)
+      nextState.selectedExercises = [...selectedExercises]
+      break
+    }
 
     default:
       nextState = state

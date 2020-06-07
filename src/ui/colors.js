@@ -7,6 +7,8 @@ const baseColors = {
   whiteOpacity300: 'rgba(255, 255, 255, 0.3)',
   whiteOpacity400: 'rgba(255, 255, 255, 0.4)',
   whiteOpacity500: 'rgba(255, 255, 255, 0.5)',
+  whiteOpacity700: 'rgba(255, 255, 255, 0.7)',
+  blackOpacity700: 'rgba(0, 0, 0, 0.7)',
   transparent: 'transparent',
 
   // 200

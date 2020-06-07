@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
@@ -11,71 +11,112 @@ import {
   useDisclosure,
   useColorMode
 } from '@chakra-ui/core'
+import { motion, useAnimation } from 'framer-motion'
 import Layout from './Layout'
 import { MuscleGroup } from '../MuscleGroup'
 import { ExerciseCarousel, ExerciseFilters } from '../Exercise'
 import { TabBar } from '../TabBar'
-import { loadExercises } from '../../store/actions/exercise'
+import {
+  loadExercises,
+  filterMuscleGroup,
+  filterEquipaments,
+  addExercise,
+  removeExercise
+} from '../../store/actions/exercise'
 import { exerciseUtils } from '../../utils'
 import { colors } from '../../ui'
 
+const carouselContainer = {
+  hidden: { opacity: 0, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 0.2,
+      ease: 'easeOut'
+    }
+  }
+}
+
+const MotionBox = motion.custom(Box)
+
 const Home = function ({
   exercise,
-  loadExercises
+  loadExercises,
+  filterMuscleGroup,
+  filterEquipaments,
+  addExercise,
+  removeExercise
 }) {
-  const onSelectMuscleGroup = item => {
-    setMuscleGroup(+item.id)
+  const onSelectMuscleGroup = async item => {
+    await carouselControls.start('hidden')
+    filterMuscleGroup(+item.id)
+    carouselControls.start('visible')
   }
 
   const onSelectExercise = item => {
-    const set = new Set(selecteds)
+    const set = new Set(selectedExercises)
     const id = +item.id
     if (set.has(id)) {
-      set.delete(id)
+      removeExercise(id)
     } else {
-      set.add(id)
+      addExercise(id)
     }
-    setSelecteds([...set])
   }
 
   const btnRef = React.useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [selecteds, setSelecteds] = useState([])
-  const [muscleGroup, setMuscleGroup] = useState(null)
-  const [equipaments, setEquipaments] = useState([])
-  const [selectedEquipaments, setSelectedEquipaments] = useState([])
-  const muscleGroups = exerciseUtils.getMuscleGroups(exercise.list)
+  const carouselControls = useAnimation()
+
+  const {
+    list,
+    selectedMuscleGroup,
+    selectedEquipaments,
+    selectedExercises
+  } = exercise
+
+  const muscleGroups = exerciseUtils.getMuscleGroups(list)
     .map(item => {
       return {
         ...item,
-        active: +item.id === muscleGroup
+        active: +item.id === selectedMuscleGroup
       }
     })
 
-  const exercises = exercise.list.filter(item => {
-    if (muscleGroup) {
-      return item.muscle_groups
-        .map(item => +item.id)
-        .includes(muscleGroup)
-    }
-    return true
+  const exercisesByMuscleGroups = exerciseUtils.filterExercises({
+    list,
+    selectedMuscleGroup
   })
+
+  const exercises = exerciseUtils.filterExercises({
+    list: exercisesByMuscleGroups,
+    selectedEquipaments
+  })
+
+  const equipaments = exerciseUtils.getEquipaments(exercisesByMuscleGroups)
+
   const leftButton = {
     label: 'Edit list',
     icon: 'pencil',
-    counter: selecteds.length
+    counter: selectedExercises.length
   }
   const rightButton = {
     label: 'Filters',
     icon: 'filter',
-    counter: 0
+    counter: selectedEquipaments
+      .filter(value => value !== 'all')
+      .length
   }
   const mainButton = {
     label: 'Start!',
     icon: 'ray'
   }
   const goToEditList = () => console.log('goToEditList')
-  const onFilter = values => setSelectedEquipaments(values)
+  const onFilterEquipament = async values => {
+    await carouselControls.start('hidden')
+    filterEquipaments(values)
+    carouselControls.start('visible')
+  }
   const openFilters = () => onOpen()
   const footer = (
     <TabBar
@@ -93,6 +134,12 @@ const Home = function ({
       normal: {
         light: colors.gray900,
         dark: colors.white
+      }
+    },
+    drawerOverlay: {
+      normal: {
+        light: colors.whiteOpacity700,
+        dark: colors.blackOpacity700
       }
     },
     progressTrack: {
@@ -117,36 +164,22 @@ const Home = function ({
   const { colorMode } = useColorMode()
   const resolveColor = (name, state) => allColors[name][state][colorMode]
   const drawerColor = resolveColor('drawer', 'normal')
+  const drawerOverlayColor = resolveColor('drawerOverlay', 'normal')
   const progressTrackColor = resolveColor('progressTrack', 'normal')
   const progressBackgroundColor = resolveColor('progressBackground', 'normal')
   const progressColor = resolveColor('progress', 'normal')
 
   useEffect(() => {
     loadExercises().then(items => {
-      let equipaments = items.map(exercise => {
-        return exercise.requirements.map(item => ({
-          label: item.name,
-          value: item.id.toString()
-        }))
-      }).flat()
-      equipaments = [{
-        label: 'All equipaments',
-        value: 'all'
-      }].concat(equipaments)
-      const equipamentValues = equipaments.map(item => item.value)
-      equipaments = equipaments.filter((item, index) => {
-        return equipamentValues.indexOf(item.value) === index
-      })
-      setEquipaments(equipaments)
-      setSelectedEquipaments(equipaments.map(item => item.value))
+      carouselControls.start('visible')
     })
-  }, [loadExercises])
+  }, [loadExercises, carouselControls])
 
   useEffect(() => {
-    if (!muscleGroup && muscleGroups.length > 0) {
-      setMuscleGroup(+muscleGroups[0].id)
+    if (!selectedMuscleGroup && muscleGroups.length > 0) {
+      filterMuscleGroup(+muscleGroups[0].id)
     }
-  }, [muscleGroup, muscleGroups])
+  }, [selectedMuscleGroup, muscleGroups, filterMuscleGroup])
 
   return (
     <Layout
@@ -186,11 +219,19 @@ const Home = function ({
             </Flex>
           }
           {exercises.length > 0 &&
-            <ExerciseCarousel
-              onSelect={onSelectExercise}
-              selecteds={selecteds}
-              exercises={exercises}
-            />
+            <MotionBox
+              variants={carouselContainer}
+              initial="hidden"
+              flexGrow="1"
+              animate={carouselControls}
+            >
+              <ExerciseCarousel
+                height="100%"
+                onSelect={onSelectExercise}
+                selecteds={selectedExercises}
+                exercises={exercises}
+              />
+            </MotionBox>
           }
         </Flex>
       </Flex>
@@ -200,13 +241,15 @@ const Home = function ({
         onClose={onClose}
         finalFocusRef={btnRef}
       >
-        <DrawerOverlay />
+        <DrawerOverlay
+          background={drawerOverlayColor}
+        />
         <DrawerContent maxHeight="50%">
           <DrawerCloseButton color={drawerColor} />
           <Box overflow="auto">
             <ExerciseFilters
               equipaments={equipaments}
-              onChange={onFilter}
+              onChange={onFilterEquipament}
               selecteds={selectedEquipaments}
             />
           </Box>
@@ -217,7 +260,13 @@ const Home = function ({
 }
 
 const mapStateToProps = ({ exercise }) => ({ exercise })
-const mapDispatchToProps = { loadExercises }
+const mapDispatchToProps = {
+  loadExercises,
+  filterMuscleGroup,
+  filterEquipaments,
+  addExercise,
+  removeExercise
+}
 
 export default connect(
   mapStateToProps,

@@ -269,7 +269,7 @@
       ],
       "requirements": [
         {
-          "id": 1,
+          "id": 4,
           "name": "Barbell"
         }
       ],
@@ -316,7 +316,7 @@
       ],
       "requirements": [
         {
-          "id": 1,
+          "id": 5,
           "name": "Ab wheel"
         }
       ],

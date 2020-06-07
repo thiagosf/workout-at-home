@@ -19,7 +19,11 @@ function Carousel ({
     preloadImages: false,
     on: {
       observerUpdate: function (e) {
-        const resize = () => this.resize.resizeHandler()
+        const resize = () => {
+          if (this.resize) {
+            this.resize.resizeHandler()
+          }
+        }
         setTimeout(resize, 50)
         setTimeout(resize, 100)
       },

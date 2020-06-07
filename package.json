@@ -12,6 +12,7 @@
     "array-move": "^2.2.2",
     "cross-fetch": "^3.0.4",
     "emotion-theming": "^10.0.27",
+    "framer-motion": "^1.11.0",
     "polished": "^3.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
