@@ -13,8 +13,8 @@ function ExerciseHeader ({
   name,
   level,
   likes,
-  muscleGroups,
-  requirements,
+  muscleGroups = [],
+  requirements = [],
   visible = {
     likes: true,
     level: true,

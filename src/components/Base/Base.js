@@ -10,6 +10,10 @@ import { colors } from '../../ui'
 import { base } from '../../ui/themes'
 
 const styles = css`
+  .swiper-container-full {
+    width: 100%;
+    height: 100%;
+  }
   .swiper-slide {
     height: 100% !important;
     justify-content: center;

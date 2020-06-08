@@ -324,8 +324,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Ab_Roller_Wheel_Rollout_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/",
+          "line_art": true
         }
       ],
       "videos": [

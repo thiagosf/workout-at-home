@@ -7,6 +7,7 @@ import { PagingDots } from '../PagingDots'
 function Carousel ({
   count,
   children,
+  containerClass = 'swiper-container',
   config = {},
   ...props
 }) {
@@ -48,6 +49,7 @@ function Carousel ({
           flexGrow="1"
           minHeight="100%"
           background="blue"
+          containerClass={containerClass}
           {...defaultConfig}
           {...config}
         >

@@ -81,6 +81,7 @@ const ExerciseMediaCarousel = ({
       marginLeft="-15px"
       marginRight="-15px"
       count={items.length}
+      containerClass="swiper-container swiper-container-full"
       {...props}
     >
       {items}
@@ -178,6 +179,9 @@ function Exercise ({
   const [mediaType, setMediaType] = useState('image')
 
   const images = exercise.images.map((item, index) => {
+    const filter = item.line_art && colorMode === 'dark'
+      ? 'invert(0.8)'
+      : null
     return (
       <Box
         key={`image-${index}`}
@@ -189,6 +193,7 @@ function Exercise ({
         backgroundPosition="center center"
         width="100px"
         height="100px"
+        style={{ filter }}
       />
     )
   })
