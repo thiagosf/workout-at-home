@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { Header } from '../Header'
 import { TabBar } from '../TabBar'
 import { colors } from '../../ui'
+import { loadExercises } from '../../store/actions/exercise'
 
 const tabBarContainer = {
   hidden: { y: '150%' },
@@ -28,6 +29,8 @@ function Layout({
   onClickLeft,
   onClickRight,
   onClickMainButton,
+  loadExercises,
+  exercise,
   ...props
 }) {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -50,10 +53,17 @@ function Layout({
   const backgroundColor = resolveColor('background', 'normal')
   const footerControls = useAnimation()
   const { footer: showFooter } = base
+  const { list } = exercise
 
   useEffect(() => {
     footerControls.start(showFooter ? 'visible' : 'hidden')
   }, [footerControls, showFooter])
+
+  useEffect(() => {
+    if (list.length === 0) {
+      loadExercises()
+    }
+  }, [loadExercises, list])
 
   const footer = (
     <MotionBox
@@ -105,6 +115,11 @@ function Layout({
   )
 }
 
-const mapStateToProps = ({ base }) => ({ base })
+const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
+const mapDispatchToProps = {
+  loadExercises
+}
 
-export default connect(mapStateToProps)(Layout)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  Layout
+)

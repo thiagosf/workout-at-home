@@ -16,7 +16,7 @@ import { colors } from '../../ui'
 
 const DragHandle = sortableHandle(({ color }) =>
   <Flex
-    margin="0 0 0 -25px"
+    margin="0 0 0 -15px"
     padding="0 15px 0 10px"
     alignSelf="stretch"
     alignItems="center"
@@ -31,13 +31,14 @@ const SortableItem = sortableElement(({ children }) => (
   </Box>
 ))
 
-const SortableContainer = sortableContainer(({ children }) => {
+const SortableList = sortableContainer(({ children }) => {
   return <Box>{children}</Box>
 })
 
 function ExerciseMiniList ({
   exercises,
-  onChange
+  onChange,
+  ...props
 }) {
   const [model, setModel] = useState(
     exercises.map((exercise, index) => ({
@@ -105,14 +106,14 @@ function ExerciseMiniList ({
   })
 
   return (
-    <Box margin="-10px 0">
-      <SortableContainer
+    <Box margin="-10px 0" {...props}>
+      <SortableList
         onSortEnd={handleSort}
         lockAxis="y"
         useDragHandle
       >
         {exercisesMiniControls}
-      </SortableContainer>
+      </SortableList>
     </Box>
   )
 }

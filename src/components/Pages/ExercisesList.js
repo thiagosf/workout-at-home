@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
 import {
   Flex,
   Box,
@@ -13,6 +12,7 @@ import { showFooter } from '../../store/actions/base'
 import { removeExercise } from '../../store/actions/exercise'
 import { NumberControl } from '../NumberControl'
 import { ExerciseMiniList } from '../Exercise'
+import { Spinner } from '../Spinner'
 
 function ExercisesList ({
   exercise,
@@ -48,8 +48,10 @@ function ExercisesList ({
   const textColor = resolveColor('text', 'normal')
   const goToEditList = () => console.log('goToEditList')
   const onChangeRest = () => console.log('onChangeRest')
-  const onChangeSort = () => console.log('onChangeSort')
-  const exercises = exercise.list.filter(item => {
+  const onChangeList = () => console.log('onChangeList')
+
+  const { loading, list } = exercise
+  const exercises = list.filter(item => {
     return exercise.selectedExercises.includes(+item.id)
   })
 
@@ -82,15 +84,23 @@ function ExercisesList ({
             onChange={onChangeRest}
           />
         </Flex>
-        <Text
-          color={textColor}
-          textAlign="center"
-          marginTop="10px"
-        >Drag and drop to sort list</Text>
-        <ExerciseMiniList
-          exercises={exercises}
-          onChange={onChangeSort}
-        />
+        {loading &&
+          <Spinner />
+        }
+        {!loading && exercises.length > 0 &&
+          <React.Fragment>
+            <Text
+              color={textColor}
+              textAlign="center"
+              margin="10px 0 0 0"
+            >Drag and drop to sort list</Text>
+            <ExerciseMiniList
+              margin="10px 0 0 0"
+              exercises={exercises}
+              onChange={onChangeList}
+            />
+          </React.Fragment>
+        }
       </Box>
     </Layout>
   )

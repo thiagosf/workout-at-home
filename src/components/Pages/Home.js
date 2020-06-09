@@ -7,7 +7,6 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  CircularProgress,
   useDisclosure,
   useColorMode
 } from '@chakra-ui/core'
@@ -16,9 +15,9 @@ import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { MuscleGroup } from '../MuscleGroup'
 import { ExerciseCarousel, ExerciseFilters } from '../Exercise'
+import { Spinner } from '../Spinner'
 import { showFooter } from '../../store/actions/base'
 import {
-  loadExercises,
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
@@ -54,7 +53,6 @@ const MotionBox = motion.custom(Box)
 
 const Home = function ({
   exercise,
-  loadExercises,
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
@@ -86,6 +84,7 @@ const Home = function ({
 
   const {
     list,
+    loading,
     selectedMuscleGroup,
     selectedEquipaments,
     selectedExercises
@@ -154,42 +153,22 @@ const Home = function ({
         light: colors.whiteOpacity700,
         dark: colors.blackOpacity700
       }
-    },
-    progressTrack: {
-      normal: {
-        light: 'gray',
-        dark: 'gray'
-      }
-    },
-    progress: {
-      normal: {
-        light: 'green',
-        dark: 'green'
-      }
-    },
-    progressBackground: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray800
-      }
     }
   }
   const { colorMode } = useColorMode()
   const resolveColor = (name, state) => allColors[name][state][colorMode]
   const drawerColor = resolveColor('drawer', 'normal')
   const drawerOverlayColor = resolveColor('drawerOverlay', 'normal')
-  const progressTrackColor = resolveColor('progressTrack', 'normal')
-  const progressBackgroundColor = resolveColor('progressBackground', 'normal')
-  const progressColor = resolveColor('progress', 'normal')
 
   useEffect(() => {
-    loadExercises().then(items => {
+    if (!loading && list.length > 0) {
       carouselControls.start('visible')
       muscleGroupControls.start('visible')
       showFooter(true)
-    })
+    }
   }, [
-    loadExercises,
+    list,
+    loading,
     carouselControls,
     muscleGroupControls,
     showFooter
@@ -233,23 +212,10 @@ const Home = function ({
           justifyContent="center"
           alignItems="stretch"
         >
-          {exercise.loading &&
-            <Flex
-              alignSelf="center"
-              background={progressBackgroundColor}
-              padding="10px"
-              rounded="full"
-            >
-              <CircularProgress
-                margin="0"
-                isIndeterminate
-                size="36px"
-                trackColor={progressTrackColor}
-                color={progressColor}
-              />
-            </Flex>
+          {loading &&
+            <Spinner />
           }
-          {exercises.length > 0 &&
+          {!loading && exercises.length > 0 &&
             <MotionBox
               variants={carouselContainer}
               initial="hidden"
@@ -292,7 +258,6 @@ const Home = function ({
 
 const mapStateToProps = ({ exercise }) => ({ exercise })
 const mapDispatchToProps = {
-  loadExercises,
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
