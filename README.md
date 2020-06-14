@@ -50,7 +50,7 @@ yarn start
 - [x] Exercices list
 - [x] Workout
 - [x] Wait before next
-- [ ] Finish
+- [x] Finish
 - [ ] Not found
 
 ## Store
@@ -60,3 +60,4 @@ yarn start
 ## Todo
 
 - [ ] Refactor `allColors` using `utils:colorByMode`
+- [ ] Create route view to `/workout`, add `/workout/next` and `/workout/finish` to mantain `Timer` top bar

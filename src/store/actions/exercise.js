@@ -21,7 +21,7 @@ export function loadExercises () {
 }
 
 export function filterMuscleGroup (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'FILTER_MUSCLE_GROUP', data })
   }
 }
@@ -33,59 +33,65 @@ export function filterEquipaments (data) {
 }
 
 export function addExercise (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'ADD_EXERCISE', data })
   }
 }
 
 export function removeExercise (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'REMOVE_EXERCISE', data })
   }
 }
 
 export function removeAllExercises () {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'REMOVE_ALL_EXERCISES' })
   }
 }
 
 export function setRest (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'SET_REST', data })
   }
 }
 
 export function setWorkoutStartTime (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'SET_WORKOUT_START_TIME', data })
   }
 }
 
 export function setWorkoutEndTime (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'SET_WORKOUT_END_TIME', data })
   }
 }
 
 export function resetCycles () {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'RESET_CYCLES' })
   }
 }
 
+export function setCycles () {
+  return dispatch => {
+    dispatch({ type: 'SET_CYCLES' })
+  }
+}
+
 export function nextExercise () {
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
     const state = getState()
     const {
       selectedExercises,
       currentIndexExercise
     } = state.exercise
     let nextIndexExercise = currentIndexExercise + 1
-    const nexExercise = selectedExercises.find(item => {
-      return item.sort === nextIndexExercise
+    const nextExercise = selectedExercises.find((item, index) => {
+      return +index === nextIndexExercise
     })
-    if (!nexExercise) {
+    if (!nextExercise) {
       dispatch({ type: 'ADD_CYCLE' })
       nextIndexExercise = 0
     }

@@ -12,6 +12,14 @@ export default store => {
       name: 'workoutStartTime',
       type: 'SET_WORKOUT_START_TIME',
       field: 'data'
+    }, {
+      name: 'workoutEndTime',
+      type: 'SET_WORKOUT_END_TIME',
+      field: 'data'
+    }, {
+      name: 'cycles',
+      type: 'SET_CYCLES',
+      field: 'data'
     }]
   }
   return () => {

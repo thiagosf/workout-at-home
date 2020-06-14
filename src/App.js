@@ -11,7 +11,8 @@ import {
   ExercisesList,
   NotFound,
   Workout,
-  NextExercise
+  NextExercise,
+  Finish
 } from './components/Pages'
 
 function App({ store }) {
@@ -30,6 +31,9 @@ function App({ store }) {
           </Route>
           <Route path="/next-exercise">
             <NextExercise />
+          </Route>
+          <Route path="/finish">
+            <Finish />
           </Route>
           <Route path="*">
             <NotFound />

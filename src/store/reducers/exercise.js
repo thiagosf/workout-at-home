@@ -83,6 +83,9 @@ export default (state = initialState, action) => {
 
     case 'SET_WORKOUT_START_TIME':
       nextState.workoutStartTime = action.data
+      nextState.workoutEndTime = null
+      nextState.cycles = 1
+      nextState.currentIndexExercise = 0
       break
 
     case 'SET_WORKOUT_END_TIME':
@@ -95,6 +98,10 @@ export default (state = initialState, action) => {
 
     case 'RESET_CYCLES':
       nextState.cycles = 1
+      break
+
+    case 'SET_CYCLES':
+      nextState.cycles = +action.data
       break
 
     case 'SET_CURRENT_INDEX_EXERCISE':

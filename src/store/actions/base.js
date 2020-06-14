@@ -1,11 +1,11 @@
 export function showFooter (data) {
-  return async dispatch => {
+  return dispatch => {
     dispatch({ type: 'SHOW_FOOTER', data })
   }
 }
 
 export function syncLocalStorage () {
-  return async dispatch => {
+  return dispatch => {
     try {
       const savedState = JSON.parse(
         window.localStorage.getItem('saved_state')

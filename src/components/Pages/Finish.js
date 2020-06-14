@@ -1,51 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Flex, Text } from '@chakra-ui/core'
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
-import { RepetitionCount } from '../RepetitionCount'
 import { Timer } from '../Timer'
 import { Spinner } from '../Spinner'
-import { Exercise } from '../Exercise'
+import { Finish as FinishWorkout } from '../Exercise'
 import { showFooter } from '../../store/actions/base'
+import { setWorkoutEndTime } from '../../store/actions/exercise'
 import { useDocumentVisibility } from '../../hooks'
 
-function Workout ({
+function Finish ({
   base,
   exercise,
-  showFooter
+  showFooter,
+  setWorkoutEndTime
 }) {
   const isHidden = useDocumentVisibility()
   const history = useHistory()
   const {
-    currentIndexExercise,
-    list,
     selectedExercises,
     cycles,
-    workoutStartTime
+    workoutStartTime,
+    workoutEndTime
   } = exercise
-  const currentExercise = selectedExercises.filter((item, index) => {
-    return +index === +currentIndexExercise
-  }).map(item => {
-    const exercise = list.find(i => +i.id === +item.exercise_id)
-    return {
-      exercise,
-      data: item
-    }
-  }).pop()
   const mainButton = {
-    label: 'Next',
-    icon: 'arrowRight'
+    label: 'Home',
+    icon: 'home'
   }
   const rightButton = {
     label: 'Finish',
     icon: 'stop'
   }
-  const nextExercise = () => history.push('/next-exercise')
+
+  const goHome = () => {
+    history.push('/')
+  }
   const finishWorkout = () => history.push('/finish')
   const count = selectedExercises.length
   const synced = base.enableSync
-  const [startedTimer, setStartedTimer] = useState(false)
   const [ellapsedSeconds, setEllapsedSeconds] = useState(0)
 
   useEffect(() => {
@@ -59,22 +52,24 @@ function Workout ({
   }, [synced, count, history])
 
   useEffect(() => {
-    if (isHidden) {
-      setEllapsedSeconds(0)
-      setStartedTimer(false)
-    } else if (workoutStartTime !== null) {
-      const now = new Date()
-      const seconds = Math.floor((now - new Date(workoutStartTime)) / 1000)
+    if (!isHidden && workoutStartTime) {
+      let workoutEndTimeCalc = workoutEndTime
+      if (!workoutEndTimeCalc) {
+        workoutEndTimeCalc = new Date()
+        setWorkoutEndTime(workoutEndTimeCalc)
+      }
+      const seconds = Math.floor(
+        (new Date(workoutEndTimeCalc) - new Date(workoutStartTime)) / 1000
+      )
       setEllapsedSeconds(seconds)
-      setStartedTimer(true)
     }
-  }, [isHidden, workoutStartTime])
+  }, [isHidden, workoutStartTime, setWorkoutEndTime, workoutEndTime])
 
   return (
     <Layout
       mainButton={mainButton}
       rightButton={rightButton}
-      onClickMain={nextExercise}
+      onClickMain={goHome}
       onClickRight={finishWorkout}
     >
       {!synced &&
@@ -93,21 +88,16 @@ function Workout ({
           flexGrow="1"
         >
           <Flex
-            justifyContent="space-between"
+            justifyContent="flex-end"
             alignItems="center"
             padding="0 15px"
           >
-            <RepetitionCount
-              count={currentExercise.data.count}
-              countType={currentExercise.data.count_type}
-              isStarted={true}
-            />
             <Flex
               alignItems="center"
             >
               <Timer
                 initialSeconds={ellapsedSeconds}
-                isStarted={startedTimer}
+                isStarted={false}
                 minWidth="160px"
               />
               <Text
@@ -117,13 +107,7 @@ function Workout ({
               >{cycles}º Cycle</Text>
             </Flex>
           </Flex>
-          {currentExercise.exercise &&
-            <Exercise
-              exercise={currentExercise.exercise}
-              flexGrow="1"
-              margin="15px 15px 45px 15px "
-            />
-          }
+          <FinishWorkout flexGrow="1" />
         </Flex>
       }
     </Layout>
@@ -132,10 +116,11 @@ function Workout ({
 
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
-  showFooter
+  showFooter,
+  setWorkoutEndTime
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Workout)
+)(Finish)
