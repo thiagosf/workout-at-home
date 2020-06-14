@@ -38,7 +38,7 @@ export const Default = () => {
       mainButton={mainButton}
       onClickLeft={action('left clicked')}
       onClickRight={action('right clicked')}
-      onClickMainButton={action('main button clicked')}
+      onClickMain={action('main button clicked')}
     />
   )
 }

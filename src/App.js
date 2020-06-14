@@ -9,7 +9,8 @@ import {
 import {
   Home,
   ExercisesList,
-  NotFound
+  NotFound,
+  Workout
 } from './components/Pages'
 
 function App({ store }) {
@@ -22,6 +23,9 @@ function App({ store }) {
           </Route>
           <Route path="/exercises-list">
             <ExercisesList />
+          </Route>
+          <Route path="/workout">
+            <Workout />
           </Route>
           <Route path="*">
             <NotFound />

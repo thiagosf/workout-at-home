@@ -5,7 +5,10 @@ const initialState = {
   selectedMuscleGroup: null,
   selectedEquipaments: [],
   selectedExercises: [],
-  rest: 30
+  rest: 30,
+  workoutStartTime: null,
+  workoutEndTime: null,
+  cycles: 1
 }
 
 const identifier = 'exercise'
@@ -75,6 +78,22 @@ export default (state = initialState, action) => {
 
     case 'SET_REST':
       nextState.rest = action.data
+      break
+
+    case 'SET_WORKOUT_START_TIME':
+      nextState.workoutStartTime = action.data
+      break
+
+    case 'SET_WORKOUT_END_TIME':
+      nextState.workoutEndTime = action.data
+      break
+
+    case 'ADD_CYCLE':
+      nextState.cycles = nextState.cycles + 1
+      break
+
+    case 'RESET_CYCLES':
+      nextState.cycles = 1
       break
 
     default:

@@ -117,11 +117,6 @@ const Home = function ({
 
   const equipaments = exerciseUtils.getEquipaments(exercisesByMuscleGroups)
 
-  const leftButton = {
-    label: 'Edit list',
-    icon: 'pencil',
-    counter: selectedExercisesIDs.length
-  }
   const rightButton = {
     label: 'Filters',
     icon: 'filter',
@@ -130,8 +125,8 @@ const Home = function ({
       .length
   }
   const mainButton = {
-    label: 'Start!',
-    icon: 'ray'
+    label: 'Next',
+    count: selectedExercisesIDs.length
   }
   const goToEditList = async () => {
     await Promise.all([
@@ -189,12 +184,10 @@ const Home = function ({
 
   return (
     <Layout
-      leftButton={leftButton}
       rightButton={rightButton}
       mainButton={mainButton}
-      onClickLeft={goToEditList}
       onClickRight={openFilters}
-      onClickMainButton={goToEditList}
+      onClickMain={goToEditList}
     >
       <Flex
         flexGrow="1"

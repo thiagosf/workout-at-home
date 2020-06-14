@@ -11,7 +11,8 @@ import { useInterval } from '../../hooks'
 
 function Timer ({
   initialSeconds = 0,
-  isStarted
+  isStarted,
+  ...props
 }) {
   const { colorMode } = useColorMode()
   const allColors = {
@@ -60,6 +61,7 @@ function Timer ({
   return (
     <Flex
       alignItems="center"
+      {...props}
     >
       <Icon
         color={iconColor}

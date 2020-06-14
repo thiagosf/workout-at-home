@@ -29,7 +29,7 @@ function Layout({
   mainButton,
   onClickLeft,
   onClickRight,
-  onClickMainButton,
+  onClickMain,
   loadExercises,
   exercise,
   syncLocalStorage,
@@ -67,7 +67,12 @@ function Layout({
     }
   }, [loadExercises, list])
 
-  const footer = (
+  const hasFooterButtons = (
+    leftButton ||
+    mainButton ||
+    rightButton
+  )
+  const footer = hasFooterButtons && (
     <MotionBox
       variants={tabBarContainer}
       initial="hidden"
@@ -79,7 +84,7 @@ function Layout({
         mainButton={mainButton}
         onClickLeft={onClickLeft}
         onClickRight={onClickRight}
-        onClickMainButton={onClickMainButton}
+        onClickMain={onClickMain}
       />
     </MotionBox>
   )

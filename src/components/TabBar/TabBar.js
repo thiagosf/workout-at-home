@@ -10,7 +10,7 @@ function TabBar ({
   mainButton,
   onClickLeft,
   onClickRight,
-  onClickMainButton,
+  onClickMain,
   ...props
 }) {
   return (
@@ -39,8 +39,9 @@ function TabBar ({
         <TabBarMainButton
           position="relative"
           top="-15px"
-          onClick={onClickMainButton}
+          onClick={onClickMain}
           icon={mainButton.icon}
+          count={mainButton.count}
         >{mainButton.label}</TabBarMainButton>
         <Flex
           minWidth="50px"

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
@@ -92,7 +92,7 @@ function ExercisesList ({
     icon: isEmptyList ? 'plus' : 'ray'
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     showFooter(true)
   }, [showFooter])
 
@@ -103,7 +103,7 @@ function ExercisesList ({
       mainButton={mainButton}
       onClickLeft={clearList}
       onClickRight={backToHome}
-      onClickMainButton={startWorkout}
+      onClickMain={startWorkout}
     >
       <Confirm
         isOpen={isOpenClear}
@@ -156,8 +156,8 @@ function ExercisesList ({
             <Text
               color={textColor}
               textAlign="center"
-              margin="10px 0 0 0"
-            >Drag and drop to sort list</Text>
+              margin="20px 0 0 0"
+            >Drag and drop to sort list:</Text>
             <ExerciseMiniList
               margin="10px 0 0 0"
               exercises={exercises}

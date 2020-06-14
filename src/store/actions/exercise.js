@@ -55,3 +55,27 @@ export function setRest (data) {
     dispatch({ type: 'SET_REST', data })
   }
 }
+
+export function setWorkoutStartTime (data) {
+  return async dispatch => {
+    dispatch({ type: 'SET_WORKOUT_START_TIME', data })
+  }
+}
+
+export function setWorkoutEndTime (data) {
+  return async dispatch => {
+    dispatch({ type: 'SET_WORKOUT_END_TIME', data })
+  }
+}
+
+export function addCycle (data) {
+  return async dispatch => {
+    dispatch({ type: 'ADD_CYCLE', data })
+  }
+}
+
+export function resetCycles (data) {
+  return async dispatch => {
+    dispatch({ type: 'RESET_CYCLES', data })
+  }
+}
