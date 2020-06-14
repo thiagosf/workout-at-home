@@ -28,6 +28,7 @@ function Logo ({ onClick, ...props }) {
       onClick={onClick ? onClick : () => {}}
       color={homeColor}
       display="inline-flex"
+      user-select="none"
       _hover={{
         textDecoration: 'none'
       }}

@@ -11,7 +11,7 @@ function TabBarBackground ({ children, ...props }) {
     background: {
       normal: {
         light: colors.blue800,
-        dark: colors.gray800
+        dark: colors.blue800
       }
     }
   }

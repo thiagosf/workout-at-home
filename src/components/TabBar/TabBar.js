@@ -16,6 +16,7 @@ function TabBar ({
   return (
     <Flex
       position="relative"
+      height="65px"
       {...props}
     >
       <Flex

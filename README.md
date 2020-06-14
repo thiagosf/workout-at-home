@@ -47,7 +47,7 @@ yarn start
 ## Pages
 
 - [x] Home
-- [ ] Exercices list
+- [x] Exercices list
 - [ ] Workout
 - [ ] Wait before next
 - [ ] Finish
@@ -56,3 +56,7 @@ yarn start
 ## Store
 
 - [ ] exercises
+
+## Todo
+
+- [ ] Refactor `allColors` using `utils:colorByMode`

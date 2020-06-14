@@ -31,8 +31,8 @@ const SortableItem = sortableElement(({ children }) => (
   </Box>
 ))
 
-const SortableList = sortableContainer(({ children }) => {
-  return <Box>{children}</Box>
+const SortableList = sortableContainer(({ children, ...props }) => {
+  return <Box {...props}>{children}</Box>
 })
 
 function ExerciseMiniList ({
@@ -41,26 +41,35 @@ function ExerciseMiniList ({
   ...props
 }) {
   const [model, setModel] = useState(
-    exercises.map((exercise, index) => ({
-      count: 15,
-      count_type: 'reps',
-      exercise_id: exercise.id,
-      sort: index,
-      exercise
+    exercises.map((item, index) => ({
+      exercise: item.exercise,
+      data: item.data
     }))
   )
 
   const handleSort = ({ oldIndex, newIndex }) => {
     const newModel = arrayMove(model, oldIndex, newIndex)
-      .map((item, index) => ({ ...item, sort: index }))
+      .map((item, index) => ({
+        ...item,
+        data: {
+          ...item.data,
+          sort: index
+        }
+      }))
     setModel(newModel)
     sendChanges(newModel)
   }
 
   const handleChange = item => {
     const newModel = model.map(exercise => {
-      if (exercise.exercise_id === item.exercise_id) {
-        return { ...exercise, ...item }
+      if (exercise.data.exercise_id === item.exercise_id) {
+        return {
+          ...exercise,
+          data: {
+            ...exercise.data,
+            ...item
+          }
+        }
       }
       return exercise
     })
@@ -99,6 +108,7 @@ function ExerciseMiniList ({
           margin="10px 0"
           onChange={handleChange}
           exercise={item.exercise}
+          initialData={item.data}
           dragHandle={<DragHandle color={dragHandleColor} />}
         />
       </SortableItem>
@@ -106,7 +116,11 @@ function ExerciseMiniList ({
   })
 
   return (
-    <Box margin="-10px 0" {...props}>
+    <Box
+      margin="-10px 0"
+      padding="0 0 50px 0"
+      {...props}
+    >
       <SortableList
         onSortEnd={handleSort}
         lockAxis="y"

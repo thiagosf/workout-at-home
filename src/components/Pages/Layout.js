@@ -6,6 +6,7 @@ import { Header } from '../Header'
 import { TabBar } from '../TabBar'
 import { colors } from '../../ui'
 import { loadExercises } from '../../store/actions/exercise'
+import { syncLocalStorage } from '../../store/actions/base'
 
 const tabBarContainer = {
   hidden: { y: '150%' },
@@ -31,6 +32,7 @@ function Layout({
   onClickMainButton,
   loadExercises,
   exercise,
+  syncLocalStorage,
   ...props
 }) {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -86,6 +88,10 @@ function Layout({
     document.body.style.overflow = 'hidden'
   }, [])
 
+  useEffect(() => {
+    syncLocalStorage()
+  }, [syncLocalStorage])
+
   return (
     <Flex
       color={color}
@@ -103,12 +109,19 @@ function Layout({
       </Box>
       <Flex
         flexGrow="1"
-        overflow="none"
+        overflow="auto"
         flexDirection="column"
+        marginBottom="65px"
       >
         {children}
       </Flex>
-      <Box>
+      <Box
+        position="fixed"
+        zIndex="10"
+        bottom="0"
+        left="0"
+        right="0"
+      >
         {footer}
       </Box>
     </Flex>
@@ -117,7 +130,8 @@ function Layout({
 
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
-  loadExercises
+  loadExercises,
+  syncLocalStorage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

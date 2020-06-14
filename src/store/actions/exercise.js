@@ -43,3 +43,15 @@ export function removeExercise (data) {
     dispatch({ type: 'REMOVE_EXERCISE', data })
   }
 }
+
+export function removeAllExercises () {
+  return async dispatch => {
+    dispatch({ type: 'REMOVE_ALL_EXERCISES' })
+  }
+}
+
+export function setRest (data) {
+  return async dispatch => {
+    dispatch({ type: 'SET_REST', data })
+  }
+}

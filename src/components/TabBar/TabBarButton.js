@@ -25,6 +25,9 @@ function TabBarButton ({ children, icon, onClick, counter, ...props }) {
   const iconSize = counter === undefined
     ? '26px'
     : '16px'
+  const iconMarginRight = counter === undefined
+    ? '0'
+    : '5px'
   return (
     <PseudoBox
       onClick={onClick}
@@ -50,7 +53,7 @@ function TabBarButton ({ children, icon, onClick, counter, ...props }) {
           name={icon}
           color={colors.white}
           size={iconSize}
-          marginRight="5px"
+          marginRight={iconMarginRight}
         />
         {counter !== undefined &&
           <Badge

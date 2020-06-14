@@ -2,31 +2,32 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
-  Box,
   Text,
   useColorMode
 } from '@chakra-ui/core'
+import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { colors } from '../../ui'
 import { showFooter } from '../../store/actions/base'
-import { removeExercise } from '../../store/actions/exercise'
+import {
+  addExercise,
+  removeExercise,
+  removeAllExercises,
+  setRest
+} from '../../store/actions/exercise'
 import { NumberControl } from '../NumberControl'
-import { ExerciseMiniList } from '../Exercise'
+import { ExerciseMiniList, EmptyList } from '../Exercise'
 import { Spinner } from '../Spinner'
+import { Confirm } from '../Confirm'
 
 function ExercisesList ({
   exercise,
   removeExercise,
-  showFooter
+  removeAllExercises,
+  showFooter,
+  addExercise,
+  setRest
 }) {
-  const leftButton = {
-    label: 'Clear list',
-    icon: 'broom'
-  }
-  const mainButton = {
-    label: 'Start!',
-    icon: 'ray'
-  }
   const { colorMode } = useColorMode()
   const allColors = {
     restBackground: {
@@ -42,18 +43,54 @@ function ExercisesList ({
       }
     }
   }
+  const history = useHistory()
 
   const resolveColor = (name, state) => allColors[name][state][colorMode]
   const restBackgroundColor = resolveColor('restBackground', 'normal')
   const textColor = resolveColor('text', 'normal')
-  const goToEditList = () => console.log('goToEditList')
-  const onChangeRest = () => console.log('onChangeRest')
-  const onChangeList = () => console.log('onChangeList')
+  const clearList = () => setIsOpenClear(true)
+  const backToHome = () => history.push('/')
+  const startWorkout = () => {
+    history.push(
+      isEmptyList
+        ? '/'
+        : '/workout'
+    )
+  }
+  const onChangeRest = data => setRest(data)
+  const onChangeList = data => {
+    addExercise(data.map(item => item.data))
+  }
 
-  const { loading, list } = exercise
-  const exercises = list.filter(item => {
-    return exercise.selectedExercises.includes(+item.id)
+  const { loading, list, selectedExercises, rest } = exercise
+  const exercises = selectedExercises.map(item => {
+    const exercise = list.find(i => +i.id === +item.exercise_id)
+    return {
+      exercise,
+      data: item
+    }
   })
+  const [isOpenClear, setIsOpenClear] = React.useState()
+  const onCloseClear = () => setIsOpenClear(false)
+  const cancelRefClear = React.useRef()
+  const onConfirmClear = () => {
+    removeAllExercises()
+    setIsOpenClear(false)
+  }
+  const isEmptyList = exercises.length === 0
+
+  const leftButton = {
+    label: 'Clear list',
+    icon: 'broom'
+  }
+  const rightButton = {
+    label: 'Add more',
+    icon: 'plus'
+  }
+  const mainButton = {
+    label: isEmptyList ? 'Add' : 'Start!',
+    icon: isEmptyList ? 'plus' : 'ray'
+  }
 
   React.useEffect(() => {
     showFooter(true)
@@ -61,33 +98,60 @@ function ExercisesList ({
 
   return (
     <Layout
-      leftButton={leftButton}
+      leftButton={isEmptyList ? null : leftButton}
+      rightButton={isEmptyList ? null : rightButton}
       mainButton={mainButton}
-      onClickLeft={goToEditList}
-      onClickMainButton={goToEditList}
+      onClickLeft={clearList}
+      onClickRight={backToHome}
+      onClickMainButton={startWorkout}
     >
-      <Box
+      <Confirm
+        isOpen={isOpenClear}
+        cancelRef={cancelRefClear}
+        onClose={onCloseClear}
+        onConfirm={onConfirmClear}
+        title="Clear list"
+        text="Are you sure?"
+        buttonNo="No"
+        buttonYes="Yes"
+      />
+      <Flex
+        flexGrow="1"
+        flexDirection="column"
+        justifyContent={isEmptyList ? 'center' : 'flex-start'}
         margin="0 10px 10px 10px"
       >
-        <Flex
-          alignItems="center"
-          padding="10px"
-          background={restBackgroundColor}
-          rounded="5px"
-        >
-          <Text
-            flexGrow="1"
-            marginRight="10px"
-          >Rest in <Text as="strong">seconds</Text> between exercises:</Text>
-          <NumberControl
-            initialValue={30}
-            onChange={onChangeRest}
-          />
-        </Flex>
-        {loading &&
-          <Spinner />
+        {!loading && isEmptyList &&
+          <EmptyList />
         }
-        {!loading && exercises.length > 0 &&
+        {!loading && !isEmptyList &&
+          <Flex
+            alignItems="center"
+            padding="10px"
+            background={restBackgroundColor}
+            rounded="5px"
+          >
+            <Text
+              flexGrow="1"
+              marginRight="10px"
+            >Rest in <Text as="strong">seconds</Text> between exercises:</Text>
+            <NumberControl
+              initialValue={rest}
+              onChange={onChangeRest}
+            />
+          </Flex>
+        }
+        {loading &&
+          <Flex
+            flexGrow="1"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="stretch"
+          >
+            <Spinner />
+          </Flex>
+        }
+        {!loading && !isEmptyList &&
           <React.Fragment>
             <Text
               color={textColor}
@@ -101,15 +165,18 @@ function ExercisesList ({
             />
           </React.Fragment>
         }
-      </Box>
+      </Flex>
     </Layout>
   )
 }
 
 const mapStateToProps = ({ exercise }) => ({ exercise })
 const mapDispatchToProps = {
+  addExercise,
   removeExercise,
-  showFooter
+  removeAllExercises,
+  showFooter,
+  setRest
 }
 
 export default connect(

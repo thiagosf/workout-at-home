@@ -4,7 +4,8 @@ const initialState = {
   loading: false,
   selectedMuscleGroup: null,
   selectedEquipaments: [],
-  selectedExercises: []
+  selectedExercises: [],
+  rest: 30
 }
 
 const identifier = 'exercise'
@@ -38,18 +39,43 @@ export default (state = initialState, action) => {
       break
 
     case 'ADD_EXERCISE': {
-      const selectedExercises = new Set(nextState.selectedExercises)
-      selectedExercises.add(action.data)
-      nextState.selectedExercises = [...selectedExercises]
+      let selectedExercises = [...nextState.selectedExercises]
+      const ids = selectedExercises.map(item => +item.exercise_id)
+      if (Array.isArray(action.data)) {
+        selectedExercises = action.data
+      } else {
+        if (ids.includes(+action.exercise_id)) {
+          selectedExercises = selectedExercises.map(item => {
+            if (+item.exercise_id === +action.exercise_id) {
+              item = { ...action.data }
+            }
+            return item
+          })
+        } else {
+          selectedExercises.push({
+            ...action.data,
+            sort: selectedExercises.length
+          })
+        }
+      }
+      nextState.selectedExercises = selectedExercises
       break
     }
 
     case 'REMOVE_EXERCISE': {
-      const selectedExercises = new Set(nextState.selectedExercises)
-      selectedExercises.delete(action.data)
-      nextState.selectedExercises = [...selectedExercises]
+      nextState.selectedExercises = nextState.selectedExercises.filter(item => {
+        return +item.exercise_id !== +action.data
+      })
       break
     }
+
+    case 'REMOVE_ALL_EXERCISES':
+      nextState.selectedExercises = []
+      break
+
+    case 'SET_REST':
+      nextState.rest = action.data
+      break
 
     default:
       nextState = state

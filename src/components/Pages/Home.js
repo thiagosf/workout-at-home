@@ -67,12 +67,16 @@ const Home = function ({
   }
 
   const onSelectExercise = item => {
-    const set = new Set(selectedExercises)
+    const set = new Set(selectedExercisesIDs)
     const id = +item.id
     if (set.has(id)) {
       removeExercise(id)
     } else {
-      addExercise(id)
+      addExercise({
+        exercise_id: id,
+        count: 15,
+        count_type: 'reps'
+      })
     }
   }
 
@@ -89,6 +93,9 @@ const Home = function ({
     selectedEquipaments,
     selectedExercises
   } = exercise
+  const selectedExercisesIDs = selectedExercises.map(item => {
+    return +item.exercise_id
+  })
 
   const muscleGroups = exerciseUtils.getMuscleGroups(list)
     .map(item => {
@@ -113,7 +120,7 @@ const Home = function ({
   const leftButton = {
     label: 'Edit list',
     icon: 'pencil',
-    counter: selectedExercises.length
+    counter: selectedExercisesIDs.length
   }
   const rightButton = {
     label: 'Filters',
@@ -191,9 +198,9 @@ const Home = function ({
     >
       <Flex
         flexGrow="1"
-        height="200px"
         flexDirection="column"
         justifyContent="space-between"
+        paddingBottom="10px"
       >
         <MotionBox
           variants={muscleGroupContainer}
@@ -225,7 +232,7 @@ const Home = function ({
               <ExerciseCarousel
                 height="100%"
                 onSelect={onSelectExercise}
-                selecteds={selectedExercises}
+                selecteds={selectedExercisesIDs}
                 exercises={exercises}
               />
             </MotionBox>

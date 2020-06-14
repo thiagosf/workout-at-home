@@ -10,6 +10,16 @@ import { colors } from '../../ui'
 import { base } from '../../ui/themes'
 
 const styles = css`
+  :root {
+    --text-color-light: ${colors.gray900};
+    --text-color-dark: ${colors.white};
+  }
+  body.light-mode {
+    color: var(--text-color-light);
+  }
+  body.dark-mode {
+    color: var(--text-color-dark);
+  }
   .swiper-container-full {
     width: 100%;
     height: 100%;

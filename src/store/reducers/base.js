@@ -1,5 +1,6 @@
 const initialState = {
-  footer: false
+  footer: false,
+  enableSync: false
 }
 
 const identifier = 'base'
@@ -22,6 +23,10 @@ export default (state = initialState, action) => {
 
     case 'SHOW_FOOTER':
       nextState.footer = action.data
+      break
+
+    case 'ENABLE_SYNC':
+      nextState.enableSync = true
       break
 
     default:

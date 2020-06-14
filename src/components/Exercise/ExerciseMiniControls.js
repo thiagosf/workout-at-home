@@ -97,13 +97,17 @@ function ExerciseMiniControls ({
       >
         {dragHandle}
         <ExerciseHeader
-          {...exercise}
+          name={exercise.name}
+          level={exercise.level}
+          likes={exercise.likes}
+          muscleGroups={exercise.muscle_groups}
+          requirements={exercise.requirements}
           visible={{
             likes: false,
             level: false,
             name: true,
             muscleGroups: true,
-            requirements: false
+            requirements: true
           }}
           flexGrow="1"
         />
@@ -118,7 +122,7 @@ function ExerciseMiniControls ({
             <RadioButtonGroup
               spacing="5px"
               whiteSpace="nowrap"
-              defaultValue="reps"
+              defaultValue={model.count_type}
               onChange={value => {
                 const newModel = {
                   ...model,
@@ -138,7 +142,7 @@ function ExerciseMiniControls ({
             </RadioButtonGroup>
           </Flex>
           <NumberControl
-            initialValue={15}
+            initialValue={model.count}
             onChange={value => {
               const newModel = {
                 ...model,
