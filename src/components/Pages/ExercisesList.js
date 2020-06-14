@@ -13,7 +13,8 @@ import {
   addExercise,
   removeExercise,
   removeAllExercises,
-  setRest
+  setRest,
+  setWorkoutStartTime
 } from '../../store/actions/exercise'
 import { NumberControl } from '../NumberControl'
 import { ExerciseMiniList, EmptyList } from '../Exercise'
@@ -26,7 +27,8 @@ function ExercisesList ({
   removeAllExercises,
   showFooter,
   addExercise,
-  setRest
+  setRest,
+  setWorkoutStartTime
 }) {
   const { colorMode } = useColorMode()
   const allColors = {
@@ -51,6 +53,9 @@ function ExercisesList ({
   const clearList = () => setIsOpenClear(true)
   const backToHome = () => history.push('/')
   const startWorkout = () => {
+    if (!isEmptyList) {
+      setWorkoutStartTime(new Date())
+    }
     history.push(
       isEmptyList
         ? '/'
@@ -176,7 +181,8 @@ const mapDispatchToProps = {
   removeExercise,
   removeAllExercises,
   showFooter,
-  setRest
+  setRest,
+  setWorkoutStartTime
 }
 
 export default connect(

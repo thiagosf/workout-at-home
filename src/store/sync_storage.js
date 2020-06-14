@@ -8,6 +8,10 @@ export default store => {
       name: 'rest',
       type: 'SET_REST',
       field: 'data'
+    }, {
+      name: 'workoutStartTime',
+      type: 'SET_WORKOUT_START_TIME',
+      field: 'data'
     }]
   }
   return () => {

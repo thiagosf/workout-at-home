@@ -68,14 +68,30 @@ export function setWorkoutEndTime (data) {
   }
 }
 
-export function addCycle (data) {
+export function resetCycles () {
   return async dispatch => {
-    dispatch({ type: 'ADD_CYCLE', data })
+    dispatch({ type: 'RESET_CYCLES' })
   }
 }
 
-export function resetCycles (data) {
-  return async dispatch => {
-    dispatch({ type: 'RESET_CYCLES', data })
+export function nextExercise () {
+  return async (dispatch, getState) => {
+    const state = getState()
+    const {
+      selectedExercises,
+      currentIndexExercise
+    } = state.exercise
+    let nextIndexExercise = currentIndexExercise + 1
+    const nexExercise = selectedExercises.find(item => {
+      return item.sort === nextIndexExercise
+    })
+    if (!nexExercise) {
+      dispatch({ type: 'ADD_CYCLE' })
+      nextIndexExercise = 0
+    }
+    dispatch({
+      type: 'SET_CURRENT_INDEX_EXERCISE',
+      data: nextIndexExercise
+    })
   }
 }

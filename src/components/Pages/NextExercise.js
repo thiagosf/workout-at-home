@@ -1,47 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Flex, Text } from '@chakra-ui/core'
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
-import { RepetitionCount } from '../RepetitionCount'
 import { Timer } from '../Timer'
 import { Spinner } from '../Spinner'
-import { Exercise } from '../Exercise'
+import { WaitBeforeNextExercise } from '../Exercise'
 import { showFooter } from '../../store/actions/base'
+import { nextExercise } from '../../store/actions/exercise'
 import { useDocumentVisibility } from '../../hooks'
 
-function Workout ({
+function NextExercise ({
   base,
   exercise,
-  showFooter
+  showFooter,
+  nextExercise
 }) {
   const isHidden = useDocumentVisibility()
   const history = useHistory()
   const {
-    currentIndexExercise,
-    list,
     selectedExercises,
     cycles,
-    workoutStartTime
+    workoutStartTime,
+    rest
   } = exercise
-  const currentExercise = selectedExercises.filter(item => {
-    return +item.sort === currentIndexExercise
-  }).map(item => {
-    const exercise = list.find(i => +i.id === +item.exercise_id)
-    return {
-      exercise,
-      data: item
-    }
-  }).pop()
   const mainButton = {
-    label: 'Next',
+    label: 'Jump!',
     icon: 'arrowRight'
   }
   const rightButton = {
     label: 'Finish',
     icon: 'stop'
   }
-  const nextExercise = () => history.push('/next-exercise')
+
+  const toNext = () => {
+    nextExercise()
+    history.push('/workout')
+  }
   const finishWorkout = () => history.push('/finish')
   const count = selectedExercises.length
   const synced = base.enableSync
@@ -74,7 +69,7 @@ function Workout ({
     <Layout
       mainButton={mainButton}
       rightButton={rightButton}
-      onClickMain={nextExercise}
+      onClickMain={toNext}
       onClickRight={finishWorkout}
     >
       {!synced &&
@@ -93,15 +88,10 @@ function Workout ({
           flexGrow="1"
         >
           <Flex
-            justifyContent="space-between"
+            justifyContent="flex-end"
             alignItems="center"
             padding="0 15px"
           >
-            <RepetitionCount
-              count={currentExercise.data.count}
-              countType={currentExercise.data.count_type}
-              isStarted={true}
-            />
             <Flex
               alignItems="center"
             >
@@ -117,13 +107,11 @@ function Workout ({
               >{cycles}º Cycle</Text>
             </Flex>
           </Flex>
-          {currentExercise.exercise &&
-            <Exercise
-              exercise={currentExercise.exercise}
-              flexGrow="1"
-              margin="15px 15px 45px 15px "
-            />
-          }
+          <WaitBeforeNextExercise
+            seconds={rest}
+            onFinish={toNext}
+            isStarted={startedTimer}
+          />
         </Flex>
       }
     </Layout>
@@ -132,10 +120,11 @@ function Workout ({
 
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
-  showFooter
+  showFooter,
+  nextExercise
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Workout)
+)(NextExercise)

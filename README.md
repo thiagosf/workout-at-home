@@ -48,8 +48,8 @@ yarn start
 
 - [x] Home
 - [x] Exercices list
-- [ ] Workout
-- [ ] Wait before next
+- [x] Workout
+- [x] Wait before next
 - [ ] Finish
 - [ ] Not found
 

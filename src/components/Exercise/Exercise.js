@@ -271,18 +271,20 @@ function Exercise ({
             </MediaTypeRadio>
           </RadioButtonGroup>
         </Box>
-        <Button
-          size="lg"
-          background={buttonBackground}
-          color={colors.white}
-          _hover={{
-            background: buttonBackgroundHover
-          }}
-          _active={{
-            background: buttonBackground
-          }}
-          onClick={onSelect}
-        >{buttonText}</Button>
+        {onSelect &&
+          <Button
+            size="lg"
+            background={buttonBackground}
+            color={colors.white}
+            _hover={{
+              background: buttonBackgroundHover
+            }}
+            _active={{
+              background: buttonBackground
+            }}
+            onClick={onSelect}
+          >{buttonText}</Button>
+        }
         <Flex width="30%" justifyContent="flex-end">
           <MuscleGroupBody
             width="70%"

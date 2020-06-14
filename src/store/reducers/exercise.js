@@ -8,7 +8,8 @@ const initialState = {
   rest: 30,
   workoutStartTime: null,
   workoutEndTime: null,
-  cycles: 1
+  cycles: 1,
+  currentIndexExercise: 0
 }
 
 const identifier = 'exercise'
@@ -94,6 +95,10 @@ export default (state = initialState, action) => {
 
     case 'RESET_CYCLES':
       nextState.cycles = 1
+      break
+
+    case 'SET_CURRENT_INDEX_EXERCISE':
+      nextState.currentIndexExercise = action.data
       break
 
     default:
