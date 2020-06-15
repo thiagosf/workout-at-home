@@ -28,15 +28,10 @@ function Finish ({
     label: 'Home',
     icon: 'home'
   }
-  const rightButton = {
-    label: 'Finish',
-    icon: 'stop'
-  }
 
   const goHome = () => {
     history.push('/')
   }
-  const finishWorkout = () => history.push('/finish')
   const count = selectedExercises.length
   const synced = base.enableSync
   const [ellapsedSeconds, setEllapsedSeconds] = useState(0)
@@ -68,9 +63,7 @@ function Finish ({
   return (
     <Layout
       mainButton={mainButton}
-      rightButton={rightButton}
       onClickMain={goHome}
-      onClickRight={finishWorkout}
     >
       {!synced &&
         <Flex
