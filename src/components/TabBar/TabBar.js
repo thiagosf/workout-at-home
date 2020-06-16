@@ -36,13 +36,15 @@ function TabBar ({
             >{leftButton.label}</TabBarButton>
           }
         </Flex>
-        <TabBarMainButton
-          position="relative"
-          top="-15px"
-          onClick={onClickMain}
-          icon={mainButton.icon}
-          count={mainButton.count}
-        >{mainButton.label}</TabBarMainButton>
+        {mainButton &&
+          <TabBarMainButton
+            position="relative"
+            top="-15px"
+            onClick={onClickMain}
+            icon={mainButton.icon}
+            count={mainButton.count}
+          >{mainButton.label}</TabBarMainButton>
+        }
         <Flex
           minWidth="50px"
           justifyContent="flex-end"

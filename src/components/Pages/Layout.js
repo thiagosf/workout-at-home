@@ -6,7 +6,7 @@ import { Header } from '../Header'
 import { TabBar } from '../TabBar'
 import { colors } from '../../ui'
 import { loadExercises } from '../../store/actions/exercise'
-import { syncLocalStorage } from '../../store/actions/base'
+import { syncLocalStorage, showFooter } from '../../store/actions/base'
 
 const tabBarContainer = {
   hidden: { y: '150%' },
@@ -33,6 +33,7 @@ function Layout({
   loadExercises,
   exercise,
   syncLocalStorage,
+  showFooter,
   ...props
 }) {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -54,12 +55,14 @@ function Layout({
   const color = resolveColor('color', 'normal')
   const backgroundColor = resolveColor('background', 'normal')
   const footerControls = useAnimation()
-  const { footer: showFooter } = base
+  const { footer: footerVisible, enabledSync } = base
   const { list } = exercise
 
   useEffect(() => {
-    footerControls.start(showFooter ? 'visible' : 'hidden')
-  }, [footerControls, showFooter])
+    if (footerVisible) {
+      footerControls.start('visible')
+    }
+  }, [footerControls, footerVisible])
 
   useEffect(() => {
     if (list.length === 0) {
@@ -67,15 +70,10 @@ function Layout({
     }
   }, [loadExercises, list])
 
-  const hasFooterButtons = (
-    leftButton ||
-    mainButton ||
-    rightButton
-  )
-  const footer = hasFooterButtons && (
+  const footer = (
     <MotionBox
       variants={tabBarContainer}
-      initial="hidden"
+      initial={footerVisible ? 'visible' : 'hidden'}
       animate={footerControls}
     >
       <TabBar
@@ -96,6 +94,12 @@ function Layout({
   useEffect(() => {
     syncLocalStorage()
   }, [syncLocalStorage])
+
+  useEffect(() => {
+    if (enabledSync && !footerVisible) {
+      showFooter(true)
+    }
+  }, [showFooter, enabledSync, footerVisible])
 
   return (
     <Flex
@@ -136,7 +140,8 @@ function Layout({
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
   loadExercises,
-  syncLocalStorage
+  syncLocalStorage,
+  showFooter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

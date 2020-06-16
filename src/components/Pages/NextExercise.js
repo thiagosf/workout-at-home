@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { WaitBeforeNextExercise } from '../Exercise'
-import { showFooter } from '../../store/actions/base'
 import { nextExercise } from '../../store/actions/exercise'
 
 function NextExercise ({
   base,
   exercise,
-  showFooter,
   nextExercise,
   setConfig
 }) {
@@ -27,7 +25,7 @@ function NextExercise ({
     nextExercise()
     history.push('/workout')
   }
-  const finishWorkout = () => history.push('/finish')
+  const finishWorkout = () => history.push('/workout/finish')
   const [isConfigured, setIsConfigured] = useState(false)
   const config = {
     mainButton,
@@ -35,10 +33,6 @@ function NextExercise ({
     onClickMain: toNext,
     onClickRight: finishWorkout
   }
-
-  useEffect(() => {
-    showFooter(true)
-  }, [showFooter])
 
   useEffect(() => {
     if (!isConfigured) {
@@ -66,7 +60,6 @@ function NextExercise ({
 
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
-  showFooter,
   nextExercise
 }
 

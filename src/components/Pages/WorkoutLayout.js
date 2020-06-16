@@ -22,10 +22,11 @@ function WorkoutLayout ({
   const {
     selectedExercises,
     cycles,
-    workoutStartTime
+    workoutStartTime,
+    workoutEndTime
   } = exercise
   const count = selectedExercises.length
-  const synced = base.enableSync
+  const synced = base.enabledSync
   const [startedTimer, setStartedTimer] = useState(false)
   const [ellapsedSeconds, setEllapsedSeconds] = useState(0)
   const [config, setConfig] = useState({
@@ -47,13 +48,13 @@ function WorkoutLayout ({
     if (isHidden) {
       setEllapsedSeconds(0)
       setStartedTimer(false)
-    } else if (workoutStartTime !== null) {
-      const now = new Date()
-      const seconds = Math.floor((now - new Date(workoutStartTime)) / 1000)
+    } else if (synced && workoutStartTime !== null) {
+      const comparedDate = workoutEndTime ? workoutEndTime : Date.now()
+      const seconds = (comparedDate - workoutStartTime) / 1000
       setEllapsedSeconds(seconds)
       setStartedTimer(config.isFinish ? false : true)
     }
-  }, [isHidden, workoutStartTime, config])
+  }, [isHidden, synced, workoutStartTime, workoutEndTime, config])
 
   return (
     <Layout
@@ -117,7 +118,7 @@ function WorkoutLayout ({
               <NextExercise setConfig={setConfig} />
             </Route>
             <Route path={`${path}/finish`}>
-              <Finish />
+              <Finish setConfig={setConfig} />
             </Route>
           </Switch>
         </Flex>

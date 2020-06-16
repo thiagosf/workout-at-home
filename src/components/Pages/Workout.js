@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Exercise } from '../Exercise'
-import { showFooter } from '../../store/actions/base'
 
 function Workout ({
   base,
   exercise,
-  showFooter,
   setConfig
 }) {
   const history = useHistory()
@@ -34,7 +32,7 @@ function Workout ({
     icon: 'stop'
   }
   const nextExercise = () => history.push('/workout/next-exercise')
-  const finishWorkout = () => history.push('/finish')
+  const finishWorkout = () => history.push('/workout/finish')
   const [isConfigured, setIsConfigured] = useState(false)
   const config = {
     mainButton,
@@ -44,10 +42,6 @@ function Workout ({
     repetitionCount: currentExercise.data.count,
     repetitionCountType: currentExercise.data.count_type
   }
-
-  useEffect(() => {
-    showFooter(true)
-  }, [showFooter])
 
   useEffect(() => {
     if (!isConfigured) {
@@ -74,11 +68,5 @@ function Workout ({
 }
 
 const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
-const mapDispatchToProps = {
-  showFooter
-}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Workout)
+export default connect(mapStateToProps)(Workout)

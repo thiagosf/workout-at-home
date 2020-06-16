@@ -1,6 +1,6 @@
 const initialState = {
   footer: false,
-  enableSync: false
+  enabledSync: false
 }
 
 const identifier = 'base'
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
       break
 
     case 'ENABLE_SYNC':
-      nextState.enableSync = true
+      nextState.enabledSync = true
       break
 
     default:

@@ -24,7 +24,7 @@ export default store => {
   }
   return () => {
     const state = store.getState()
-    if (state.base.enableSync) {
+    if (state.base.enabledSync) {
       const stateToSave = {}
       for (const reducerName in saveStates) {
         const item = state[reducerName]

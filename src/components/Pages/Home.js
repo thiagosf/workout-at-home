@@ -16,7 +16,6 @@ import Layout from './Layout'
 import { MuscleGroup } from '../MuscleGroup'
 import { ExerciseCarousel, ExerciseFilters } from '../Exercise'
 import { Spinner } from '../Spinner'
-import { showFooter } from '../../store/actions/base'
 import {
   filterMuscleGroup,
   filterEquipaments,
@@ -56,8 +55,7 @@ const Home = function ({
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
-  removeExercise,
-  showFooter
+  removeExercise
 }) {
   const onSelectMuscleGroup = async item => {
     await carouselControls.start('hidden')
@@ -131,7 +129,6 @@ const Home = function ({
   const goToEditList = async () => {
     await Promise.all([
       carouselControls.start('hidden'),
-      showFooter(false),
       muscleGroupControls.start('hidden')
     ])
     history.push('/exercises-list')
@@ -166,14 +163,12 @@ const Home = function ({
     if (!loading && list.length > 0) {
       carouselControls.start('visible')
       muscleGroupControls.start('visible')
-      showFooter(true)
     }
   }, [
     list,
     loading,
     carouselControls,
-    muscleGroupControls,
-    showFooter
+    muscleGroupControls
   ])
 
   useEffect(() => {
@@ -261,8 +256,7 @@ const mapDispatchToProps = {
   filterMuscleGroup,
   filterEquipaments,
   addExercise,
-  removeExercise,
-  showFooter
+  removeExercise
 }
 
 export default connect(

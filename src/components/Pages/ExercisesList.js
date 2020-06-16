@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
@@ -8,7 +8,6 @@ import {
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { colors } from '../../ui'
-import { showFooter } from '../../store/actions/base'
 import {
   addExercise,
   removeExercise,
@@ -25,7 +24,6 @@ function ExercisesList ({
   exercise,
   removeExercise,
   removeAllExercises,
-  showFooter,
   addExercise,
   setRest,
   setWorkoutStartTime
@@ -54,7 +52,7 @@ function ExercisesList ({
   const backToHome = () => history.push('/')
   const startWorkout = () => {
     if (!isEmptyList) {
-      setWorkoutStartTime(new Date())
+      setWorkoutStartTime(Date.now())
     }
     history.push(
       isEmptyList
@@ -96,10 +94,6 @@ function ExercisesList ({
     label: isEmptyList ? 'Add' : 'Start!',
     icon: isEmptyList ? 'plus' : 'ray'
   }
-
-  useEffect(() => {
-    showFooter(true)
-  }, [showFooter])
 
   return (
     <Layout
@@ -180,7 +174,6 @@ const mapDispatchToProps = {
   addExercise,
   removeExercise,
   removeAllExercises,
-  showFooter,
   setRest,
   setWorkoutStartTime
 }
