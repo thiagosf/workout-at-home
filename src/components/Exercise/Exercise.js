@@ -5,6 +5,7 @@ import {
   RadioButtonGroup,
   Button,
   Icon,
+  Link,
   useColorMode
 } from '@chakra-ui/core'
 import { colors } from '../../ui'
@@ -140,6 +141,23 @@ const MediaTypeRadio = React.forwardRef((props, ref) => {
   )
 })
 
+const CreditLink = ({ link }) =>
+  <Link
+    isExternal
+    href={link}
+    style={{ color: colors.gray500 }}
+    padding="15px"
+    display="inline-block"
+    position="absolute"
+    top="0"
+    left="0"
+  >
+    <Icon
+      name="info"
+      size="24px"
+    />
+  </Link>
+
 function Exercise ({
   exercise,
   added,
@@ -194,7 +212,10 @@ function Exercise ({
         width="100px"
         height="100px"
         style={{ filter }}
-      />
+        position="relative"
+      >
+        {item.credits && <CreditLink link={item.credits} />}
+      </Box>
     )
   })
   const videos = exercise.videos.map((item, index) => {
