@@ -1,39 +1,31 @@
-import React, { useState } from 'react'
-import {
-  Flex,
-  Box,
-  Icon,
-  useColorMode
-} from '@chakra-ui/core'
-import {
-  sortableContainer,
-  sortableElement,
-  sortableHandle,
-} from 'react-sortable-hoc'
-import arrayMove from 'array-move'
+import React, { useState, useEffect } from 'react'
+import { Box } from '@chakra-ui/core'
+import { motion } from 'framer-motion'
 import ExerciseMiniControls from './ExerciseMiniControls'
-import { colors } from '../../ui'
+import { Sortable } from '../Sortable'
 
-const DragHandle = sortableHandle(({ color }) =>
-  <Flex
-    margin="0 0 0 -15px"
-    padding="0 15px 0 10px"
-    alignSelf="stretch"
-    alignItems="center"
-  >
-    <Icon size="20px" name="drag-handle" color={color} />
-  </Flex>
-)
+const containerVariants = {
+  visible: {
+    transition: { staggerChildren: 0.15 }
+  }
+}
 
-const SortableItem = sortableElement(({ children }) => (
-  <Box>
-    {children}
-  </Box>
-))
+const itemContainer = {
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { ease: 'circOut' }
+    }
+  },
+  hidden: {
+    y: 50,
+    opacity: 0
+  }
+}
 
-const SortableList = sortableContainer(({ children, ...props }) => {
-  return <Box {...props}>{children}</Box>
-})
+const MotionContainer = motion.custom(Box)
+const MotionBox = motion.custom(Box)
 
 function ExerciseMiniList ({
   exercises,
@@ -43,35 +35,26 @@ function ExerciseMiniList ({
   const [model, setModel] = useState(
     exercises.map((item, index) => ({
       exercise: item.exercise,
-      data: item.data
+      data: item.data,
+      sort: +index
     }))
   )
 
-  const handleSort = ({ oldIndex, newIndex }) => {
-    const newModel = arrayMove(model, oldIndex, newIndex)
-      .map((item, index) => ({
-        ...item,
-        data: {
-          ...item.data,
-          sort: index
+  const handleChange = items => {
+    let newModel = [...model]
+    for (const index in items) {
+      const item = items[index]
+      newModel = newModel.map(modelItem => {
+        if (+modelItem.exercise.id === +item.id) {
+          modelItem.sort = +index
         }
-      }))
-    setModel(newModel)
-    sendChanges(newModel)
-  }
-
-  const handleChange = item => {
-    const newModel = model.map(exercise => {
-      if (exercise.data.exercise_id === item.exercise_id) {
-        return {
-          ...exercise,
-          data: {
-            ...exercise.data,
-            ...item
-          }
-        }
-      }
-      return exercise
+        return modelItem
+      })
+    }
+    newModel.sort((a, b) => {
+      if (a.sort < b.sort) return -1
+      if (a.sort > b.sort) return 1
+      return 0
     })
     setModel(newModel)
     sendChanges(newModel)
@@ -85,35 +68,36 @@ function ExerciseMiniList ({
     )
   }
 
-  const { colorMode } = useColorMode()
-  const allColors = {
-    dragHandle: {
-      normal: {
-        light: colors.gray300,
-        dark: colors.gray600
-      }
+  // const itemControls = useAnimation()
+
+  const items = model.map((item, index) => {
+    return {
+      id: item.exercise.id,
+      item,
+      component: ({ handle }) => (
+        <MotionBox
+          key={`sortable-item-${item.exercise.id}`}
+          variants={itemContainer}
+        >
+          <ExerciseMiniControls
+            index={index}
+            margin="5px 0"
+            padding="10px 20px"
+            onChange={handleChange}
+            exercise={item.exercise}
+            initialData={item.data}
+            dragHandle={handle}
+          />
+        </MotionBox>
+      )
     }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const dragHandleColor = resolveColor('dragHandle', 'normal')
-
-  const exercisesMiniControls = model.map((item, index) => {
-    return (
-      <SortableItem
-        key={`sortable-item-${item.exercise.id}`}
-        index={index}
-      >
-        <ExerciseMiniControls
-          margin="10px 0"
-          onChange={handleChange}
-          exercise={item.exercise}
-          initialData={item.data}
-          dragHandle={<DragHandle color={dragHandleColor} />}
-        />
-      </SortableItem>
-    )
   })
+
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    setVisible(true)
+  }, [])
 
   return (
     <Box
@@ -121,13 +105,16 @@ function ExerciseMiniList ({
       padding="0 0 50px 0"
       {...props}
     >
-      <SortableList
-        onSortEnd={handleSort}
-        lockAxis="y"
-        useDragHandle
+      <MotionContainer
+        initial={false}
+        animate={visible ? "visible" : "hidden"}
+        variants={containerVariants}
       >
-        {exercisesMiniControls}
-      </SortableList>
+        <Sortable
+          items={items}
+          onChange={handleChange}
+        />
+      </MotionContainer>
     </Box>
   )
 }

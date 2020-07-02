@@ -36,7 +36,6 @@ const ExerciseVideo = ({ item }) => {
         pointerEvents={playing ? 'none' : 'initial'}
         width="100%"
         onClick={() => {
-          console.log('here...', videoRef)
           videoRef.playVideo()
         }}
       />

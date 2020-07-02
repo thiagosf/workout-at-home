@@ -9,6 +9,7 @@ import ExerciseCard from './ExerciseCard'
 import ExerciseHeader from './ExerciseHeader'
 import { NumberControl } from '../NumberControl'
 import { colors } from '../../ui'
+import './styles.css'
 
 const MediaTypeRadio = React.forwardRef((props, ref) => {
   const { colorMode } = useColorMode()
@@ -86,9 +87,14 @@ function ExerciseMiniControls ({
   const { colorMode } = useColorMode()
   const resolveColor = (name, state) => allColors[name][state][colorMode]
   const color = resolveColor('color', 'normal')
+  const classes = [
+    'exercise-card',
+    `exercise-card--${colorMode}`
+  ]
 
   return (
     <ExerciseCard
+      className={classes.join(' ')}
       color={color}
       {...props}
     >
