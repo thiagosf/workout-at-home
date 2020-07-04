@@ -1,6 +1,7 @@
 const initialState = {
   footer: false,
-  enabledSync: false
+  enabledSync: false,
+  onboarding: false
 }
 
 const identifier = 'base'
@@ -27,6 +28,10 @@ export default (state = initialState, action) => {
 
     case 'ENABLE_SYNC':
       nextState.enabledSync = true
+      break
+
+    case 'SET_ONBOARDING':
+      nextState.onboarding = action.data
       break
 
     default:

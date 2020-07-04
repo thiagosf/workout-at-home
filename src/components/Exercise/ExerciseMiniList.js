@@ -6,7 +6,7 @@ import { Sortable } from '../Sortable'
 
 const containerVariants = {
   visible: {
-    transition: { staggerChildren: 0.15 }
+    transition: { staggerChildren: 0.1 }
   }
 }
 
@@ -15,11 +15,14 @@ const itemContainer = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { ease: 'circOut' }
+      y: {
+        ease: 'circOut',
+        duration: 0.5
+      }
     }
   },
   hidden: {
-    y: 50,
+    y: 20,
     opacity: 0
   }
 }
@@ -40,7 +43,7 @@ function ExerciseMiniList ({
     }))
   )
 
-  const handleChange = items => {
+  const handleListChange = items => {
     let newModel = [...model]
     for (const index in items) {
       const item = items[index]
@@ -60,6 +63,17 @@ function ExerciseMiniList ({
     sendChanges(newModel)
   }
 
+  const handleChange = item => {
+    const newModel = model.map(_item => {
+      if (_item.exercise.id === item.exercise_id) {
+        _item.data = { ...item }
+      }
+      return _item
+    })
+    setModel(newModel)
+    sendChanges(newModel)
+  }
+
   const sendChanges = newModel => {
     onChange(
       newModel.map(({ exercise, ...other }) => ({
@@ -67,8 +81,6 @@ function ExerciseMiniList ({
       }))
     )
   }
-
-  // const itemControls = useAnimation()
 
   const items = model.map((item, index) => {
     return {
@@ -112,7 +124,7 @@ function ExerciseMiniList ({
       >
         <Sortable
           items={items}
-          onChange={handleChange}
+          onChange={handleListChange}
         />
       </MotionContainer>
     </Box>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { WaitBeforeNextExercise } from '../Exercise'
+import { ScaleIn } from '../Animations'
 import { nextExercise } from '../../store/actions/exercise'
 
 function NextExercise ({
@@ -46,15 +47,20 @@ function NextExercise ({
   ])
 
   return (
-    <WaitBeforeNextExercise
-      seconds={rest}
-      onFinish={toNext}
-      isStarted={true}
+    <ScaleIn
       display="flex"
       flexGrow="1"
-      flexDirection="column"
-      justifyContent="center"
-    />
+    >
+      <WaitBeforeNextExercise
+        seconds={rest}
+        onFinish={toNext}
+        isStarted={true}
+        display="flex"
+        flexGrow="1"
+        flexDirection="column"
+        justifyContent="center"
+      />
+    </ScaleIn>
   )
 }
 

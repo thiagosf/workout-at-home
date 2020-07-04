@@ -43,7 +43,7 @@ function Confirm ({
         <AlertDialogContent
           background={background}
         >
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogHeader fontSize="lg" fontWeight="600">
             {title}
           </AlertDialogHeader>
           <AlertDialogBody>

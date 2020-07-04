@@ -16,6 +16,12 @@ yarn storybook
 yarn start
 ```
 
+### Build webapp
+
+```bash
+yarn build
+```
+
 ## Components
 
 - [x] MuscularGroupCount
@@ -61,4 +67,8 @@ yarn start
 
 - [ ] Refactor `allColors` using `utils:colorByMode`
 - [x] Create route view to `/workout`, add `/workout/next` and `/workout/finish` to mantain `Timer` on top
-- [ ] Add animations with `framer-motion`
+- [x] Add animations with `framer-motion`
+
+## Credits
+
+- [Onboarding vectors](https://pt.vecteezy.com/arte-vetorial/133933-vetores-de-treinamento-de-desportista)

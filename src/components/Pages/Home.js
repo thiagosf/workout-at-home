@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
@@ -10,11 +10,11 @@ import {
   useDisclosure,
   useColorMode
 } from '@chakra-ui/core'
-import { motion, useAnimation } from 'framer-motion'
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { MuscleGroup } from '../MuscleGroup'
 import { ExerciseCarousel, ExerciseFilters } from '../Exercise'
+import { Opacity, ScaleIn } from '../Animations'
 import { Spinner } from '../Spinner'
 import {
   filterMuscleGroup,
@@ -22,35 +22,11 @@ import {
   addExercise,
   removeExercise
 } from '../../store/actions/exercise'
-import { exerciseUtils } from '../../utils'
+import { exerciseUtils, delay } from '../../utils'
 import { colors } from '../../ui'
 
-const carouselContainer = {
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.3,
-      ease: 'easeOut'
-    }
-  }
-}
-
-const muscleGroupContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
-      ease: 'easeOut'
-    }
-  }
-}
-
-const MotionBox = motion.custom(Box)
-
 const Home = function ({
+  base,
   exercise,
   filterMuscleGroup,
   filterEquipaments,
@@ -58,10 +34,11 @@ const Home = function ({
   removeExercise
 }) {
   const onSelectMuscleGroup = async item => {
-    await carouselControls.start('hidden')
+    setVisibleCarousel(false)
+    await delay(300)
     filterMuscleGroup(+item.id)
     filterEquipaments([])
-    carouselControls.start('visible')
+    setVisibleCarousel(true)
   }
 
   const onSelectExercise = item => {
@@ -80,9 +57,9 @@ const Home = function ({
 
   const btnRef = React.useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const carouselControls = useAnimation()
-  const muscleGroupControls = useAnimation()
   const history = useHistory()
+  const [visibleCarousel, setVisibleCarousel] = useState(false)
+  const [visibleMuscleGroup, setVisibleMuscleGroup] = useState(false)
 
   const {
     list,
@@ -127,16 +104,16 @@ const Home = function ({
     count: selectedExercisesIDs.length
   }
   const goToEditList = async () => {
-    await Promise.all([
-      carouselControls.start('hidden'),
-      muscleGroupControls.start('hidden')
-    ])
+    setVisibleCarousel(false)
+    setVisibleMuscleGroup(false)
+    await delay(300)
     history.push('/exercises-list')
   }
   const onFilterEquipament = async values => {
-    await carouselControls.start('hidden')
+    setVisibleCarousel(false)
+    await delay(300)
     filterEquipaments(values)
-    carouselControls.start('visible')
+    setVisibleCarousel(true)
   }
   const openFilters = () => onOpen()
 
@@ -161,14 +138,12 @@ const Home = function ({
 
   useEffect(() => {
     if (!loading && list.length > 0) {
-      carouselControls.start('visible')
-      muscleGroupControls.start('visible')
+      setVisibleCarousel(true)
+      setVisibleMuscleGroup(true)
     }
   }, [
     list,
-    loading,
-    carouselControls,
-    muscleGroupControls
+    loading
   ])
 
   useEffect(() => {
@@ -190,17 +165,15 @@ const Home = function ({
         justifyContent="space-between"
         paddingBottom="10px"
       >
-        <MotionBox
-          variants={muscleGroupContainer}
-          initial="hidden"
-          animate={muscleGroupControls}
+        <Opacity
+          visible={visibleMuscleGroup}
         >
           <MuscleGroup
             onSelect={onSelectMuscleGroup}
             muscleGroups={muscleGroups}
             margin="0 0 10px 0"
           />
-        </MotionBox>
+        </Opacity>
         <Flex
           flexGrow="1"
           flexDirection="column"
@@ -211,11 +184,9 @@ const Home = function ({
             <Spinner />
           }
           {!loading && exercises.length > 0 &&
-            <MotionBox
-              variants={carouselContainer}
-              initial="hidden"
+            <ScaleIn
               flexGrow="1"
-              animate={carouselControls}
+              visible={visibleCarousel}
             >
               <ExerciseCarousel
                 height="100%"
@@ -223,7 +194,7 @@ const Home = function ({
                 selecteds={selectedExercisesIDs}
                 exercises={exercises}
               />
-            </MotionBox>
+            </ScaleIn>
           }
         </Flex>
       </Flex>
@@ -251,7 +222,7 @@ const Home = function ({
   )
 }
 
-const mapStateToProps = ({ exercise }) => ({ exercise })
+const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
   filterMuscleGroup,
   filterEquipaments,

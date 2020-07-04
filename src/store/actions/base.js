@@ -27,3 +27,9 @@ export function syncLocalStorage () {
     }
   }
 }
+
+export function setOnboarding (data) {
+  return dispatch => {
+    dispatch({ type: 'SET_ONBOARDING', data })
+  }
+}

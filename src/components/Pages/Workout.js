@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Exercise } from '../Exercise'
+import { ScaleIn } from '../Animations'
 
 function Workout ({
   base,
@@ -59,11 +60,16 @@ function Workout ({
   }
 
   return (
-    <Exercise
-      exercise={currentExercise.exercise}
+    <ScaleIn
       flexGrow="1"
-      margin="15px 15px 45px 15px "
-    />
+      display="flex"
+    >
+      <Exercise
+        exercise={currentExercise.exercise}
+        flexGrow="1"
+        margin="15px 15px 45px 15px "
+      />
+    </ScaleIn>
   )
 }
 

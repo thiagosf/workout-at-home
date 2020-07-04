@@ -10,10 +10,8 @@ import {
   Home,
   ExercisesList,
   NotFound,
-  WorkoutLayout
-  // Workout,
-  // NextExercise,
-  // Finish
+  WorkoutLayout,
+  Onboarding
 } from './components/Pages'
 
 function App({ store }) {
@@ -23,6 +21,9 @@ function App({ store }) {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/onboarding">
+            <Onboarding />
           </Route>
           <Route path="/exercises-list">
             <ExercisesList />
