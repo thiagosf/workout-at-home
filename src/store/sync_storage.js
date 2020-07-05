@@ -20,10 +20,18 @@ export default store => {
       name: 'cycles',
       type: 'SET_CYCLES',
       field: 'data'
+    }, {
+      name: 'workouts',
+      type: 'SET_WORKOUTS',
+      field: 'data'
     }],
     base: [{
       name: 'onboarding',
       type: 'SET_ONBOARDING',
+      field: 'data'
+    }, {
+      name: 'addToHomeScreen',
+      type: 'SET_ADD_TO_HOME_SCREEN',
       field: 'data'
     }]
   }

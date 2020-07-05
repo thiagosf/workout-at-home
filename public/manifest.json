@@ -1,6 +1,6 @@
 {
-  "short_name": "WorkoutHome",
-  "name": "WorkoutHome",
+  "short_name": "Homey Training",
+  "name": "Homey Training",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +19,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#1D1D1D",
-  "background_color": "#1D1D1D"
+  "display": "fullscreen",
+  "theme_color": "#f06969",
+  "background_color": "#f06969"
 }

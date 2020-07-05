@@ -9,7 +9,8 @@ const initialState = {
   workoutStartTime: null,
   workoutEndTime: null,
   cycles: 1,
-  currentIndexExercise: 0
+  currentIndexExercise: 0,
+  workouts: []
 }
 
 const identifier = 'exercise'
@@ -90,6 +91,14 @@ export default (state = initialState, action) => {
 
     case 'SET_WORKOUT_END_TIME':
       nextState.workoutEndTime = action.data
+      nextState.workouts = [{
+        workoutStartTime: nextState.workoutStartTime,
+        workoutEndTime: nextState.workoutEndTime,
+        time: (nextState.workoutEndTime - nextState.workoutStartTime) / 1000,
+        cycles: nextState.cycles,
+        rest: nextState.rest,
+        selectedExercises: nextState.selectedExercises
+      }].concat(nextState.workouts)
       break
 
     case 'ADD_CYCLE':
@@ -106,6 +115,10 @@ export default (state = initialState, action) => {
 
     case 'SET_CURRENT_INDEX_EXERCISE':
       nextState.currentIndexExercise = action.data
+      break
+
+    case 'SET_WORKOUTS':
+      nextState.workouts = action.data || []
       break
 
     default:

@@ -92,6 +92,10 @@ const Home = function ({
 
   const equipaments = exerciseUtils.getEquipaments(exercisesByMuscleGroups)
 
+  const leftButton = {
+    label: 'Saved',
+    icon: 'loop'
+  }
   const rightButton = {
     label: 'Filters',
     icon: 'filter',
@@ -102,6 +106,12 @@ const Home = function ({
   const mainButton = {
     label: 'Next',
     count: selectedExercisesIDs.length
+  }
+  const openSavedLists = async () => {
+    setVisibleCarousel(false)
+    setVisibleMuscleGroup(false)
+    await delay(300)
+    history.push('/saved-lists')
   }
   const goToEditList = async () => {
     setVisibleCarousel(false)
@@ -148,8 +158,10 @@ const Home = function ({
 
   return (
     <Layout
+      leftButton={leftButton}
       rightButton={rightButton}
       mainButton={mainButton}
+      onClickLeft={openSavedLists}
       onClickRight={openFilters}
       onClickMain={goToEditList}
     >

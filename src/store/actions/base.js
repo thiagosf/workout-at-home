@@ -33,3 +33,9 @@ export function setOnboarding (data) {
     dispatch({ type: 'SET_ONBOARDING', data })
   }
 }
+
+export function setAddToHomeScreen (data) {
+  return dispatch => {
+    dispatch({ type: 'SET_ADD_TO_HOME_SCREEN', data })
+  }
+}

@@ -7,7 +7,8 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  useColorMode
+  useColorMode,
+  Scale
 } from '@chakra-ui/core'
 import { colors, utils } from '../../ui'
 
@@ -31,36 +32,41 @@ function Confirm ({
   )
 
   return (
-    <React.Fragment>
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-        isCentered
-        {...props}
-      >
-        <AlertDialogOverlay />
-        <AlertDialogContent
-          background={background}
+    <Scale in={isOpen}>
+      {styles => (
+        <AlertDialog
+          isOpen={true}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+          isCentered
+          {...props}
         >
-          <AlertDialogHeader fontSize="lg" fontWeight="600">
-            {title}
-          </AlertDialogHeader>
-          <AlertDialogBody>
-            {text}
-          </AlertDialogBody>
+          <AlertDialogOverlay />
+          <AlertDialogContent
+            background={background}
+            rounded="20px"
+            margin="0 20px"
+            {...styles}
+          >
+            <AlertDialogHeader fontSize="lg" fontWeight="600">
+              {title}
+            </AlertDialogHeader>
+            <AlertDialogBody>
+              {text}
+            </AlertDialogBody>
 
-          <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onClose}>
-              {buttonNo}
-            </Button>
-            <Button variantColor="red" onClick={onConfirm} ml={3}>
-              {buttonYes}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </React.Fragment>
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                {buttonNo}
+              </Button>
+              <Button variantColor="red" onClick={onConfirm} ml={3}>
+                {buttonYes}
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
+    </Scale>
   )
 }
 

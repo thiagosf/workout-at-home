@@ -30,8 +30,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x640",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Pushup_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/pushups/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -39,7 +40,7 @@
     },
     {
       "id": 2,
-      "name": "Push up reversed",
+      "name": "Reverse Hands Push Up",
       "muscle_groups": [
         {
           "id": 1,
@@ -72,8 +73,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "http://darebee.com/images/dailydare/2016/may9.jpg",
+          "credits": "https://darebee.com/hive/daily-dares/186393-dd-9-may-2016-10-reverse-grip-push-ups",
+          "line_art": true
         }
       ],
       "videos": [
@@ -104,8 +106,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-0.weighttraining.guide/wp-content/uploads/2016/10/Dumbbell-One-Arm-Shoulder-Press-990x1072.png",
+          "credits": "https://weighttraining.guide/exercises/dumbbell-one-arm-overhead-press/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -141,8 +144,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Chair_Tricep_Dip_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/chair-bench-tricep-dips/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -178,8 +182,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Diamond_Pushup_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/diamond-tricep-pushup-pushups/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -215,8 +220,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Wide_Pushup_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/wide-push-ups/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -247,8 +253,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Standing_Overhead_Barbell_Military_Shoulder_Press.png",
+          "credits": "https://workoutlabs.com/exercise-guide/standing-overhead-military-barbell-shoulder-press/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -299,7 +306,7 @@
     },
     {
       "id": 9,
-      "name": "Wall triceps",
+      "name": "Kneeling Triceps Extension",
       "muscle_groups": [
         {
           "id": 1,
@@ -317,8 +324,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-0.weighttraining.guide/wp-content/uploads/2018/01/kneeling-bodyweight-triceps-extension-990x718.png",
+          "credits": "https://weighttraining.guide/exercises/kneeling-bodyweight-triceps-extension/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -349,8 +357,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Flutter_Kicks_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/flutter-kicks-2/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -376,8 +385,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "http://a-tinkle.com/wp-content/uploads/2020/02/scissor-kicks-abs.jpg",
+          "credits": "http://a-tinkle.com/scissors-exercise-a-simple-exercise-for-the-abdominal-muscles/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -403,8 +413,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Bicycle_Crunches_Air-Bikes_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/bicycle-crunches-air-bikes/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -430,8 +441,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Sit_up_Crunch_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/crunches/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -457,8 +469,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Lying_Leg_Raise_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/lying-leg-raises/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -484,8 +497,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Jump_Squat_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/jump-squats/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -516,8 +530,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Bodyweight_Walking_Lunge_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/alternating-bodyweight-lunges/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -525,7 +540,7 @@
     },
     {
       "id": 17,
-      "name": "Side lunge",
+      "name": "Lateral lunge",
       "muscle_groups": [
         {
           "id": 7,
@@ -548,8 +563,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Bodyweight_Side_Steps_Lateral_Lunges.png",
+          "credits": "https://workoutlabs.com/exercise-guide/bodyweight-side-steps-lateral-lunges/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -575,8 +591,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://qph.fs.quoracdn.net/main-qimg-327bcdea0ba0aa71be7377992c31a866",
+          "credits": "https://www.quora.com/What-does-a-wall-sit-do-What-does-it-do-to-the-lower-body-muscles-Any-benefits",
+          "line_art": true
         }
       ],
       "videos": [
@@ -602,8 +619,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Bodyweight_Calf_Raises_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/bodyweight-calf-raises/",
+          "line_art": true
         }
       ],
       "videos": [
@@ -639,8 +657,9 @@
       "likes": null,
       "images": [
         {
-          "url": "http://via.placeholder.com/640x50",
-          "credits": "https://workoutlabs.com/exercise-guide/ab-roller-wheel-rollout/"
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Hip_Raise_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/hip-raises/",
+          "line_art": true
         }
       ],
       "videos": [

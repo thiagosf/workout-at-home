@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Flex, Box, useColorMode } from '@chakra-ui/core'
 import { motion, useAnimation } from 'framer-motion'
 import { useHistory } from 'react-router-dom'
 import { Header } from '../Header'
 import { TabBar } from '../TabBar'
+import { AddToHomeScreen } from '../AddToHomeScreen'
+import { ScaleIn } from '../Animations'
 import { colors, utils } from '../../ui'
 import { loadExercises } from '../../store/actions/exercise'
 import {
   syncLocalStorage,
   showFooter,
-  setOnboarding
+  setOnboarding,
+  setAddToHomeScreen
 } from '../../store/actions/base'
 
 const tabBarContainer = {
@@ -40,6 +43,7 @@ function Layout({
   syncLocalStorage,
   showFooter,
   setOnboarding,
+  setAddToHomeScreen,
   ...props
 }) {
   const history = useHistory()
@@ -57,8 +61,18 @@ function Layout({
   )
 
   const footerControls = useAnimation()
-  const { footer: footerVisible, enabledSync, onboarding } = base
+  const {
+    footer: footerVisible,
+    enabledSync,
+    onboarding,
+    addToHomeScreen
+  } = base
   const { list } = exercise
+  const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false)
+  const onCloseAddToHomeScreen = () => {
+    setAddToHomeScreen(true)
+  }
+  const isHome = history.location.pathname === '/'
 
   const footer = (
     <MotionBox
@@ -110,6 +124,14 @@ function Layout({
     }
   }, [history, setOnboarding, onboarding, enabledSync])
 
+  useEffect(() => {
+    if (!addToHomeScreen && isHome) {
+      setTimeout(() => {
+        setShowAddToHomeScreen(true)
+      }, 1000)
+    }
+  }, [setShowAddToHomeScreen, addToHomeScreen, isHome])
+
   return (
     <Flex
       color={color}
@@ -119,6 +141,22 @@ function Layout({
       justifyContent="space-between"
       {...props}
     >
+      {!addToHomeScreen && isHome &&
+        <ScaleIn
+          visible={showAddToHomeScreen}
+          position="absolute"
+          zIndex="1000"
+          bottom="0"
+          left="0"
+          right="0"
+          padding="20px"
+          backgroundImage="linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))"
+        >
+          <AddToHomeScreen
+            onCloseAddToHomeScreen={onCloseAddToHomeScreen}
+          />
+        </ScaleIn>
+      }
       <Box padding="10px">
         <Header
           colorMode={colorMode}
@@ -151,7 +189,8 @@ const mapDispatchToProps = {
   loadExercises,
   syncLocalStorage,
   showFooter,
-  setOnboarding
+  setOnboarding,
+  setAddToHomeScreen
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

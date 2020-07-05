@@ -49,6 +49,7 @@ yarn build
 - [x] MuscleGroupBody
 - [x] NumberControl
 - [x] RestBetweenExercises
+- [x] AddToHomeScreen
 
 ## Pages
 
@@ -59,10 +60,11 @@ yarn build
 - [x] Finish
 - [x] Onboarding
 - [x] Not found
+- [ ] Saved lists
 
 ## Store
 
-- [ ] exercises
+- [x] exercises
 
 ## Todo
 
@@ -72,6 +74,7 @@ yarn build
 - [ ] Desktop version
 - [ ] i18n support
 - [ ] Remove item on sort list
+- [ ] Improve confirmation component
 
 ## Credits
 

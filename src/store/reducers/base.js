@@ -1,7 +1,8 @@
 const initialState = {
   footer: false,
   enabledSync: false,
-  onboarding: false
+  onboarding: false,
+  addToHomeScreen: false
 }
 
 const identifier = 'base'
@@ -31,7 +32,15 @@ export default (state = initialState, action) => {
       break
 
     case 'SET_ONBOARDING':
-      nextState.onboarding = action.data
+      nextState.onboarding = action.data !== undefined
+        ? action.data
+        : false
+      break
+
+    case 'SET_ADD_TO_HOME_SCREEN':
+      nextState.addToHomeScreen = action.data !== undefined
+        ? action.data
+        : false
       break
 
     default:
