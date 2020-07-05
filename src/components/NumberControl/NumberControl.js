@@ -6,53 +6,40 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function NumberControl ({
   initialValue,
   onChange,
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    plus: {
-      normal: {
-        light: colors.green800,
-        dark: colors.green200
-      }
-    },
-    minus: {
-      normal: {
-        light: colors.red800,
-        dark: colors.red200
-      }
-    },
-    backgroundPlus: {
-      normal: {
-        light: colors.green200,
-        dark: colors.green800
-      }
-    },
-    backgroundMinus: {
-      normal: {
-        light: colors.red200,
-        dark: colors.red800
-      }
-    },
-    textBackground: {
-      normal: {
-        light: colors.gray200,
-        dark: colors.gray900
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const plusColor = resolveColor('plus', 'normal')
-  const blusBackgroundColor = resolveColor('backgroundPlus', 'normal')
-  const minusColor = resolveColor('minus', 'normal')
-  const minusBackgroundColor = resolveColor('backgroundMinus', 'normal')
-  const textBackgroundColor = resolveColor('textBackground', 'normal')
+  const plusColor = valueByMode(
+    colors.green800,
+    colors.green200,
+    colorMode
+  )
+  const minusColor = valueByMode(
+    colors.red800,
+    colors.red200,
+    colorMode
+  )
+  const plusBackgroundColor = valueByMode(
+    colors.green200,
+    colors.green800,
+    colorMode
+  )
+  const minusBackgroundColor = valueByMode(
+    colors.red200,
+    colors.red800,
+    colorMode
+  )
+  const textBackgroundColor = valueByMode(
+    colors.gray200,
+    colors.gray900,
+    colorMode
+  )
   const [value, setValue] = useState(initialValue)
 
   const increment = () => {
@@ -79,12 +66,12 @@ function NumberControl ({
         onClick={increment}
         rounded="full"
         color={plusColor}
-        background={blusBackgroundColor}
+        background={plusBackgroundColor}
         _hover={{
-          background: blusBackgroundColor
+          background: plusBackgroundColor
         }}
         _active={{
-          background: blusBackgroundColor
+          background: plusBackgroundColor
         }}
       >
         <Icon name="add" size="12px" />

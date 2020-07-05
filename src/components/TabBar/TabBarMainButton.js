@@ -6,7 +6,7 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { colors, transitions, utils } from '../../ui'
 
 function TabBarMainButton ({
   children,
@@ -15,25 +15,18 @@ function TabBarMainButton ({
   onClick,
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    background: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    },
-    backgroundActive: {
-      normal: {
-        light: colors.green800,
-        dark: colors.green800
-      }
-    }
-  }
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const background = resolveColor('background')
-  const backgroundActive = resolveColor('backgroundActive')
+  const background = valueByMode(
+    colors.green500,
+    colors.green500,
+    colorMode
+  )
+  const backgroundActive = valueByMode(
+    colors.green800,
+    colors.green800,
+    colorMode
+  )
   return (
     <PseudoBox
       onClick={onClick}

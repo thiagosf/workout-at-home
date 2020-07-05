@@ -6,22 +6,17 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { colors, transitions, utils } from '../../ui'
 import { Badge } from '../Badge'
 
 function TabBarButton ({ children, icon, onClick, counter, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    backgroundActive: {
-      normal: {
-        light: colors.whiteOpacity200,
-        dark: colors.whiteOpacity200
-      }
-    }
-  }
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const backgroundActive = resolveColor('backgroundActive')
+  const backgroundActive = valueByMode(
+    colors.whiteOpacity200,
+    colors.whiteOpacity200,
+    colorMode
+  )
   const iconSize = counter === undefined
     ? '26px'
     : '16px'

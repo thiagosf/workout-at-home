@@ -9,6 +9,7 @@ function Carousel ({
   children,
   containerClass = 'swiper-container',
   config = {},
+  onSlideChange,
   ...props
 }) {
   const [page, setPage] = useState(1)
@@ -30,6 +31,9 @@ function Carousel ({
       },
       slideChange: function () {
         setPage(this.snapIndex + 1)
+        if (typeof onSlideChange === 'function') {
+          onSlideChange(this.snapIndex)
+        }
       }
     },
     observer: true,

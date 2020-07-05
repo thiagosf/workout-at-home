@@ -5,35 +5,21 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function ExerciseHeaderIcon ({ icon, children, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    text: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray200
-      }
-    },
-    level: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray200
-      }
-    },
-    heart: {
-      normal: {
-        light: colors.red500,
-        dark: colors.red400
-      }
-    }
-  }
-
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const textColor = resolveColor('text')
-  const iconColor = resolveColor(icon)
+  const textColor = valueByMode(
+    colors.gray800,
+    colors.gray200,
+    colorMode
+  )
+  const iconColor = valueByMode(
+    colors.gray800,
+    colors.gray200,
+    colorMode
+  )
 
   return (
     <Box

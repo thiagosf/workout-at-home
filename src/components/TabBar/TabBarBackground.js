@@ -3,21 +3,16 @@ import {
   Box,
   useColorMode
 } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { colors, transitions, utils } from '../../ui'
 
 function TabBarBackground ({ children, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    background: {
-      normal: {
-        light: colors.blue800,
-        dark: colors.blue800
-      }
-    }
-  }
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const background = resolveColor('background')
+  const background = valueByMode(
+    colors.blue800,
+    colors.blue800,
+    colorMode
+  )
   return (
     <Box
       transition={transitions.common}

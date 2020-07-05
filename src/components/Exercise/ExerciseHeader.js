@@ -6,7 +6,7 @@ import {
   useColorMode,
   Flex
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import ExerciseHeaderIcon from './ExerciseHeaderIcon'
 
 function ExerciseHeader ({
@@ -24,42 +24,30 @@ function ExerciseHeader ({
   },
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    name: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray200
-      }
-    },
-    muscleColor: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray200
-      }
-    },
-    mainMuscleColor: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    },
-    requirementColor: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray500
-      }
-    }
-  }
+  const nameColor = valueByMode(
+    colors.gray800,
+    colors.gray200,
+    colorMode
+  )
+  const muscleColor = valueByMode(
+    colors.gray400,
+    colors.gray200,
+    colorMode
+  )
+  const mainMuscleColor = valueByMode(
+    colors.green500,
+    colors.green500,
+    colorMode
+  )
+  const requirementColor = valueByMode(
+    colors.gray400,
+    colors.gray500,
+    colorMode
+  )
 
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const nameColor = resolveColor('name')
-  const muscleColor = resolveColor('muscleColor')
-  const mainMuscleColor = resolveColor('mainMuscleColor')
-  const requirementColor = resolveColor('requirementColor')
   const showLikes = likes !== undefined && likes !== null
-
   const requirementsString = requirements.map(i => i.name)
     .join(', ')
   const totalMuscleGroups = +muscleGroups.length - 1

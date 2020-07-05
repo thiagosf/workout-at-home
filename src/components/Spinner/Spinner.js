@@ -4,34 +4,26 @@ import {
   CircularProgress,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function Spinner ({ ...props }) {
-  const allColors = {
-    progressTrack: {
-      normal: {
-        light: 'gray',
-        dark: 'gray'
-      }
-    },
-    progress: {
-      normal: {
-        light: 'green',
-        dark: 'green'
-      }
-    },
-    progressBackground: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    }
-  }
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const progressTrackColor = resolveColor('progressTrack', 'normal')
-  const progressBackgroundColor = resolveColor('progressBackground', 'normal')
-  const progressColor = resolveColor('progress', 'normal')
+  const progressTrackColor = valueByMode(
+    'gray',
+    'gray',
+    colorMode
+  )
+  const progressColor = valueByMode(
+    'green',
+    'green',
+    colorMode
+  )
+  const progressBackgroundColor = valueByMode(
+    colors.white,
+    colors.gray800,
+    colorMode
+  )
 
   return (
     <Flex

@@ -8,39 +8,24 @@ import {
 import ExerciseCard from './ExerciseCard'
 import ExerciseHeader from './ExerciseHeader'
 import { NumberControl } from '../NumberControl'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import './styles.css'
 
 const MediaTypeRadio = React.forwardRef((props, ref) => {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
   const { isChecked, isDisabled, value, ...rest } = props
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.white,
-        dark: colors.white
-      },
-      active: {
-        light: colors.white,
-        dark: colors.white
-      }
-    },
-    background: {
-      normal: {
-        light: colors.blue400,
-        dark: colors.blue400
-      },
-      active: {
-        light: colors.blue800,
-        dark: colors.blue800
-      }
-    }
-  }
+  const color = valueByMode(
+    !isChecked ? colors.white : colors.white,
+    !isChecked ? colors.white : colors.white,
+    colorMode
+  )
+  const background = valueByMode(
+    !isChecked ? colors.blue400 : colors.blue800,
+    !isChecked ? colors.blue400 : colors.blue800,
+    colorMode
+  )
 
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = isChecked ? 'active' : 'normal'
-  const color = resolveColor('color')
-  const background = resolveColor('background')
   return (
     <Button
       ref={ref}
@@ -74,19 +59,7 @@ function ExerciseMiniControls ({
     count_type: 'reps',
     ...initialData
   })
-
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    }
-  }
-
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const color = resolveColor('color', 'normal')
   const classes = [
     'exercise-card',
     `exercise-card--${colorMode}`
@@ -95,7 +68,6 @@ function ExerciseMiniControls ({
   return (
     <ExerciseCard
       className={classes.join(' ')}
-      color={color}
       {...props}
     >
       <Flex

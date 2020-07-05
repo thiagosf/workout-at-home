@@ -8,7 +8,7 @@ import {
   Link,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import ExerciseCard from './ExerciseCard'
 import ExerciseHeader from './ExerciseHeader'
 import { Carousel } from '../Carousel'
@@ -90,35 +90,21 @@ const ExerciseMediaCarousel = ({
 }
 
 const MediaTypeRadio = React.forwardRef((props, ref) => {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
   const { isChecked, isDisabled, rounded, value, ...rest } = props
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray800
-      },
-      active: {
-        light: colors.gray200,
-        dark: colors.gray200
-      }
-    },
-    background: {
-      normal: {
-        light: colors.gray200,
-        dark: colors.gray500
-      },
-      active: {
-        light: colors.gray800,
-        dark: colors.gray900
-      }
-    }
-  }
 
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = isChecked ? 'active' : 'normal'
-  const color = resolveColor('color')
-  const background = resolveColor('background')
+  const color = valueByMode(
+    !isChecked ? colors.gray800 : colors.gray200,
+    !isChecked ? colors.gray800 : colors.gray200,
+    colorMode
+  )
+  const background = valueByMode(
+    !isChecked ? colors.gray200 : colors.gray800,
+    !isChecked ? colors.gray500 : colors.gray900,
+    colorMode
+  )
+
   return (
     <Button
       ref={ref}
@@ -164,34 +150,18 @@ function Exercise ({
   insideCarousel = false,
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    buttonAdd: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      },
-      hover: {
-        light: colors.green800,
-        dark: colors.green800
-      }
-    },
-    buttonRemove: {
-      normal: {
-        light: colors.red500,
-        dark: colors.red500
-      },
-      hover: {
-        light: colors.red800,
-        dark: colors.red800
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const buttonType = added ? 'buttonRemove' : 'buttonAdd'
-  const buttonBackground = resolveColor(buttonType, 'normal')
-  const buttonBackgroundHover = resolveColor(buttonType, 'hover')
+  const buttonBackground = valueByMode(
+    !added ? colors.green500 : colors.red500,
+    !added ? colors.green500 : colors.red500,
+    colorMode
+  )
+  const buttonBackgroundHover = valueByMode(
+    !added ? colors.green800 : colors.red800,
+    !added ? colors.green800 : colors.red800,
+    colorMode
+  )
 
   const [mediaType, setMediaType] = useState('image')
 
@@ -283,12 +253,16 @@ function Exercise ({
             spacing="0"
             isInline
           >
-            <MediaTypeRadio value="image" rounded="3px 0 0 3px">
-              <Icon name="image" size="24px" />
-            </MediaTypeRadio>
-            <MediaTypeRadio value="video" rounded="0 3px 3px 0">
-              <Icon name="video" size="24px" />
-            </MediaTypeRadio>
+            {images.length > 0 && videos.length > 0 &&
+              <MediaTypeRadio value="image" rounded="3px 0 0 3px">
+                <Icon name="image" size="24px" />
+              </MediaTypeRadio>
+            }
+            {images.length > 0 && videos.length > 0 &&
+              <MediaTypeRadio value="video" rounded="0 3px 3px 0">
+                <Icon name="video" size="24px" />
+              </MediaTypeRadio>
+            }
           </RadioButtonGroup>
         </Box>
         {onSelect &&

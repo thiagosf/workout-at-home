@@ -6,70 +6,36 @@ import {
   useColorMode
 } from '@chakra-ui/core'
 import { Badge } from '../Badge'
-import { colors, transitions } from '../../ui'
+import { colors, transitions, utils } from '../../ui'
 
 function MuscleGroupCount ({ active, name, count, onClick, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    text: {
-      normal: {
-        light: colors.black,
-        dark: colors.gray500
-      },
-      active: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    },
-    background: {
-      normal: {
-        light: colors.transparent,
-        dark: colors.transparent
-      },
-      active: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    },
-    backgroundActive: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray800
-      },
-      active: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    },
-    badgeText: {
-      normal: {
-        light: colors.white,
-        dark: colors.white
-      },
-      active: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    },
-    badgeBackground: {
-      normal: {
-        light: colors.black,
-        dark: colors.gray800
-      },
-      active: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    }
-  }
-
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = !active ? 'normal' : 'active'
-  const textColor = resolveColor('text')
-  const backgroundColor = resolveColor('background')
-  const backgroundColorActive = resolveColor('backgroundActive')
-  const badgeTextColor = resolveColor('badgeText')
-  const badgeBackgroundColor = resolveColor('badgeBackground')
+  const textColor = valueByMode(
+    !active ? colors.black : colors.green500,
+    !active ? colors.gray500 : colors.green500,
+    colorMode
+  )
+  const backgroundColor = valueByMode(
+    !active ? colors.transparent : colors.white,
+    !active ? colors.transparent : colors.gray800,
+    colorMode
+  )
+  const backgroundColorActive = valueByMode(
+    !active ? colors.white : colors.white,
+    !active ? colors.gray800 : colors.gray800,
+    colorMode
+  )
+  const badgeTextColor = valueByMode(
+    !active ? colors.white : colors.white,
+    !active ? colors.white : colors.gray800,
+    colorMode
+  )
+  const badgeBackgroundColor = valueByMode(
+    !active ? colors.black : colors.green500,
+    !active ? colors.gray800 : colors.green500,
+    colorMode
+  )
 
   return (
     <PseudoBox

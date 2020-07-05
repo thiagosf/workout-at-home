@@ -3,29 +3,21 @@ import {
   Flex,
   useColorMode
 } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { colors, transitions, utils } from '../../ui'
 
 function ExerciseCard ({ children, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    background: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    },
-    shadow: {
-      normal: {
-        light: 'sm',
-        dark: null
-      }
-    }
-  }
-
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const background = resolveColor('background')
-  const shadow = resolveColor('shadow')
+  const background = valueByMode(
+    colors.white,
+    colors.gray800,
+    colorMode
+  )
+  const shadow = valueByMode(
+    'sm',
+    null,
+    colorMode
+  )
 
   return (
     <Flex

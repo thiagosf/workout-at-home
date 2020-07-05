@@ -2,11 +2,16 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Flex, Box, useColorMode } from '@chakra-ui/core'
 import { motion, useAnimation } from 'framer-motion'
+import { useHistory } from 'react-router-dom'
 import { Header } from '../Header'
 import { TabBar } from '../TabBar'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import { loadExercises } from '../../store/actions/exercise'
-import { syncLocalStorage, showFooter } from '../../store/actions/base'
+import {
+  syncLocalStorage,
+  showFooter,
+  setOnboarding
+} from '../../store/actions/base'
 
 const tabBarContainer = {
   hidden: { y: '150%' },
@@ -34,41 +39,26 @@ function Layout({
   exercise,
   syncLocalStorage,
   showFooter,
+  setOnboarding,
   ...props
 }) {
+  const history = useHistory()
+  const { valueByMode } = utils
   const { colorMode, toggleColorMode } = useColorMode()
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    },
-    background: {
-      normal: {
-        light: colors.gray200,
-        dark: colors.gray900
-      }
-    }
-  }
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const color = resolveColor('color', 'normal')
-  const backgroundColor = resolveColor('background', 'normal')
+  const color = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
+  const backgroundColor = valueByMode(
+    colors.gray200,
+    colors.gray900,
+    colorMode
+  )
+
   const footerControls = useAnimation()
-  const { footer: footerVisible, enabledSync } = base
+  const { footer: footerVisible, enabledSync, onboarding } = base
   const { list } = exercise
-
-  useEffect(() => {
-    if (footerVisible) {
-      footerControls.start('visible')
-    }
-  }, [footerControls, footerVisible])
-
-  useEffect(() => {
-    if (list.length === 0) {
-      loadExercises()
-    }
-  }, [loadExercises, list])
 
   const footer = (
     <MotionBox
@@ -88,6 +78,18 @@ function Layout({
   )
 
   useEffect(() => {
+    if (footerVisible) {
+      footerControls.start('visible')
+    }
+  }, [footerControls, footerVisible])
+
+  useEffect(() => {
+    if (list.length === 0) {
+      loadExercises()
+    }
+  }, [loadExercises, list])
+
+  useEffect(() => {
     document.body.style.overflow = 'hidden'
   }, [])
 
@@ -100,6 +102,13 @@ function Layout({
       showFooter(true)
     }
   }, [showFooter, enabledSync, footerVisible])
+
+  useEffect(() => {
+    if (!onboarding && enabledSync) {
+      setOnboarding(true)
+      history.push('/onboarding')
+    }
+  }, [history, setOnboarding, onboarding, enabledSync])
 
   return (
     <Flex
@@ -141,7 +150,8 @@ const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
   loadExercises,
   syncLocalStorage,
-  showFooter
+  showFooter,
+  setOnboarding
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

@@ -12,12 +12,12 @@ export default {
   },
 
   /**
-   * Get color by mode
+   * Get value by mode
    * @param {object} props
    * @param {string} [state=normal]
    * @returns {string}
    */
-  colorByMode (lightMode, darkMode, mode) {
+  valueByMode (lightMode, darkMode, mode) {
     return mode === 'light'
       ? lightMode
       : darkMode

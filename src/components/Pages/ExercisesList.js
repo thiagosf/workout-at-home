@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/core'
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import {
   addExercise,
   removeExercise,
@@ -19,6 +19,7 @@ import { NumberControl } from '../NumberControl'
 import { ExerciseMiniList, EmptyList } from '../Exercise'
 import { Spinner } from '../Spinner'
 import { Confirm } from '../Confirm'
+import { ScaleIn } from '../Animations'
 
 function ExercisesList ({
   exercise,
@@ -28,26 +29,19 @@ function ExercisesList ({
   setRest,
   setWorkoutStartTime
 }) {
-  const { colorMode } = useColorMode()
-  const allColors = {
-    restBackground: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray800
-      }
-    },
-    text: {
-      normal: {
-        light: colors.gray500,
-        dark: colors.gray500
-      }
-    }
-  }
   const history = useHistory()
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const restBackgroundColor = resolveColor('restBackground', 'normal')
-  const textColor = resolveColor('text', 'normal')
+  const { valueByMode } = utils
+  const { colorMode } = useColorMode()
+  const restBackgroundColor = valueByMode(
+    colors.white,
+    colors.gray800,
+    colorMode
+  )
+  const textColor = valueByMode(
+    colors.gray500,
+    colors.gray500,
+    colorMode
+  )
   const clearList = () => setIsOpenClear(true)
   const backToHome = () => history.push('/')
   const startWorkout = () => {
@@ -121,7 +115,9 @@ function ExercisesList ({
         margin="0 10px 10px 10px"
       >
         {!loading && isEmptyList &&
-          <EmptyList />
+          <ScaleIn>
+            <EmptyList />
+          </ScaleIn>
         }
         {!loading && !isEmptyList &&
           <Flex

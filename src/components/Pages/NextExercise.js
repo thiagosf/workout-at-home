@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Flex } from '@chakra-ui/core'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { WaitBeforeNextExercise } from '../Exercise'
+import { WaitBeforeNextExercise, ExerciseMiniNext } from '../Exercise'
 import { ScaleIn } from '../Animations'
 import { nextExercise } from '../../store/actions/exercise'
 
@@ -12,7 +13,7 @@ function NextExercise ({
   setConfig
 }) {
   const history = useHistory()
-  const { rest } = exercise
+  const { rest, currentIndexExercise, selectedExercises } = exercise
   const mainButton = {
     label: 'Jump!',
     icon: 'arrowRight'
@@ -35,6 +36,17 @@ function NextExercise ({
     onClickRight: finishWorkout
   }
 
+  let nextIndexExercise = currentIndexExercise + 1
+  if ((nextIndexExercise + 1) > selectedExercises.length) {
+    nextIndexExercise = 0
+  }
+  const nextExerciseItem = selectedExercises.find((item, index) => {
+    return +index === nextIndexExercise
+  })
+  const nextExerciseData = exercise.list.find(exercise => {
+    return +exercise.id === +nextExerciseItem.exercise_id
+  })
+
   useEffect(() => {
     if (!isConfigured) {
       setConfig(config)
@@ -47,20 +59,33 @@ function NextExercise ({
   ])
 
   return (
-    <ScaleIn
-      display="flex"
+    <Flex
+      flexDirection="column"
       flexGrow="1"
     >
-      <WaitBeforeNextExercise
-        seconds={rest}
-        onFinish={toNext}
-        isStarted={true}
+      <ScaleIn
         display="flex"
         flexGrow="1"
-        flexDirection="column"
-        justifyContent="center"
-      />
-    </ScaleIn>
+      >
+        <WaitBeforeNextExercise
+          seconds={rest}
+          onFinish={toNext}
+          isStarted={true}
+          display="flex"
+          flexGrow="1"
+          flexDirection="column"
+          justifyContent="center"
+        />
+      </ScaleIn>
+      <ScaleIn
+        padding="20px"
+        marginBottom="25px"
+      >
+        <ExerciseMiniNext
+          exercise={nextExerciseData}
+        />
+      </ScaleIn>
+    </Flex>
   )
 }
 

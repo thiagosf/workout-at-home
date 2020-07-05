@@ -4,45 +4,35 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function MuscleGroupBody ({
   muscleGroups,
   ...props
 }) {
-  const allColors = {
-    primary: {
-      normal: {
-        light: colors.red800,
-        dark: colors.red800
-      }
-    },
-    secondary: {
-      normal: {
-        light: colors.red300,
-        dark: colors.red300
-      }
-    },
-    silhouette: {
-      normal: {
-        light: colors.white,
-        dark: colors.white
-      }
-    },
-    base: {
-      normal: {
-        light: '#F2E4E2',
-        dark: '#F2E4E2'
-      }
-    }
-  }
-
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const primaryColor = resolveColor('primary', 'normal')
-  const secondaryColor = resolveColor('secondary', 'normal')
-  const silhouetteColor = resolveColor('silhouette', 'normal')
-  const baseColor = resolveColor('base', 'normal')
+  const primaryColor = valueByMode(
+    colors.red800,
+    colors.red800,
+    colorMode
+  )
+  const secondaryColor = valueByMode(
+    colors.red300,
+    colors.red300,
+    colorMode
+  )
+  const silhouetteColor = valueByMode(
+    colors.white,
+    colors.white,
+    colorMode
+  )
+  const baseColor = valueByMode(
+    '#F2E4E2',
+    '#F2E4E2',
+    colorMode
+  )
+
   const muscleGroupColors = {
     '--silhouette': silhouetteColor,
     '--base': baseColor,

@@ -4,7 +4,7 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import { useInterval } from '../../hooks'
 
 function RepetitionCount ({
@@ -12,33 +12,23 @@ function RepetitionCount ({
   countType,
   isStarted = false
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    count: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.gray200
-      }
-    },
-    countType: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green400
-      }
-    },
-    overtime: {
-      normal: {
-        light: colors.red300,
-        dark: colors.red300
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const state = 'normal'
-  const countColor = resolveColor('count', state)
-  const countTypeColor = resolveColor('countType', state)
-  const overtimeColor = resolveColor('overtime', state)
+  const countColor = valueByMode(
+    colors.gray900,
+    colors.gray200,
+    colorMode
+  )
+  const countTypeColor = valueByMode(
+    colors.green500,
+    colors.green400,
+    colorMode
+  )
+  const overtimeColor = valueByMode(
+    colors.red300,
+    colors.red300,
+    colorMode
+  )
 
   const [timer, setTimer] = useState(0)
   const overtime = countType === 'reps'

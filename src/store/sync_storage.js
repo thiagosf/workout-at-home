@@ -20,7 +20,8 @@ export default store => {
       name: 'cycles',
       type: 'SET_CYCLES',
       field: 'data'
-    }, {
+    }],
+    base: [{
       name: 'onboarding',
       type: 'SET_ONBOARDING',
       field: 'data'

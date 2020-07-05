@@ -5,33 +5,12 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function PagingDots ({ pages, currentPage, ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    background: {
-      normal: {
-        light: colors.gray300,
-        dark: colors.gray600
-      },
-      active: {
-        light: colors.gray600,
-        dark: colors.gray300
-      }
-    },
-    text: {
-      normal: {
-        light: colors.gray600,
-        dark: colors.gray300
-      },
-      active: {
-        light: colors.gray300,
-        dark: colors.gray600
-      }
-    }
-  }
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
+
   const max = 7
   let firstPage = currentPage - 3
   let lastPage = currentPage + 3
@@ -52,9 +31,16 @@ function PagingDots ({ pages, currentPage, ...props }) {
   const dots = Array(Math.min(pages, max)).fill().map((_, index) => {
     const number = index + startNumber
     const isCurrent = number === currentPage
-    const state = isCurrent ? 'active' : 'normal'
-    const background = resolveColor('background', state)
-    const textColor = resolveColor('text', state)
+    const background = valueByMode(
+      !isCurrent ? colors.gray300 : colors.gray600,
+      !isCurrent ? colors.gray600 : colors.gray300,
+      colorMode
+    )
+    const textColor = valueByMode(
+      !isCurrent ? colors.gray600 : colors.gray300,
+      !isCurrent ? colors.gray300 : colors.gray600,
+      colorMode
+    )
     const dotNumber = isCurrent
       ? <Text
           as="small"

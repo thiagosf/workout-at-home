@@ -5,7 +5,7 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import { date } from '../../utils'
 import { useInterval } from '../../hooks'
 
@@ -14,33 +14,23 @@ function Timer ({
   isStarted,
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    icon: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    },
-    main: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray200
-      }
-    },
-    milliseconds: {
-      normal: {
-        light: colors.gray500,
-        dark: colors.gray500
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const state = 'normal'
-  const iconColor = resolveColor('icon', state)
-  const mainColor = resolveColor('main', state)
-  const millisecondsColor = resolveColor('milliseconds', state)
+  const iconColor = valueByMode(
+    colors.green500,
+    colors.green500,
+    colorMode
+  )
+  const mainColor = valueByMode(
+    colors.gray800,
+    colors.gray200,
+    colorMode
+  )
+  const millisecondsColor = valueByMode(
+    colors.gray500,
+    colors.gray500,
+    colorMode
+  )
 
   const [prevInitialSeconds, setPrevInitialSeconds] = useState(0)
   const [timer, setTimer] = useState(initialSeconds * 100)

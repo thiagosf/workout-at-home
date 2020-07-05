@@ -23,7 +23,7 @@ import {
   removeExercise
 } from '../../store/actions/exercise'
 import { exerciseUtils, delay } from '../../utils'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 const Home = function ({
   base,
@@ -117,24 +117,18 @@ const Home = function ({
   }
   const openFilters = () => onOpen()
 
-  const allColors = {
-    drawer: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    },
-    drawerOverlay: {
-      normal: {
-        light: colors.whiteOpacity700,
-        dark: colors.blackOpacity700
-      }
-    }
-  }
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const drawerColor = resolveColor('drawer', 'normal')
-  const drawerOverlayColor = resolveColor('drawerOverlay', 'normal')
+  const drawerColor = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
+  const drawerOverlayColor = valueByMode(
+    colors.blackOpacity700,
+    colors.blackOpacity700,
+    colorMode
+  )
 
   useEffect(() => {
     if (!loading && list.length > 0) {

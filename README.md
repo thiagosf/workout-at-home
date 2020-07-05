@@ -57,6 +57,7 @@ yarn build
 - [x] Workout
 - [x] NextExercise
 - [x] Finish
+- [x] Onboarding
 - [x] Not found
 
 ## Store
@@ -65,9 +66,12 @@ yarn build
 
 ## Todo
 
-- [ ] Refactor `allColors` using `utils:colorByMode`
+- [x] Refactor `allColors` using `utils:valueByMode`
 - [x] Create route view to `/workout`, add `/workout/next` and `/workout/finish` to mantain `Timer` on top
 - [x] Add animations with `framer-motion`
+- [ ] Desktop version
+- [ ] i18n support
+- [ ] Remove item on sort list
 
 ## Credits
 

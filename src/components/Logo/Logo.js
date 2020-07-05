@@ -1,32 +1,18 @@
 import React from 'react'
-import { Text, Link, useColorMode } from '@chakra-ui/core'
-import { colors, transitions } from '../../ui'
+import { Image, Link, useColorMode } from '@chakra-ui/core'
+import { transitions } from '../../ui'
+import logoLight from '../../assets/svg/logo-light.svg'
+import logoDark from '../../assets/svg/logo-dark.svg'
 
-function Logo ({ onClick, ...props }) {
+function Logo ({ onClick, title, ...props }) {
   const { colorMode } = useColorMode()
-  const allColors = {
-    workout: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray400
-      }
-    },
-    home: {
-      normal: {
-        light: colors.gray500,
-        dark: colors.white
-      }
-    }
-  }
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const workoutColor = resolveColor('workout')
-  const homeColor = resolveColor('home')
+  const logo = colorMode === 'light'
+    ? logoLight
+    : logoDark
   return (
     <Link
       transition={transitions.common}
       onClick={onClick ? onClick : () => {}}
-      color={homeColor}
       display="inline-flex"
       user-select="none"
       _hover={{
@@ -34,18 +20,11 @@ function Logo ({ onClick, ...props }) {
       }}
       {...props}
     >
-      <Text
-        transition={transitions.common}
-        color={workoutColor}
-        margin="0"
-        fontSize="24px"
-        fontWeight="400"
-      >Workout</Text>
-      <Text
-        margin="0"
-        fontSize="24px"
-        fontWeight="600"
-      >Home</Text>
+      <Image
+        src={logo}
+        alt={title}
+        height="30px"
+      />
     </Link>
   )
 }

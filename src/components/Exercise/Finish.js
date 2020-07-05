@@ -1,34 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   Flex,
-  Box,
   Text,
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { motion, useAnimation } from 'framer-motion'
-import { colors } from '../../ui'
-
-const containerVariants = {
-  visible: {
-    transition: { staggerChildren: 0.1 }
-  }
-}
-
-const scaleVariants = {
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      ease: 'backOut',
-      duration: 0.5
-    }
-  },
-  hidden: {
-    scale: 0.5,
-    opacity: 0
-  }
-}
+import { ComposableScaleIn } from '../Animations'
+import { colors, utils } from '../../ui'
 
 const iconVariants = {
   visible: {
@@ -51,66 +29,40 @@ const iconVariants = {
   }
 }
 
-const MotionContainer = motion.custom(Flex)
-const MotionBox = motion.custom(Box)
-
-function Finish ({
-  ...props
-}) {
-  const allColors = {
-    yeah: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    },
-    waterText: {
-      normal: {
-        light: colors.gray500,
-        dark: colors.gray400
-      }
-    },
-    waterIcon: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    },
-    seeYou: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    }
-  }
-
+function Finish ({ ...props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const yeahColor = resolveColor('yeah', 'normal')
-  const waterTextColor = resolveColor('waterText', 'normal')
-  const waterIconColor = resolveColor('waterIcon', 'normal')
-  const seeYouColor = resolveColor('seeYou', 'normal')
-  const containerControls = useAnimation()
-
-  useEffect(() => {
-    containerControls.start('visible')
-  }, [containerControls])
+  const yeahColor = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
+  const waterTextColor = valueByMode(
+    colors.gray500,
+    colors.gray400,
+    colorMode
+  )
+  const waterIconColor = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
+  const seeYouColor = valueByMode(
+    colors.green500,
+    colors.green500,
+    colorMode
+  )
 
   return (
-    <MotionContainer
+    <ComposableScaleIn.Container
+      display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
       width="100%"
-      initial={false}
-      animate={containerControls}
-      variants={containerVariants}
       {...props}
     >
-      <MotionBox
-        variants={scaleVariants}
-        initial="hidden"
-      >
+      <ComposableScaleIn.Item>
         <Text
           lineHeight="1"
           color={yeahColor}
@@ -118,46 +70,40 @@ function Finish ({
           margin="0 0 10px 0"
           fontWeight="600"
         >Yeahhh!</Text>
-      </MotionBox>
-      <MotionBox
-        variants={scaleVariants}
-        initial="hidden"
-      >
+      </ComposableScaleIn.Item>
+      <ComposableScaleIn.Item>
         <Text
           lineHeight="1"
           color={waterTextColor}
           fontSize="20px"
           margin="0 0 20px 0"
         >How about some water?!</Text>
-      </MotionBox>
+      </ComposableScaleIn.Item>
       <Flex
         width="100%"
         overflow="hidden"
         justifyContent="center"
       >
-        <MotionBox
-          variants={iconVariants}
-          initial="hidden"
+        <ComposableScaleIn.Item
+          visibleProps={iconVariants.visible}
+          hiddenProps={iconVariants.hidden}
         >
           <Icon
             name="waterGlass"
             size="220px"
             color={waterIconColor}
           />
-        </MotionBox>
+        </ComposableScaleIn.Item>
       </Flex>
-      <MotionBox
-        variants={scaleVariants}
-        initial="hidden"
-      >
+      <ComposableScaleIn.Item>
         <Text
           lineHeight="1"
           color={seeYouColor}
           fontSize="30px"
           margin="0 0 10px 0"
         >See you tomorrow!</Text>
-      </MotionBox>
-    </MotionContainer>
+      </ComposableScaleIn.Item>
+    </ComposableScaleIn.Container>
   )
 }
 

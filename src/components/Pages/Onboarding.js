@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
 import {
-  Flex,
   Text,
   Image,
   useColorMode
@@ -9,32 +7,35 @@ import {
 import { useHistory } from 'react-router-dom'
 import Layout from './Layout'
 import { Carousel } from '../Carousel'
+import { ComposableScaleIn } from '../Animations'
 import onboarding1 from '../../assets/svg/onboarding-1.svg'
 import onboarding2 from '../../assets/svg/onboarding-2.svg'
 import onboarding3 from '../../assets/svg/onboarding-3.svg'
 import { colors, utils } from '../../ui'
-import { setOnboarding } from '../../store/actions/base'
 
 const OnboardingItem = ({
+  visible = false,
   title,
   description,
   image,
   ...props
 }) => {
-  const { colorByMode } = utils
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const titleColor = colorByMode(
+  const titleColor = valueByMode(
     colors.green500,
     colors.green500,
     colorMode
   )
-  const descriptionColor = colorByMode(
+  const descriptionColor = valueByMode(
     colors.gray500,
     colors.gray500,
     colorMode
   )
   return (
-    <Flex
+    <ComposableScaleIn.Container
+      visible={visible}
+      display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
@@ -42,36 +43,38 @@ const OnboardingItem = ({
       flexGrow="1"
       {...props}
     >
-      <Flex
+      <ComposableScaleIn.Item
+        display="flex"
         flexGrow="1"
         justifyContent="center"
         alignItems="center"
         padding="50px"
       >
         <Image src={image} />
-      </Flex>
-      <Text
-        fontSize="30px"
-        textAlign="center"
-        padding="0 20px"
-        margin="0"
-        color={titleColor}
-      >{title}</Text>
-      <Text
-        fontSize="20px"
-        textAlign="center"
-        padding="0 20px"
-        margin="0"
-        color={descriptionColor}
-      >{description}</Text>
-    </Flex>
+      </ComposableScaleIn.Item>
+      <ComposableScaleIn.Item>
+        <Text
+          fontSize="30px"
+          textAlign="center"
+          padding="0 20px"
+          margin="0"
+          color={titleColor}
+        >{title}</Text>
+      </ComposableScaleIn.Item>
+      <ComposableScaleIn.Item>
+        <Text
+          fontSize="20px"
+          textAlign="center"
+          padding="0 20px"
+          margin="0"
+          color={descriptionColor}
+        >{description}</Text>
+      </ComposableScaleIn.Item>
+    </ComposableScaleIn.Container>
   )
 }
 
-function Onboarding ({
-  base,
-  setOnboarding
-}) {
+function Onboarding () {
   const history = useHistory()
   const mainButton = {
     label: 'Skip',
@@ -91,24 +94,19 @@ function Onboarding ({
     description: 'Focus on exercise and us on your time',
     image: onboarding3
   }]
-  const { enabledSync } = base
+  const [slideIndex, setSlideIndex] = useState(0)
 
   const onboardItems = items.map((item, index) => {
     return (
       <OnboardingItem
         key={index}
+        visible={+slideIndex === +index}
         title={item.title}
         description={item.description}
         image={item.image}
       />
     )
   })
-
-  useEffect(() => {
-    if (enabledSync) {
-      setOnboarding(true)
-    }
-  }, [setOnboarding, enabledSync])
 
   return (
     <Layout
@@ -120,6 +118,7 @@ function Onboarding ({
         count={3}
         flexGrow="1"
         marginBottom="25px"
+        onSlideChange={setSlideIndex}
       >
         {onboardItems}
       </Carousel>
@@ -127,13 +126,4 @@ function Onboarding ({
   )
 }
 
-const mapStateToProps = ({ base }) => ({ base })
-
-const mapDispatchToProps = {
-  setOnboarding
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Onboarding)
+export default Onboarding

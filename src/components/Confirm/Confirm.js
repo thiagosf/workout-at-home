@@ -22,9 +22,9 @@ function Confirm ({
   buttonYes,
   ...props
 }) {
-  const { colorByMode } = utils
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const background = colorByMode(
+  const background = valueByMode(
     colors.white,
     colors.gray800,
     colorMode

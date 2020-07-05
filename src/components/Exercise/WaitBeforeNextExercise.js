@@ -4,7 +4,7 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 import { useInterval } from '../../hooks'
 
 function WaitBeforeNextExercise ({
@@ -13,33 +13,23 @@ function WaitBeforeNextExercise ({
   isStarted,
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    wait: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray500
-      }
-    },
-    seconds: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.gray200
-      }
-    },
-    textSeconds: {
-      normal: {
-        light: colors.green500,
-        dark: colors.green500
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const state = 'normal'
-  const waitColor = resolveColor('wait', state)
-  const secondsColor = resolveColor('seconds', state)
-  const textSecondsColor = resolveColor('textSeconds', state)
+  const waitColor = valueByMode(
+    colors.gray400,
+    colors.gray500,
+    colorMode
+  )
+  const secondsColor = valueByMode(
+    colors.gray900,
+    colors.gray200,
+    colorMode
+  )
+  const textSecondsColor = valueByMode(
+    colors.green500,
+    colors.green500,
+    colorMode
+  )
 
   const [timer, setTimer] = useState(seconds)
   const timerText = timer >= 0

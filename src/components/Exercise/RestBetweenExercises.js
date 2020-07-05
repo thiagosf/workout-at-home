@@ -5,7 +5,7 @@ import {
   useColorMode
 } from '@chakra-ui/core'
 import { NumberControl } from '../NumberControl'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function RestBetweenExercises ({
   initialData = {},
@@ -17,18 +17,13 @@ function RestBetweenExercises ({
     ...initialData
   })
 
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    }
-  }
-
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const color = resolveColor('color', 'normal')
+  const color = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
 
   const handleChange = value => {
     const newModel = {

@@ -6,7 +6,7 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function ExerciseFilters ({
   equipaments,
@@ -14,26 +14,18 @@ function ExerciseFilters ({
   selecteds = [],
   ...props
 }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    text: {
-      normal: {
-        light: colors.gray800,
-        dark: colors.gray300
-      }
-    },
-    background: {
-      normal: {
-        light: colors.white,
-        dark: colors.gray900
-      }
-    }
-  }
-
-  const resolveColor = name => allColors[name][state][colorMode]
-  const state = 'normal'
-  const textColor = resolveColor('text')
-  const backgroundColor = resolveColor('background')
+  const textColor = valueByMode(
+    colors.gray800,
+    colors.gray300,
+    colorMode
+  )
+  const backgroundColor = valueByMode(
+    colors.white,
+    colors.gray900,
+    colorMode
+  )
 
   const [checkedItems, setCheckedItems] = useState(selecteds)
   const totalEquipaments = equipaments.length

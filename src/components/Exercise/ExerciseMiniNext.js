@@ -6,31 +6,24 @@ import {
 } from '@chakra-ui/core'
 import ExerciseCard from './ExerciseCard'
 import ExerciseHeader from './ExerciseHeader'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function ExerciseMiniNext ({
   exercise,
   ...props
 }) {
-  const allColors = {
-    color: {
-      normal: {
-        light: colors.gray900,
-        dark: colors.white
-      }
-    },
-    text: {
-      normal: {
-        light: colors.gray500,
-        dark: colors.gray500
-      }
-    }
-  }
-
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const color = resolveColor('color', 'normal')
-  const textColor = resolveColor('text', 'normal')
+  const color = valueByMode(
+    colors.gray900,
+    colors.white,
+    colorMode
+  )
+  const textColor = valueByMode(
+    colors.gray500,
+    colors.gray500,
+    colorMode
+  )
 
   return (
     <Box>

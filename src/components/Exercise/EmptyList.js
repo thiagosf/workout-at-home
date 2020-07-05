@@ -5,28 +5,21 @@ import {
   Icon,
   useColorMode
 } from '@chakra-ui/core'
-import { colors } from '../../ui'
+import { colors, utils } from '../../ui'
 
 function EmptyList ({ props }) {
+  const { valueByMode } = utils
   const { colorMode } = useColorMode()
-  const allColors = {
-    text: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray500
-      }
-    },
-    icon: {
-      normal: {
-        light: colors.gray400,
-        dark: colors.gray500
-      }
-    }
-  }
-
-  const resolveColor = (name, state) => allColors[name][state][colorMode]
-  const textColor = resolveColor('text', 'normal')
-  const iconColor = resolveColor('icon', 'normal')
+  const textColor = valueByMode(
+    colors.gray400,
+    colors.gray500,
+    colorMode
+  )
+  const iconColor = valueByMode(
+    colors.gray400,
+    colors.gray500,
+    colorMode
+  )
 
   return (
     <Box
