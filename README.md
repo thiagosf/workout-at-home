@@ -1,4 +1,4 @@
-# Workout Home
+# workout@home
 
 Webapp to help you exercise at home.
 
