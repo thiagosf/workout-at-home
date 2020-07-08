@@ -1,5 +1,6 @@
 {
-  "name": "workout-home-app",
+  "name": "workout-at-home",
+  "homepage": "http://thiagosf.github.io/workout-at-home",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
