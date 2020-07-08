@@ -66,7 +66,8 @@ const Home = function ({
     loading,
     selectedMuscleGroup,
     selectedEquipaments,
-    selectedExercises
+    selectedExercises,
+    savedWorkoutLists
   } = exercise
   const selectedExercisesIDs = selectedExercises.map(item => {
     return +item.exercise_id
@@ -92,10 +93,12 @@ const Home = function ({
 
   const equipaments = exerciseUtils.getEquipaments(exercisesByMuscleGroups)
 
-  const leftButton = {
-    label: 'Saved',
-    icon: 'loop'
-  }
+  const leftButton = savedWorkoutLists.length > 0
+    ? {
+      label: 'Lists',
+      icon: 'loop'
+    }
+    : null
   const rightButton = {
     label: 'Filters',
     icon: 'filter',

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {
   Flex,
+  Box,
   Text,
+  Switch,
+  FormLabel,
+  Input,
   useColorMode
 } from '@chakra-ui/core'
 import { useHistory } from 'react-router-dom'
@@ -13,7 +17,8 @@ import {
   removeExercise,
   removeAllExercises,
   setRest,
-  setWorkoutStartTime
+  setWorkoutStartTime,
+  saveWorkoutList
 } from '../../store/actions/exercise'
 import { NumberControl } from '../NumberControl'
 import { ExerciseMiniList, EmptyList } from '../Exercise'
@@ -27,7 +32,8 @@ function ExercisesList ({
   removeAllExercises,
   addExercise,
   setRest,
-  setWorkoutStartTime
+  setWorkoutStartTime,
+  saveWorkoutList
 }) {
   const history = useHistory()
   const { valueByMode } = utils
@@ -45,14 +51,21 @@ function ExercisesList ({
   const clearList = () => setIsOpenClear(true)
   const backToHome = () => history.push('/')
   const startWorkout = () => {
-    if (!isEmptyList) {
-      setWorkoutStartTime(Date.now())
+    if (
+      (saveList && listName) ||
+      !saveList
+    ) {
+      if (!isEmptyList) {
+        saveWorkoutList(listName)
+        setWorkoutStartTime(Date.now())
+      }
+      history.push(
+        isEmptyList
+          ? '/'
+          : '/workout'
+      )
+    } else {
     }
-    history.push(
-      isEmptyList
-        ? '/'
-        : '/workout'
-    )
   }
   const onChangeRest = data => setRest(data)
   const onChangeList = data => {
@@ -75,6 +88,9 @@ function ExercisesList ({
     setIsOpenClear(false)
   }
   const isEmptyList = exercises.length === 0
+  const [saveList, setSaveList] = useState(false)
+  const [listName, setListName] = useState('')
+  const handleChange = fn => event => fn(event.target.value)
 
   const leftButton = {
     label: 'Clear list',
@@ -120,21 +136,55 @@ function ExercisesList ({
           </ScaleIn>
         }
         {!loading && !isEmptyList &&
-          <Flex
-            alignItems="center"
-            padding="10px"
-            background={restBackgroundColor}
-            rounded="5px"
-          >
-            <Text
-              flexGrow="1"
-              marginRight="10px"
-            >Rest in <Text as="strong">seconds</Text> between exercises:</Text>
-            <NumberControl
-              initialValue={rest}
-              onChange={onChangeRest}
-            />
-          </Flex>
+          <Box>
+            <Flex
+              alignItems="center"
+              padding="10px"
+              background={restBackgroundColor}
+              rounded="5px"
+            >
+              <Text
+                flexGrow="1"
+                marginRight="10px"
+              >Rest in <Text as="strong">seconds</Text> between exercises:</Text>
+              <NumberControl
+                initialValue={rest}
+                onChange={onChangeRest}
+              />
+            </Flex>
+            <Flex
+              justifyContent="space-between"
+              alignItems="center"
+              marginTop="10px"
+              height="35px"
+            >
+              <FormLabel
+                display="flex"
+                alignItems="center"
+                flexShrink="0"
+                padding="0"
+                marginRight="20px"
+              >
+                <Switch
+                  display="flex"
+                  onChange={() => setSaveList(saveList ? false : true)}
+                />
+                <Text
+                  display="inline-block"
+                  margin="0 0 0 10px"
+                  as="span"
+                >Save list</Text>
+              </FormLabel>
+              {saveList &&
+                <Input
+                  flexGrow="1"
+                  placeholder="Give a name"
+                  size="sm"
+                  onChange={handleChange(setListName)}
+                />
+              }
+            </Flex>
+          </Box>
         }
         {loading &&
           <Flex
@@ -171,7 +221,8 @@ const mapDispatchToProps = {
   removeExercise,
   removeAllExercises,
   setRest,
-  setWorkoutStartTime
+  setWorkoutStartTime,
+  saveWorkoutList
 }
 
 export default connect(

@@ -24,6 +24,10 @@ export default store => {
       name: 'workouts',
       type: 'SET_WORKOUTS',
       field: 'data'
+    }, {
+      name: 'savedWorkoutLists',
+      type: 'SET_WORKOUT_LISTS',
+      field: 'data'
     }],
     base: [{
       name: 'onboarding',

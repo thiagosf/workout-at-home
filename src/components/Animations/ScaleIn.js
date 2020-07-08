@@ -12,7 +12,7 @@ const variants = ({ hiddenProps, visibleProps }) => ({
     opacity: 1,
     scale: 1,
     transition: {
-      delay: 0.3,
+      duration: 0.3,
       ease: 'easeOut'
     },
     ...visibleProps

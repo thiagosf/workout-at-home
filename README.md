@@ -60,7 +60,7 @@ yarn build
 - [x] Finish
 - [x] Onboarding
 - [x] Not found
-- [ ] Saved lists
+- [x] Saved lists
 
 ## Store
 

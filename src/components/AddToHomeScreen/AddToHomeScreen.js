@@ -83,7 +83,7 @@ function AddToHomeScreen ({
             fontSize="12px"
             textAlign="center"
             fontWeight="600"
-          >Homey Training</Text>
+          >workout@home</Text>
         </Flex>
         <Flex
           flexGrow="1"

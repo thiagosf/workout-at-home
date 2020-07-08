@@ -11,7 +11,8 @@ import {
   ExercisesList,
   NotFound,
   WorkoutLayout,
-  Onboarding
+  Onboarding,
+  SavedLists
 } from './components/Pages'
 
 function App({ store }) {
@@ -30,6 +31,9 @@ function App({ store }) {
           </Route>
           <Route path="/workout">
             <WorkoutLayout />
+          </Route>
+          <Route path="/saved-lists">
+            <SavedLists />
           </Route>
           <Route path="*">
             <NotFound />

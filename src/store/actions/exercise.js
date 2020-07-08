@@ -101,3 +101,30 @@ export function nextExercise () {
     })
   }
 }
+
+export function saveWorkoutList (data) {
+  return dispatch => {
+    dispatch({
+      type: 'SET_SAVE_WORKOUT_LIST',
+      data
+    })
+  }
+}
+
+export function selectWorkoutList (data) {
+  return dispatch => {
+    dispatch({
+      type: 'SELECT_WORKOUT_LIST',
+      data
+    })
+  }
+}
+
+export function deleteWorkoutList (data) {
+  return dispatch => {
+    dispatch({
+      type: 'DELETE_WORKOUT_LIST',
+      data
+    })
+  }
+}

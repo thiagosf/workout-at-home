@@ -1,3 +1,5 @@
+import { uuid } from '../../utils'
+
 const initialState = {
   data: null,
   list: [],
@@ -10,7 +12,9 @@ const initialState = {
   workoutEndTime: null,
   cycles: 1,
   currentIndexExercise: 0,
-  workouts: []
+  workouts: [],
+  workoutListName: null,
+  savedWorkoutLists: []
 }
 
 const identifier = 'exercise'
@@ -119,6 +123,47 @@ export default (state = initialState, action) => {
 
     case 'SET_WORKOUTS':
       nextState.workouts = action.data || []
+      break
+
+    case 'SET_SAVE_WORKOUT_LIST':
+      nextState.workoutListName = action.data
+      if (nextState.workoutListName) {
+        const data = {
+          code: uuid(),
+          name: nextState.workoutListName,
+          selectedExercises: nextState.selectedExercises,
+          rest: nextState.rest
+        }
+        const hasItem = false
+        nextState.savedWorkoutLists = nextState.savedWorkoutLists.map(item => {
+          if (item.name === nextState.workoutListName) {
+            item = { ...data }
+          }
+          return item
+        })
+        if (!hasItem) {
+          nextState.savedWorkoutLists.push(data)
+        }
+      }
+      break
+
+    case 'SET_WORKOUT_LISTS':
+      nextState.savedWorkoutLists = action.data || []
+      break
+
+    case 'SELECT_WORKOUT_LIST':
+      const item = nextState.savedWorkoutLists.find(item => {
+        return item.code === action.data
+      })
+      nextState.selectedExercises = item.selectedExercises
+      nextState.rest = item.rest
+      break
+
+    case 'DELETE_WORKOUT_LIST':
+      nextState.savedWorkoutLists = nextState.savedWorkoutLists
+        .filter(item => {
+          return item.code !== action.data
+        })
       break
 
     default:
