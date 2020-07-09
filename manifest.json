@@ -19,7 +19,7 @@
     }
   ],
   "start_url": "https://thiagosf.github.io/workout-at-home/",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#f06969",
   "background_color": "#f06969"
 }
