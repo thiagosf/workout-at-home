@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/workout-at-home/static/css/main.5557d8c3.chunk.css",
-    "main.js": "/workout-at-home/static/js/main.222b04b2.chunk.js",
-    "main.js.map": "/workout-at-home/static/js/main.222b04b2.chunk.js.map",
+    "main.js": "/workout-at-home/static/js/main.b63361ea.chunk.js",
+    "main.js.map": "/workout-at-home/static/js/main.b63361ea.chunk.js.map",
     "runtime-main.js": "/workout-at-home/static/js/runtime-main.3db41e26.js",
     "runtime-main.js.map": "/workout-at-home/static/js/runtime-main.3db41e26.js.map",
     "static/css/2.9be4f162.chunk.css": "/workout-at-home/static/css/2.9be4f162.chunk.css",
-    "static/js/2.4654c3ad.chunk.js": "/workout-at-home/static/js/2.4654c3ad.chunk.js",
-    "static/js/2.4654c3ad.chunk.js.map": "/workout-at-home/static/js/2.4654c3ad.chunk.js.map",
+    "static/js/2.12cf3b42.chunk.js": "/workout-at-home/static/js/2.12cf3b42.chunk.js",
+    "static/js/2.12cf3b42.chunk.js.map": "/workout-at-home/static/js/2.12cf3b42.chunk.js.map",
     "index.html": "/workout-at-home/index.html",
-    "precache-manifest.71d72f1b4815c5790fa4a61e671ae80b.js": "/workout-at-home/precache-manifest.71d72f1b4815c5790fa4a61e671ae80b.js",
+    "precache-manifest.702b278d956da76b8f5610bbfd59b675.js": "/workout-at-home/precache-manifest.702b278d956da76b8f5610bbfd59b675.js",
     "service-worker.js": "/workout-at-home/service-worker.js",
     "static/css/2.9be4f162.chunk.css.map": "/workout-at-home/static/css/2.9be4f162.chunk.css.map",
     "static/css/main.5557d8c3.chunk.css.map": "/workout-at-home/static/css/main.5557d8c3.chunk.css.map",
-    "static/js/2.4654c3ad.chunk.js.LICENSE.txt": "/workout-at-home/static/js/2.4654c3ad.chunk.js.LICENSE.txt",
+    "static/js/2.12cf3b42.chunk.js.LICENSE.txt": "/workout-at-home/static/js/2.12cf3b42.chunk.js.LICENSE.txt",
     "static/media/logo-dark.svg": "/workout-at-home/static/media/logo-dark.8887d961.svg",
     "static/media/logo-light.svg": "/workout-at-home/static/media/logo-light.bf99de1d.svg",
     "static/media/logo-small.svg": "/workout-at-home/static/media/logo-small.85dcea10.svg",
@@ -24,8 +24,8 @@
   "entrypoints": [
     "static/js/runtime-main.3db41e26.js",
     "static/css/2.9be4f162.chunk.css",
-    "static/js/2.4654c3ad.chunk.js",
+    "static/js/2.12cf3b42.chunk.js",
     "static/css/main.5557d8c3.chunk.css",
-    "static/js/main.222b04b2.chunk.js"
+    "static/js/main.b63361ea.chunk.js"
   ]
 }
