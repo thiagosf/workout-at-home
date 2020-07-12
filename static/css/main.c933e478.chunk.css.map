@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,2EAEE,UACF","file":"main.c933e478.chunk.css","sourcesContent":[".sortable-ghost .exercise-card--dark,\n.sortable-ghost .exercise-card--light {\n  opacity: 0.5;\n}\n"]}
