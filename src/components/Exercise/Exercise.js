@@ -147,6 +147,7 @@ function Exercise ({
   exercise,
   added,
   onSelect,
+  count,
   insideCarousel = false,
   ...props
 }) {
@@ -160,6 +161,11 @@ function Exercise ({
   const buttonBackgroundHover = valueByMode(
     !added ? colors.green800 : colors.red800,
     !added ? colors.green800 : colors.red800,
+    colorMode
+  )
+  const badgeBackground = valueByMode(
+    colors.green900,
+    colors.green900,
     colorMode
   )
 
@@ -207,6 +213,19 @@ function Exercise ({
     )
   })
   const buttonText = added ? 'Remove' : 'Add'
+  const badge = +count && +count > 0
+    ? <Flex
+        width="20px"
+        height="20px"
+        rounded="10px"
+        justifyContent="center"
+        alignItems="center"
+        background={badgeBackground}
+        color={colors.white}
+        marginLeft="5px"
+        fontSize="14px"
+      >{count}</Flex>
+    : null
 
   return (
     <ExerciseCard position="relative" {...props}>
@@ -277,7 +296,9 @@ function Exercise ({
               background: buttonBackground
             }}
             onClick={onSelect}
-          >{buttonText}</Button>
+          >
+            {buttonText} {badge}
+          </Button>
         }
         <Flex width="30%" justifyContent="flex-end">
           <MuscleGroupBody

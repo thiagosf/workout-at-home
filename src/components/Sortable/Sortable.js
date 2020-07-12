@@ -35,7 +35,7 @@ function Sortable ({
                 handle: (
                   <Icon
                     name="drag-handle"
-                    className="handle"
+                    className="handle swiper-no-swiping"
                     padding="20px 20px 20px 0px"
                     boxSizing="content-box"
                   />

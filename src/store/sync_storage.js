@@ -2,7 +2,7 @@ export default store => {
   const saveStates = {
     exercise: [{
       name: 'selectedExercises',
-      type: 'ADD_EXERCISE',
+      type: 'SET_SELECTED_EXERCISES',
       field: 'data'
     }, {
       name: 'rest',

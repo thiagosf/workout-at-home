@@ -47,33 +47,31 @@ export default (state = initialState, action) => {
       nextState.selectedEquipaments = action.data
       break
 
+    case 'SET_SELECTED_EXERCISES':
+      nextState.selectedExercises = action.data
+      break
+
     case 'ADD_EXERCISE': {
-      let selectedExercises = [...nextState.selectedExercises]
-      const ids = selectedExercises.map(item => +item.exercise_id)
-      if (Array.isArray(action.data)) {
-        selectedExercises = action.data
-      } else {
-        if (ids.includes(+action.exercise_id)) {
-          selectedExercises = selectedExercises.map(item => {
-            if (+item.exercise_id === +action.exercise_id) {
-              item = { ...action.data }
-            }
-            return item
-          })
-        } else {
-          selectedExercises.push({
-            ...action.data,
-            sort: selectedExercises.length
-          })
-        }
-      }
-      nextState.selectedExercises = selectedExercises
+      nextState.selectedExercises.push(action.data)
       break
     }
 
+    case 'UPDATE_EXERCISE':
+      nextState.selectedExercises = nextState.selectedExercises.map(item => {
+        if (item.code === action.data.code) {
+          item = { ...action.data }
+        }
+        return item
+      }).sort((a, b) => {
+        if (a.sort < b.sort) return -1
+        if (a.sort > b.sort) return 1
+        return -0
+      })
+      break
+
     case 'REMOVE_EXERCISE': {
       nextState.selectedExercises = nextState.selectedExercises.filter(item => {
-        return +item.exercise_id !== +action.data
+        return item.code !== action.data
       })
       break
     }

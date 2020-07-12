@@ -75,6 +75,14 @@ yarn build
 - [ ] i18n support
 - [ ] Remove item on sort list
 - [ ] Improve confirmation component
+- [ ] Fix save to home screen position
+- [ ] Onboarding scrollbars
+- [x] Add sound on over seconds in an exercise
+- [x] Add multiple times same exercise
+- [ ] Edit saved list
+- [ ] Add custom exercise
+- [ ] Create API to exercises list
+- [x] Add animation on saved lists page
 
 ## Credits
 

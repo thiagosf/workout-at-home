@@ -1,38 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Box } from '@chakra-ui/core'
-import { motion } from 'framer-motion'
 import ExerciseMiniControls from './ExerciseMiniControls'
 import { Sortable } from '../Sortable'
+import { ComposableMoveUp } from '../Animations'
+import { SwipeActions, SwipeActionDelete } from '../SwipeActions'
+import { delay } from '../../utils'
 
-const containerVariants = {
-  visible: {
-    transition: { staggerChildren: 0.1 }
+function ListItem ({ handle, item, onDelete, handleChange }) {
+  const [visible, setVisible] = useState(true)
+  const handleDelete = async () => {
+    setVisible(false)
+    await delay(600)
+    onDelete()
   }
+  return (
+    <ComposableMoveUp.Item>
+      <SwipeActions
+        visible={visible}
+        context={<SwipeActionDelete onDelete={handleDelete} />}
+      >
+        <ExerciseMiniControls
+          index={item.code}
+          margin="5px 0"
+          padding="10px 20px"
+          onChange={handleChange}
+          exercise={item.exercise}
+          initialData={item.data}
+          dragHandle={handle}
+        />
+      </SwipeActions>
+    </ComposableMoveUp.Item>
+  )
 }
-
-const itemContainer = {
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: {
-        ease: 'circOut',
-        duration: 0.5
-      }
-    }
-  },
-  hidden: {
-    y: 20,
-    opacity: 0
-  }
-}
-
-const MotionContainer = motion.custom(Box)
-const MotionBox = motion.custom(Box)
 
 function ExerciseMiniList ({
   exercises,
   onChange,
+  onDelete,
   ...props
 }) {
   const [model, setModel] = useState(
@@ -42,7 +46,6 @@ function ExerciseMiniList ({
       sort: +index
     }))
   )
-
   const handleListChange = items => {
     let newModel = [...model]
     for (const index in items) {
@@ -82,34 +85,26 @@ function ExerciseMiniList ({
     )
   }
 
-  const items = model.map((item, index) => {
+  const items = model.map(item => {
     return {
-      id: item.exercise.id,
+      id: item.data.code,
       item,
-      component: ({ handle }) => (
-        <MotionBox
-          key={`sortable-item-${item.exercise.id}`}
-          variants={itemContainer}
-        >
-          <ExerciseMiniControls
-            index={index}
-            margin="5px 0"
-            padding="10px 20px"
-            onChange={handleChange}
-            exercise={item.exercise}
-            initialData={item.data}
-            dragHandle={handle}
+      component: function ({ handle }) {
+        const handleDelete = () => {
+          onDelete(item)
+        }
+        return (
+          <ListItem
+            key={`sortable-item-${item.data.code}`}
+            item={item}
+            handle={handle}
+            handleChange={handleChange}
+            onDelete={handleDelete}
           />
-        </MotionBox>
-      )
+        )
+      }
     }
   })
-
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    setVisible(true)
-  }, [])
 
   return (
     <Box
@@ -117,16 +112,12 @@ function ExerciseMiniList ({
       padding="0 0 50px 0"
       {...props}
     >
-      <MotionContainer
-        initial={false}
-        animate={visible ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
+      <ComposableMoveUp.Container>
         <Sortable
           items={items}
           onChange={handleListChange}
         />
-      </MotionContainer>
+      </ComposableMoveUp.Container>
     </Box>
   )
 }

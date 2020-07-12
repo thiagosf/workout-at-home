@@ -1,50 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Swiper from 'react-id-swiper'
 import {
   Flex,
   Box,
   Text,
   Badge,
-  Button,
   useColorMode
 } from '@chakra-ui/core'
-import { motion, useAnimation } from 'framer-motion'
 import Layout from './Layout'
 import { EmptyList } from '../Exercise'
-import { ScaleIn } from '../Animations'
+import { ScaleIn, ComposableMoveUp } from '../Animations'
 import { colors, utils } from '../../ui'
+import { delay } from '../../utils'
 import {
   selectWorkoutList,
   setWorkoutStartTime,
   deleteWorkoutList
 } from '../../store/actions/exercise'
+import { SwipeActions, SwipeActionDelete } from '../SwipeActions'
 
 const { valueByMode } = utils
-
-const variants = {
-  hidden: {
-    opacity: 0,
-    height: 0,
-    x: '-100%',
-    transition: {
-      ease: 'easeOut',
-      x: {
-        duration: 0.3
-      },
-      height: {
-        delay: 0.1,
-        duration: 0.5
-      }
-    }
-  },
-  visible: {
-    opacity: 1
-  }
-}
-
-const MotionBox = motion.custom(Box)
 
 function ListItem ({
   item,
@@ -52,7 +28,6 @@ function ListItem ({
   onDelete,
   ...props
 }) {
-  const controls = useAnimation()
   const { colorMode } = useColorMode()
   const textColorList = valueByMode(
     colors.gray800,
@@ -64,30 +39,19 @@ function ListItem ({
     colors.gray800,
     colorMode
   )
-  const buttonBackground = valueByMode(
-    colors.red500,
-    colors.red500,
-    colorMode
-  )
-  const buttonBackgroundActive = valueByMode(
-    colors.red300,
-    colors.red800,
-    colorMode
-  )
-  const buttonColor = valueByMode(
-    colors.white,
-    colors.white,
-    colorMode
-  )
+  const [visible, setVisible] = useState(true)
+  const handleDelete = async () => {
+    setVisible(false)
+    await delay(600)
+    onDelete(item)
+  }
   return (
-    <MotionBox
-      variants={variants}
-      animate={controls}
-      initial="visible"
-      marginTop="10px"
-      {...props}
-    >
-      <Swiper slidesPerView="auto">
+    <ComposableMoveUp.Item>
+      <SwipeActions
+        visible={visible}
+        context={<SwipeActionDelete onDelete={handleDelete} />}
+        height="70px"
+      >
         <Box>
           <Flex
             onClick={() => onSelect(item)}
@@ -110,32 +74,8 @@ function ListItem ({
             >{item.selectedExercises.length} exercise(s)</Badge>
           </Flex>
         </Box>
-        <Box
-          width="100px"
-        >
-          <Flex
-            height="60px"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Button
-              background={buttonBackground}
-              color={buttonColor}
-              rounded="5px"
-              _hover={{ background: buttonBackground }}
-              _active={{ background: buttonBackgroundActive }}
-              _focus={{ background: buttonBackgroundActive }}
-              onClick={async () => {
-                await controls.start('hidden')
-                onDelete(item)
-              }}
-            >
-              Delete
-            </Button>
-          </Flex>
-        </Box>
-      </Swiper>
-    </MotionBox>
+      </SwipeActions>
+    </ComposableMoveUp.Item>
   )
 }
 
@@ -166,10 +106,10 @@ function SavedLists ({
     deleteWorkoutList(item.code)
   }
 
-  const list = exercise.savedWorkoutLists.map((item, index) => {
+  const list = exercise.savedWorkoutLists.map(item => {
     return (
       <ListItem
-        key={index}
+        key={item.code}
         item={item}
         onSelect={selectList}
         onDelete={deleteItem}
@@ -201,12 +141,12 @@ function SavedLists ({
             textAlign="center"
             margin="20px 0 0 0"
           >Select a list to start:</Text>
-          <Box
+          <ComposableMoveUp.Container
             margin="10px 20px 20px 20px"
             paddingBottom="40px"
           >
             {list}
-          </Box>
+          </ComposableMoveUp.Container>
         </React.Fragment>
       }
     </Layout>

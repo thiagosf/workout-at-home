@@ -12,7 +12,9 @@ function ExerciseCarousel ({
   ...props
 }) {
   const exercisesCards = exercises.map(exercise => {
-    const added = selecteds.includes(+exercise.id)
+    // const count = selecteds.includes(+exercise.id)
+    const count = selecteds.filter(id => id === +exercise.id).length
+    const added = false
     return (
       <Box
         padding="5px 10px"
@@ -22,6 +24,7 @@ function ExerciseCarousel ({
           height="100%"
           exercise={exercise}
           added={added}
+          count={count}
           onSelect={() => onSelect(exercise)}
           insideCarousel
         />

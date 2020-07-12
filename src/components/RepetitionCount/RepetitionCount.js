@@ -4,8 +4,10 @@ import {
   Text,
   useColorMode
 } from '@chakra-ui/core'
+import useSound from 'use-sound'
 import { colors, utils } from '../../ui'
 import { useInterval } from '../../hooks'
+import audioEndTime from '../../assets/audios/end-time.mp3'
 
 function RepetitionCount ({
   count,
@@ -29,6 +31,7 @@ function RepetitionCount ({
     colors.red300,
     colorMode
   )
+  const [play] = useSound(audioEndTime)
 
   const [timer, setTimer] = useState(0)
   const overtime = countType === 'reps'
@@ -51,7 +54,11 @@ function RepetitionCount ({
 
   useInterval(() => {
     if (isStarted) {
-      setTimer(timer + 1)
+      const newTimer = timer + 1
+      setTimer(newTimer)
+      if (newTimer === count) {
+        play()
+      }
     }
   }, 1000)
 

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Flex } from '@chakra-ui/core'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import useSound from 'use-sound'
 import { WaitBeforeNextExercise, ExerciseMiniNext } from '../Exercise'
 import { ScaleIn } from '../Animations'
 import { nextExercise } from '../../store/actions/exercise'
+import { delay } from '../../utils'
+import audioNextExercise from '../../assets/audios/next-exercise.mp3'
 
 function NextExercise ({
   base,
@@ -12,6 +15,7 @@ function NextExercise ({
   nextExercise,
   setConfig
 }) {
+  const [play] = useSound(audioNextExercise)
   const history = useHistory()
   const { rest, currentIndexExercise, selectedExercises } = exercise
   const mainButton = {
@@ -23,7 +27,9 @@ function NextExercise ({
     icon: 'stop'
   }
 
-  const toNext = () => {
+  const toNext = async () => {
+    play()
+    await delay(1200)
     nextExercise()
     history.push('/workout')
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from 'react-router-dom'
@@ -18,7 +18,7 @@ import {
 function App({ store }) {
   return (
     <Provider store={store}>
-      <Router>
+      <HashRouter hashType="slash">
         <Switch>
           <Route exact path="/">
             <Home />
@@ -39,7 +39,7 @@ function App({ store }) {
             <NotFound />
           </Route>
         </Switch>
-      </Router>
+      </HashRouter>
     </Provider>
   )
 }

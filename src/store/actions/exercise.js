@@ -38,6 +38,12 @@ export function addExercise (data) {
   }
 }
 
+export function updateExercise (data) {
+  return dispatch => {
+    dispatch({ type: 'UPDATE_EXERCISE', data })
+  }
+}
+
 export function removeExercise (data) {
   return dispatch => {
     dispatch({ type: 'REMOVE_EXERCISE', data })

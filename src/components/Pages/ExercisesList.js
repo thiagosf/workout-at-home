@@ -14,6 +14,7 @@ import Layout from './Layout'
 import { colors, utils } from '../../ui'
 import {
   addExercise,
+  updateExercise,
   removeExercise,
   removeAllExercises,
   setRest,
@@ -28,6 +29,7 @@ import { ScaleIn } from '../Animations'
 
 function ExercisesList ({
   exercise,
+  updateExercise,
   removeExercise,
   removeAllExercises,
   addExercise,
@@ -69,7 +71,15 @@ function ExercisesList ({
   }
   const onChangeRest = data => setRest(data)
   const onChangeList = data => {
-    addExercise(data.map(item => item.data))
+    data.forEach(item => {
+      updateExercise({
+        ...item.data,
+        sort: item.sort
+      })
+    })
+  }
+  const onDelete = item => {
+    removeExercise(item.data.code)
   }
 
   const { loading, list, selectedExercises, rest } = exercise
@@ -207,6 +217,7 @@ function ExercisesList ({
               margin="10px 0 0 0"
               exercises={exercises}
               onChange={onChangeList}
+              onDelete={onDelete}
             />
           </React.Fragment>
         }
@@ -218,6 +229,7 @@ function ExercisesList ({
 const mapStateToProps = ({ exercise }) => ({ exercise })
 const mapDispatchToProps = {
   addExercise,
+  updateExercise,
   removeExercise,
   removeAllExercises,
   setRest,

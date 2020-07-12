@@ -61,6 +61,7 @@ function TabBarMainButton ({
             as="span"
             color={colors.red500}
             fontSize="20px"
+            fontWeight="600"
             minWidth="30px"
             display="inline-block"
           >{count}</Text>

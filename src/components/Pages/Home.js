@@ -19,10 +19,9 @@ import { Spinner } from '../Spinner'
 import {
   filterMuscleGroup,
   filterEquipaments,
-  addExercise,
-  removeExercise
+  addExercise
 } from '../../store/actions/exercise'
-import { exerciseUtils, delay } from '../../utils'
+import { exerciseUtils, delay, uuid } from '../../utils'
 import { colors, utils } from '../../ui'
 
 const Home = function ({
@@ -30,8 +29,7 @@ const Home = function ({
   exercise,
   filterMuscleGroup,
   filterEquipaments,
-  addExercise,
-  removeExercise
+  addExercise
 }) {
   const onSelectMuscleGroup = async item => {
     setVisibleCarousel(false)
@@ -42,17 +40,13 @@ const Home = function ({
   }
 
   const onSelectExercise = item => {
-    const set = new Set(selectedExercisesIDs)
-    const id = +item.id
-    if (set.has(id)) {
-      removeExercise(id)
-    } else {
-      addExercise({
-        exercise_id: id,
-        count: 15,
-        count_type: 'reps'
-      })
-    }
+    const { id } = item
+    addExercise({
+      code: uuid(),
+      exercise_id: id,
+      count: 15,
+      count_type: 'reps'
+    })
   }
 
   const btnRef = React.useRef()
@@ -235,8 +229,7 @@ const mapStateToProps = ({ base, exercise }) => ({ base, exercise })
 const mapDispatchToProps = {
   filterMuscleGroup,
   filterEquipaments,
-  addExercise,
-  removeExercise
+  addExercise
 }
 
 export default connect(

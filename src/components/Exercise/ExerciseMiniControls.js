@@ -64,11 +64,14 @@ function ExerciseMiniControls ({
     'exercise-card',
     `exercise-card--${colorMode}`
   ]
+  if (props.className) {
+    classes.push(props.className)
+  }
 
   return (
     <ExerciseCard
-      className={classes.join(' ')}
       {...props}
+      className={classes.join(' ')}
     >
       <Flex
         alignItems="center"
