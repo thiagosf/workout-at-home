@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/workout-at-home/static/css/main.c933e478.chunk.css",
-    "main.js": "/workout-at-home/static/js/main.9de3d7a6.chunk.js",
-    "main.js.map": "/workout-at-home/static/js/main.9de3d7a6.chunk.js.map",
+    "main.css": "/workout-at-home/static/css/main.9a5fdb7d.chunk.css",
+    "main.js": "/workout-at-home/static/js/main.c17e69b5.chunk.js",
+    "main.js.map": "/workout-at-home/static/js/main.c17e69b5.chunk.js.map",
     "runtime-main.js": "/workout-at-home/static/js/runtime-main.7eb6d28f.js",
     "runtime-main.js.map": "/workout-at-home/static/js/runtime-main.7eb6d28f.js.map",
     "static/css/2.9be4f162.chunk.css": "/workout-at-home/static/css/2.9be4f162.chunk.css",
-    "static/js/2.8061d079.chunk.js": "/workout-at-home/static/js/2.8061d079.chunk.js",
-    "static/js/2.8061d079.chunk.js.map": "/workout-at-home/static/js/2.8061d079.chunk.js.map",
+    "static/js/2.84a3085f.chunk.js": "/workout-at-home/static/js/2.84a3085f.chunk.js",
+    "static/js/2.84a3085f.chunk.js.map": "/workout-at-home/static/js/2.84a3085f.chunk.js.map",
     "static/js/3.e4c899c8.chunk.js": "/workout-at-home/static/js/3.e4c899c8.chunk.js",
     "static/js/3.e4c899c8.chunk.js.map": "/workout-at-home/static/js/3.e4c899c8.chunk.js.map",
     "index.html": "/workout-at-home/index.html",
-    "precache-manifest.77b63a96293dd93f8ab2661dc11ce74a.js": "/workout-at-home/precache-manifest.77b63a96293dd93f8ab2661dc11ce74a.js",
+    "precache-manifest.4824b3b774f0a46b82828571f6cc606a.js": "/workout-at-home/precache-manifest.4824b3b774f0a46b82828571f6cc606a.js",
     "service-worker.js": "/workout-at-home/service-worker.js",
     "static/css/2.9be4f162.chunk.css.map": "/workout-at-home/static/css/2.9be4f162.chunk.css.map",
-    "static/css/main.c933e478.chunk.css.map": "/workout-at-home/static/css/main.c933e478.chunk.css.map",
-    "static/js/2.8061d079.chunk.js.LICENSE.txt": "/workout-at-home/static/js/2.8061d079.chunk.js.LICENSE.txt",
+    "static/css/main.9a5fdb7d.chunk.css.map": "/workout-at-home/static/css/main.9a5fdb7d.chunk.css.map",
+    "static/js/2.84a3085f.chunk.js.LICENSE.txt": "/workout-at-home/static/js/2.84a3085f.chunk.js.LICENSE.txt",
     "static/js/3.e4c899c8.chunk.js.LICENSE.txt": "/workout-at-home/static/js/3.e4c899c8.chunk.js.LICENSE.txt",
     "static/media/end-time.mp3": "/workout-at-home/static/media/end-time.a6bf9b86.mp3",
     "static/media/logo-dark.svg": "/workout-at-home/static/media/logo-dark.8887d961.svg",
@@ -29,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.7eb6d28f.js",
     "static/css/2.9be4f162.chunk.css",
-    "static/js/2.8061d079.chunk.js",
-    "static/css/main.c933e478.chunk.css",
-    "static/js/main.9de3d7a6.chunk.js"
+    "static/js/2.84a3085f.chunk.js",
+    "static/css/main.9a5fdb7d.chunk.css",
+    "static/js/main.c17e69b5.chunk.js"
   ]
 }
