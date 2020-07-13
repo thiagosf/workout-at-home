@@ -72,6 +72,7 @@ function ExerciseMiniControls ({
     <ExerciseCard
       {...props}
       className={classes.join(' ')}
+      paddingLeft="10px"
     >
       <Flex
         alignItems="center"
@@ -91,6 +92,7 @@ function ExerciseMiniControls ({
             requirements: true
           }}
           flexGrow="1"
+          wordBreak="break-word"
         />
         <Flex
           flexDirection="column"

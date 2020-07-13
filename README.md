@@ -73,8 +73,8 @@ yarn build
 - [x] Add animations with `framer-motion`
 - [ ] Desktop version
 - [ ] i18n support
-- [ ] Remove item on sort list
-- [ ] Improve confirmation component
+- [x] Remove item on sort list
+- [x] Improve confirmation component
 - [ ] Fix save to home screen position
 - [ ] Onboarding scrollbars
 - [x] Add sound on over seconds in an exercise

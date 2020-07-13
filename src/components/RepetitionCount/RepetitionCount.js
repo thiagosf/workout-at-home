@@ -56,7 +56,7 @@ function RepetitionCount ({
     if (isStarted) {
       const newTimer = timer + 1
       setTimer(newTimer)
-      if (newTimer === count) {
+      if (newTimer === count && countType === 'secs') {
         play()
       }
     }

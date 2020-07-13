@@ -92,7 +92,7 @@ function ExerciseHeader ({
     <Flex {...props}>
       <Box
         flexGrow="1"
-        marginRight="20px"
+        marginRight="10px"
       >
         {visible.name &&
           <Text

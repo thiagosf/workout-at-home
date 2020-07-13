@@ -12,9 +12,24 @@ function Sortable ({
   ...props
 }) {
   const [list, setList] = useState(items)
-  const handleChange = items => {
-    setList(items)
-    onChange(items)
+  let timer
+
+  const handleChange = (sortableItems, sortable, store) => {
+    if (store.dragging === null) {
+      const ids = items.map(item => item.id)
+      const newIds = sortableItems.map(item => item.id)
+      const values = ids.map((id, index) => id === newIds[index])
+      const equal = values.every(value => value === true)
+      if (!equal) {
+        setList(sortableItems)
+        onChange(items)
+      }
+    }
+  }
+
+  const handleChangeThrottle = (sortableItems, sortable, store) => {
+    clearInterval(timer)
+    timer = setTimeout(() => handleChange(sortableItems, sortable, store), 100)
   }
 
   return (
@@ -23,7 +38,8 @@ function Sortable ({
         handle=".handle"
         animation={150}
         list={list}
-        setList={handleChange}
+        setList={handleChangeThrottle}
+        delayOnTouchStart={false}
       >
         {list.map(item => (
           <Flex
@@ -36,7 +52,7 @@ function Sortable ({
                   <Icon
                     name="drag-handle"
                     className="handle swiper-no-swiping"
-                    padding="20px 20px 20px 0px"
+                    padding="20px 10px 20px 0px"
                     boxSizing="content-box"
                   />
                 )

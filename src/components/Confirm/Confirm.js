@@ -56,10 +56,16 @@ function Confirm ({
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button variant="link" ref={cancelRef} onClick={onClose}>
                 {buttonNo}
               </Button>
-              <Button variantColor="red" onClick={onConfirm} ml={3}>
+              <Button
+                onClick={onConfirm} ml={3}
+                backgroundColor={colors.red500}
+                color={colors.white}
+                _hover={{ backgroundColor: colors.red800 }}
+                _active={{ backgroundColor: colors.red800 }}
+              >
                 {buttonYes}
               </Button>
             </AlertDialogFooter>
