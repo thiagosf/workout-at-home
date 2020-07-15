@@ -75,8 +75,8 @@ yarn build
 - [ ] i18n support
 - [x] Remove item on sort list
 - [x] Improve confirmation component
-- [ ] Fix save to home screen position
-- [ ] Onboarding scrollbars
+- [x] Fix close button into add to home screen component
+- [x] Onboarding scrollbars
 - [x] Add sound on over seconds in an exercise
 - [x] Add multiple times same exercise
 - [ ] Edit saved list

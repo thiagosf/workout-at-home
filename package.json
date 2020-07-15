@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "postdeploy": "rm -rf build",
     "deploy": "gh-pages -d build"
   },
@@ -63,5 +63,8 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.2",
     "@storybook/react": "^5.3.18"
+  },
+  "engines": {
+    "node": ">=7.6"
   }
 }

@@ -69,6 +69,7 @@ function Layout({
   } = base
   const { list } = exercise
   const [showAddToHomeScreen, setShowAddToHomeScreen] = useState(false)
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
   const onCloseAddToHomeScreen = () => {
     setAddToHomeScreen(true)
   }
@@ -90,6 +91,10 @@ function Layout({
       />
     </MotionBox>
   )
+
+  const onResize = () => {
+    setWindowHeight(window.innerHeight)
+  }
 
   useEffect(() => {
     if (footerVisible) {
@@ -132,13 +137,20 @@ function Layout({
     }
   }, [setShowAddToHomeScreen, addToHomeScreen, isHome])
 
+  useEffect(() => {
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   return (
     <Flex
       color={color}
       background={backgroundColor}
-      height="100vh"
+      height={windowHeight}
       flexDirection="column"
       justifyContent="space-between"
+      position="relative"
       {...props}
     >
       {!addToHomeScreen && isHome &&

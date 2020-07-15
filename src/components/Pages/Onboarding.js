@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
+  Flex,
   Text,
-  Image,
   useColorMode
 } from '@chakra-ui/core'
 import { useHistory } from 'react-router-dom'
@@ -35,41 +35,54 @@ const OnboardingItem = ({
   return (
     <ComposableScaleIn.Container
       visible={visible}
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
       width="100%"
-      flexGrow="1"
+      height="100%"
       {...props}
     >
-      <ComposableScaleIn.Item
-        display="flex"
-        flexGrow="1"
+      <Flex
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        padding="50px"
+        flexGrow="1"
+        height="100%"
       >
-        <Image src={image} />
-      </ComposableScaleIn.Item>
-      <ComposableScaleIn.Item>
-        <Text
-          fontSize="30px"
-          textAlign="center"
-          padding="0 20px"
-          margin="0"
-          color={titleColor}
-        >{title}</Text>
-      </ComposableScaleIn.Item>
-      <ComposableScaleIn.Item>
-        <Text
-          fontSize="20px"
-          textAlign="center"
-          padding="0 20px"
-          margin="0"
-          color={descriptionColor}
-        >{description}</Text>
-      </ComposableScaleIn.Item>
+        <ComposableScaleIn.Item
+          display="flex"
+          flexGrow="1"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          height="100%"
+        >
+          <Flex
+            backgroundImage={`url(${image})`}
+            backgroundPosition="center center"
+            backgroundSize="contain"
+            backgroundRepeat="no-repeat"
+            flexGrow="1"
+            alignSelf="stretch"
+            margin="50px"
+          />
+        </ComposableScaleIn.Item>
+        <ComposableScaleIn.Item>
+          <Text
+            fontSize="30px"
+            textAlign="center"
+            padding="0 20px"
+            margin="0"
+            color={titleColor}
+          >{title}</Text>
+        </ComposableScaleIn.Item>
+        <ComposableScaleIn.Item>
+          <Text
+            fontSize="20px"
+            textAlign="center"
+            padding="0 20px"
+            margin="0"
+            color={descriptionColor}
+          >{description}</Text>
+        </ComposableScaleIn.Item>
+      </Flex>
     </ComposableScaleIn.Container>
   )
 }
@@ -119,6 +132,7 @@ function Onboarding () {
         flexGrow="1"
         marginBottom="25px"
         onSlideChange={setSlideIndex}
+        height="100%"
       >
         {onboardItems}
       </Carousel>

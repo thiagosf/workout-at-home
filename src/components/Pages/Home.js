@@ -166,7 +166,8 @@ const Home = function ({
         flexGrow="1"
         flexDirection="column"
         justifyContent="space-between"
-        paddingBottom="10px"
+        marginBottom="10px"
+        overflow="hidden"
       >
         <Opacity
           visible={visibleMuscleGroup}

@@ -28,7 +28,7 @@ function AddToHomeScreen ({
     colorMode
   )
   const iconBackground = valueByMode(
-    colors.white,
+    colors.gray300,
     colors.black,
     colorMode
   )
@@ -61,40 +61,37 @@ function AddToHomeScreen ({
         <Flex
           flexDirection="column"
           justifyContent="center"
+          alignItems="center"
           marginRight="20px"
         >
-          <Flex
+          <Box
             rounded="15px"
             width="60px"
             height="60px"
             padding="10px"
             background={iconBackground}
-            justifyContent="center"
-            alignItems="center"
             flexShrink="0"
           >
             <Image
               src={favicon}
               alt="Web app icon"
             />
-          </Flex>
-          <Text
-            marginTop="5px"
-            fontSize="12px"
-            textAlign="center"
-            fontWeight="600"
-          >workout@home</Text>
+          </Box>
         </Flex>
         <Flex
           flexGrow="1"
           flexDirection="column"
         >
           <Text
-            fontSize="18px"
+            fontSize="20px"
+            lineHeight="1"
             fontWeight="600"
             color={textColor}
+            paddingRight="25px"
+            margin="0 0 5px 0"
           >Save to home screen</Text>
           <Text
+            fontSize="16px"
             color={textColor}
           >Have an amazing experience, tap the menu icon at the top of your browser and choose "Add to Home Screen".</Text>
         </Flex>
