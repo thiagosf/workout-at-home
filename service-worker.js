@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/workout-at-home/precache-manifest.6098aecee8509c36305e34c14390fb20.js"
+  "/workout-at-home/precache-manifest.ed9403f1079c84df335657ff70696aa0.js"
 );
 
 self.addEventListener('message', (event) => {
