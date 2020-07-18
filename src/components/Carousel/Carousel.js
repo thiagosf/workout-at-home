@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../../../node_modules/swiper/css/swiper.min.css'
 import Swiper from 'react-id-swiper'
-import { Flex } from '@chakra-ui/core'
+import { Flex, Box } from '@chakra-ui/core'
 import { PagingDots } from '../PagingDots'
 
 function Carousel ({
@@ -37,7 +37,8 @@ function Carousel ({
       }
     },
     observer: true,
-    observeParents: true
+    observeParents: true,
+    centerInsufficientSlides: true
   }
   return (
     <Flex
@@ -45,10 +46,7 @@ function Carousel ({
       justifyContent="space-between"
       {...props}
     >
-      <Flex
-        minWidth="0"
-        flexGrow="1"
-      >
+      <Box flexGrow="1">
         <Swiper
           flexGrow="1"
           minHeight="100%"
@@ -58,7 +56,7 @@ function Carousel ({
         >
           {children}
         </Swiper>
-      </Flex>
+      </Box>
       {count &&
         <PagingDots currentPage={page} pages={count} />
       }

@@ -664,6 +664,232 @@
       ],
       "videos": [
       ]
+    },
+    {
+      "id": 21,
+      "name": "Elbow plank",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Plank_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/plank/",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Plank leg lifts",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 8,
+          "name": "Gluteos",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Plank_leg_lift_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/plank-leg-lifts/",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Side plank",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/Side_plank_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/side-plank/",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Plank to push-up",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://cdn-xi3mbccdkztvoept8hl.netdna-ssl.com/wp-content/uploads/watermarked/plank_to_pushup_M_WorkoutLabs.png",
+          "credits": "https://workoutlabs.com/exercise-guide/plank-to-push-up-pushups-walking-plank/",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Full plank",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://www.shakopee.k12.mn.us/cms/lib/MN01909221/Centricity/Domain/439/planking%20pic.jpg",
+          "credits": "https://www.shakopee.k12.mn.us/Page/5981",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Reverse full plank",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        },
+        {
+          "id": 8,
+          "name": "Gluteos",
+          "primary": false
+        },
+        {
+          "id": 9,
+          "name": "Back leg",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://cdn-0.weighttraining.guide/wp-content/uploads/2016/11/high-reverse-plank-990x602.png",
+          "credits": "https://weighttraining.guide/exercises/high-reverse-plank/",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Plank rotation",
+      "muscle_groups": [
+        {
+          "id": 6,
+          "name": "Abs",
+          "primary": true
+        },
+        {
+          "id": 3,
+          "name": "Shoulders",
+          "primary": false
+        }
+      ],
+      "requirements": [
+        {
+          "id": 1,
+          "name": "No equipament"
+        }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "http://darebee.com/images/dailydare/2016/april15.jpg",
+          "credits": "https://darebee.com/hive/daily-dares/172969-dd-15-april-2016-50-plank-rotations",
+          "line_art": true
+        }
+      ],
+      "videos": [
+      ]
     }
   ]
 }

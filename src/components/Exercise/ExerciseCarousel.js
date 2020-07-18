@@ -70,6 +70,7 @@ function ExerciseCarousel ({
         paddingBottom="20px"
         count={paginationCount}
         config={config}
+        containerClass="swiper-container swiper-container-full"
       >{exercisesCards}</Carousel>
     </Box>
   )
