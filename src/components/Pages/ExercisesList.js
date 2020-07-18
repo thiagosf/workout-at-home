@@ -82,7 +82,13 @@ function ExercisesList ({
     removeExercise(item.data.code)
   }
 
-  const { loading, list, selectedExercises, rest } = exercise
+  const {
+    loading,
+    list,
+    selectedExercises,
+    rest,
+    currentList
+  } = exercise
   const exercises = selectedExercises.map(item => {
     const exercise = list.find(i => +i.id === +item.exercise_id)
     return {
@@ -138,7 +144,8 @@ function ExercisesList ({
         flexGrow="1"
         flexDirection="column"
         justifyContent={isEmptyList ? 'center' : 'flex-start'}
-        margin="0 10px 10px 10px"
+        margin={["0 10px 10px 10px", "0 auto"]}
+        maxWidth="768px"
       >
         {!loading && isEmptyList &&
           <ScaleIn>
@@ -168,30 +175,43 @@ function ExercisesList ({
               marginTop="10px"
               height="35px"
             >
-              <FormLabel
-                display="flex"
-                alignItems="center"
-                flexShrink="0"
-                padding="0"
-                marginRight="20px"
-              >
-                <Switch
-                  display="flex"
-                  onChange={() => setSaveList(saveList ? false : true)}
-                />
-                <Text
-                  display="inline-block"
-                  margin="0 0 0 10px"
-                  as="span"
-                >Save list</Text>
-              </FormLabel>
-              {saveList &&
-                <Input
-                  flexGrow="1"
-                  placeholder="Give a name"
-                  size="sm"
-                  onChange={handleChange(setListName)}
-                />
+              {currentList &&
+                <Text>
+                  Current list:
+                  <Text
+                    as="strong"
+                    marginLeft="10px"
+                  >{currentList.name}</Text>
+                </Text>
+              }
+              {!currentList &&
+                <React.Fragment>
+                  <FormLabel
+                    display="flex"
+                    alignItems="center"
+                    flexShrink="0"
+                    padding="0"
+                    marginRight="20px"
+                  >
+                    <Switch
+                      display="flex"
+                      onChange={() => setSaveList(saveList ? false : true)}
+                    />
+                    <Text
+                      display="inline-block"
+                      margin="0 0 0 10px"
+                      as="span"
+                    >Save list</Text>
+                  </FormLabel>
+                  {saveList &&
+                    <Input
+                      flexGrow="1"
+                      placeholder="Give a name"
+                      size="sm"
+                      onChange={handleChange(setListName)}
+                    />
+                  }
+                </React.Fragment>
               }
             </Flex>
           </Box>

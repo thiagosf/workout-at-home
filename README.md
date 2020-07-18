@@ -2,6 +2,9 @@
 
 Webapp to help you exercise at home.
 
+* Webapp: [https://thiagosf.github.io/workout-at-home](https://thiagosf.github.io/workout-at-home)
+* Storybook: [https://thiagosf.github.io/workout-at-home/storybook](https://thiagosf.github.io/workout-at-home/storybook)
+
 ## Dev
 
 ### Storybook
@@ -71,7 +74,7 @@ yarn build
 - [x] Refactor `allColors` using `utils:valueByMode`
 - [x] Create route view to `/workout`, add `/workout/next` and `/workout/finish` to mantain `Timer` on top
 - [x] Add animations with `framer-motion`
-- [ ] Desktop version
+- [x] Desktop version
 - [ ] i18n support
 - [x] Remove item on sort list
 - [x] Improve confirmation component
@@ -79,7 +82,7 @@ yarn build
 - [x] Onboarding scrollbars
 - [x] Add sound on over seconds in an exercise
 - [x] Add multiple times same exercise
-- [ ] Edit saved list
+- [x] Edit saved list
 - [ ] Add custom exercise
 - [ ] Create API to exercises list
 - [x] Add animation on saved lists page

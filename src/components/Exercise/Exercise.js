@@ -302,7 +302,7 @@ function Exercise ({
         }
         <Flex width="30%" justifyContent="flex-end">
           <MuscleGroupBody
-            width="70%"
+            width={["70%", "100px", "70px"]}
             muscleGroups={exercise.muscle_groups}
           />
         </Flex>

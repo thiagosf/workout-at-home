@@ -52,7 +52,6 @@ function Carousel ({
         <Swiper
           flexGrow="1"
           minHeight="100%"
-          background="blue"
           containerClass={containerClass}
           {...defaultConfig}
           {...config}

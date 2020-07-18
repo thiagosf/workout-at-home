@@ -67,7 +67,8 @@ function Workout ({
       <Exercise
         exercise={currentExercise.exercise}
         flexGrow="1"
-        margin="15px 15px 45px 15px "
+        margin={["15px 15px 45px 15px", "0 auto 45px auto"]}
+        maxWidth="600px"
       />
     </ScaleIn>
   )

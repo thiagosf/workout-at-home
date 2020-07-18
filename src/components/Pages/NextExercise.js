@@ -68,6 +68,9 @@ function NextExercise ({
     <Flex
       flexDirection="column"
       flexGrow="1"
+      margin="0 auto"
+      width="100%"
+      maxWidth={["100%", "600px"]}
     >
       <ScaleIn
         display="flex"

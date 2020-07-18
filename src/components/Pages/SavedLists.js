@@ -99,8 +99,7 @@ function SavedLists ({
   }
   const selectList = item => {
     selectWorkoutList(item.code)
-    setWorkoutStartTime(Date.now())
-    history.push('/workout')
+    history.push('/exercises-list')
   }
   const deleteItem = item => {
     deleteWorkoutList(item.code)
@@ -135,7 +134,11 @@ function SavedLists ({
         </Flex>
       }
       {!isEmptyList &&
-        <React.Fragment>
+        <Box
+          margin={["0 10px 10px 10px", "0 auto"]}
+          width="100%"
+          maxWidth={["100%", "600px"]}
+        >
           <Text
             color={textColorHelp}
             textAlign="center"
@@ -147,7 +150,7 @@ function SavedLists ({
           >
             {list}
           </ComposableMoveUp.Container>
-        </React.Fragment>
+        </Box>
       }
     </Layout>
   )

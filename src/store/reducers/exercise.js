@@ -14,7 +14,8 @@ const initialState = {
   currentIndexExercise: 0,
   workouts: [],
   workoutListName: null,
-  savedWorkoutLists: []
+  savedWorkoutLists: [],
+  currentList: null
 }
 
 const identifier = 'exercise'
@@ -142,6 +143,17 @@ export default (state = initialState, action) => {
         if (!hasItem) {
           nextState.savedWorkoutLists.push(data)
         }
+      } else if (nextState.currentList) {
+        nextState.savedWorkoutLists = nextState.savedWorkoutLists.map(item => {
+          if (item.code === nextState.currentList.code) {
+            item = {
+              ...item,
+              selectedExercises: nextState.selectedExercises,
+              rest: nextState.rest
+            }
+          }
+          return item
+        })
       }
       break
 
@@ -155,6 +167,7 @@ export default (state = initialState, action) => {
       })
       nextState.selectedExercises = item.selectedExercises
       nextState.rest = item.rest
+      nextState.currentList = { ...item }
       break
 
     case 'DELETE_WORKOUT_LIST':
