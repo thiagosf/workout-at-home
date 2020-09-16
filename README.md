@@ -86,6 +86,7 @@ yarn build
 - [ ] Add custom exercise
 - [ ] Create API to exercises list
 - [x] Add animation on saved lists page
+- [ ] Make .web.app domain (https://firebase.google.com/docs/hosting)
 
 ## Credits
 
