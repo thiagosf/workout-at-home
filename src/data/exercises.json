@@ -890,6 +890,785 @@
       ],
       "videos": [
       ]
+    },
+    {
+      "id": 28,
+      "name": "Kettlebell Slingshot",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezoids", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/01_kettlebell-slingshot.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 29,
+      "name": "Kettlebell Halo",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezoids", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/02_kettlebell-halo.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 30,
+      "name": "Kettlebell Good Morning",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/03_kettlebell-good_morning.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 31,
+      "name": "Kettlebell Single Arm Deadlift",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/04_kettlebell-single_arm_deadlift.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 32,
+      "name": "Kettlebell Single Leg Deadlift",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/05_kettlebell-single_leg_deadlift.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 33,
+      "name": "Kettlebell Swing Two Hands",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/06_two_handed_swing.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 34,
+      "name": "Kettlebell Single Handed Swing",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/07_single_handed_swing.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 35,
+      "name": "Kettlebell Swing Changing Hands",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/14_alternating_swing.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 36,
+      "name": "Kettlebell Goblet Squat",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/08_goblet_squat.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 37,
+      "name": "Kettlebell Racked Squat",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/09_racked_squat.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 38,
+      "name": "Kettlebell Racked Reverse Lunge",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/10_racked_reverse_lunge.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 39,
+      "name": "Kettlebell Regular Row",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezius", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/15_single_arm_row.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 40,
+      "name": "Kettlebell Suitcase Row Exercise",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezius", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/55_suitcase_row.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 41,
+      "name": "Kettlebell Windmill",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/24_windmill.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 42,
+      "name": "Kettlebell Overhead Warm Up",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/48_overhead_kneeling_lunge.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 43,
+      "name": "Kettlebell Clean",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/19_clean.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 44,
+      "name": "Kettlebell Bottoms Up Clean",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/31_bottoms_up_clean.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 45,
+      "name": "Kettlebell High Pulls",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezius", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/30_high_pull.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 46,
+      "name": "Kettlebell Bob and Weave",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/11_bob_and_weave.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 47,
+      "name": "Kettlebell Side Lunge",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/11/kettlebell_side_lunge.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 48,
+      "name": "Kettlebell Lunge with Rotation",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/22_lunge_with_rotation.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 49,
+      "name": "Kettlebell Double Lunge",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/49_double_lunge.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 50,
+      "name": "Kettlebell Tall Kneeling Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/54_tall_kneeling_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 51,
+      "name": "Kettlebell Half Kneeling Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/23_half_kneeling_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 52,
+      "name": "Kettlebell Overhead Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/36_overhead_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 53,
+      "name": "Kettlebell Push Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/35_push_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 54,
+      "name": "Kettlebell Clean and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/20_clean_and_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 55,
+      "name": "Kettlebell Two Handed Squat and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/12_two_handed_squat_and_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 56,
+      "name": "Kettlebell Thruster (Squat and Press)",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/17_thruster.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 57,
+      "name": "Kettlebell Static Lunge and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2019/04/45_static_lunge_and_press_2.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 58,
+      "name": "Kettlebell Static Lunge and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/18_reverse_lunge_and_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 59,
+      "name": "Kettlebell Clean, Squat and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 2,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/40_clean_squat_and_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 60,
+      "name": "Kettlebell Sit and Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 5,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/13_sit_and_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 61,
+      "name": "Kettlebell Snatch",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 4,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/32_snatch.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 62,
+      "name": "Kettlebell Renegade Row",
+      "muscle_groups": [
+        { "id": 12, "name": "Biceps", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 4,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/25_plank_row.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 63,
+      "name": "Kettlebell Side Stepping Swing",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezius", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/65_side_stepping_swing.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 64,
+      "name": "Kettlebell Bottoms Up Press",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/26_bottoms_up_press.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 65,
+      "name": "Kettlebell Farmers Carry",
+      "muscle_groups": [
+        { "id": 11, "name": "Trapezius", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/43_farmers_carry.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 66,
+      "name": "Kettlebell Overhead Squat",
+      "muscle_groups": [
+        { "id": 3, "name": "Shoulders", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/28_overhead_squat.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 67,
+      "name": "Kettlebell One Legged Clean",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2019/02/01_single_leg_clean.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": 68,
+      "name": "Lateral Kettlebell Swing (Kettlebell Side Swing)",
+      "muscle_groups": [
+        { "id": 8, "name": "Gluteos", "primary": true }
+      ],
+      "requirements": [
+        { "id": 6, "name": "Kettlebell" }
+      ],
+      "level": 3,
+      "likes": null,
+      "images": [
+        {
+          "url": "https://kettlebellsworkouts.com/wp-content/uploads/2018/08/38_lateral_swing.png",
+          "line_art": true
+        }
+      ],
+      "videos": []
     }
   ]
 }

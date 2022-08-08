@@ -53,19 +53,19 @@ function MuscleGroupBody ({
 
   const translateName = name => {
     const items = {
-      'Abs': '--abs',
-      'Triceps': '--triceps',
-      'Neck': '--neck',
-      'Chest': '--chest',
-      'Back': '--back',
-      'Biceps': '--biceps',
-      'Forearms': '--forearms',
-      'Shoulders': '--shoulders',
-      'Front leg': '--front-leg',
-      'Back leg': '--back-leg',
-      'Calves': '--calves',
-      'Trapezoids': '--trapezoids',
-      'Gluteos': '--gluteos'
+      'Abs': '--abs', // id: ?
+      'Triceps': '--triceps', // id: ?
+      'Neck': '--neck', // id: ?
+      'Chest': '--chest', // id: ?
+      'Back': '--back', // id: ?
+      'Biceps': '--biceps', // id: 12
+      'Forearms': '--forearms', // id: ?
+      'Shoulders': '--shoulders', // id: 3
+      'Front leg': '--front-leg', // id: ?
+      'Back leg': '--back-leg', // id: ?
+      'Calves': '--calves', // id: ?
+      'Trapezoids': '--trapezoids', // id: 11
+      'Gluteos': '--gluteos', // id: 8
     }
     return items[name]
   }
