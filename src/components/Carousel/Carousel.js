@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../../../node_modules/swiper/swiper.min.css'
 import Swiper from 'react-id-swiper'
+import { Lazy } from 'swiper'
 import { Flex, Box } from '@chakra-ui/core'
 import { PagingDots } from '../PagingDots'
 
@@ -14,6 +15,7 @@ function Carousel ({
 }) {
   const [page, setPage] = useState(1)
   const defaultConfig = {
+    modules: [Lazy],
     lazy: {
       loadPrevNext: true,
       preloaderClass: 'preloader-carousel'
