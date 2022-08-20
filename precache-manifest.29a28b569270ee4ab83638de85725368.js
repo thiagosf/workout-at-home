@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "da0a9c66e801a5ea7179b8bafc83f723",
+    "revision": "3b8f2e77ce5e183e6a5dc18aac5d69c1",
     "url": "/workout-at-home/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-at-home/static/css/2.c8ae1df1.chunk.css"
   },
   {
-    "revision": "70527f639528d1d22108",
+    "revision": "3ab569fc4514a565dd76",
     "url": "/workout-at-home/static/css/main.9a5fdb7d.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-at-home/static/js/3.81790d00.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "70527f639528d1d22108",
-    "url": "/workout-at-home/static/js/main.14c209de.chunk.js"
+    "revision": "3ab569fc4514a565dd76",
+    "url": "/workout-at-home/static/js/main.35449611.chunk.js"
   },
   {
     "revision": "c88aee9bc95449b25018",
