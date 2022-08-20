@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../../node_modules/swiper/css/swiper.min.css'
+import '../../../node_modules/swiper/swiper.min.css'
 import Swiper from 'react-id-swiper'
 import { Flex, Box } from '@chakra-ui/core'
 import { PagingDots } from '../PagingDots'
